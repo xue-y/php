@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>设置任务随机抢</title>
+<style>
+body{width:100%; margin:30px auto;text-align:center; font-family:"微软雅黑";}
+h2{color:#333; font-weight:normal; letter-spacing:2px;}
+em{font-size:14px;color:#F66;}
+form{text-align:center;font-size:16px;}
+label{margin-right:10px;}
+input{height:34px; line-height:34px; border-radius:3px;width:400px;border:none; border:1px solid #CCC; padding:0px 4px;font-family:"微软雅黑";}
+span{ display:block; margin-top:3px; font-size:14px;color:#666;}
+input[type='button']{width:200px;font-size:16px;}
+</style>
+<script src="jquery.js"></script>
+<script>
+$(function(){
+	$(".sub").click(function(){
+	    $.ajax({
+			type:"POST",
+			data:$("form").serialize(),
+			url:"2.php",
+			success: function(data){
+				if(data=="ok")
+				{		
+					window.location.href="3.html"
+				}
+			},
+			error: function(xhr){
+				console.log(xhr);
+			},
+			timeout:3000
+			});	
+	});
+});
+</script>
+</head>
+
+<body>
+<h2>随机抢任务</h2>
+<em> 任务个数与人员数量要一致，如果不一致，按照数量少的执行，一个人员一次只能抢一次</em>
+<form>
+<p>
+ <label>任务&nbsp;名称</label><input type="text" value="" name="renwu"  placeholder="请输入任务名称"><span>任务名之间用 | 英文竖线分割</span>
+</p>
+<p>
+ <label>人员&nbsp;名称</label><input type="text" value="" name="user" placeholder="请输入人员名称"><span>人员名之间用 | 英文竖线分割</span>
+</p>
+<p><label>倒计时秒数</label><input type="number" value="" name="t"><span>倒计时从分计算起，输入距离开始抢的秒数</span></p>
+<p><input type="button"  value="生成任务"  class="sub"></p>
+</form>
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户抢任务页面</title>
+<style>
+body{width:100%; margin:30px auto;text-align:center; font-family:"微软雅黑";}
+h2{color:#333; font-weight:normal; letter-spacing:2px;}
+em{font-size:14px;color:#F66;}
+form{text-align:center;font-size:16px;}
+label{margin-right:10px;}
+select{height:34px; line-height:34px;width:240px; text-align:center; border-radius:3px; border:1px solid #CCC; padding:0px 4px;font-size:16px;}
+span{ display:block; margin-top:3px; font-size:14px;color:#666;}
+input[type='checkbox']{margin:0px 25px; background:none;width:20px; height:20px;}
+.t{color:#09f;font-size: 16px;}
+</style>
+<script src="jquery.js"></script>
+<script>
+var ip={ip:0}
+$(document).ready(function(e) {
+	
+	function query_shuju()
+	{
+		$.ajax({
+			type:"POST",
+			url:"6.php",
+			data:$('form').serialize(),
+			success: function(data){
+					var data=JSON.parse(data);
+					if(data.state=="ok")
+					{
+						var html="";
+						var sele="<option value='-1'>请选择你的姓名</option>";
+						for(var i=0;i<data.shu.length;i++)
+						{
+							html+='<input type="checkbox" value="'+i+'" name="rw">';
+							sele+="<option value='"+i+"'>"+data.n[i]+"</option>";
+						}
+						$(".p").html(html);
+						$("select").html(sele);		
+						
+						$("input").each(function(index, element) {
+							$(this).click(function(){
+								if($("select").val()==-1)
+								{
+									alert("请选择姓名");
+									$(this).prop("checked",false);
+									$(this).removeAttr('checked');
+								}
+								else
+								{
+									console.log(get_ip());
+									if(get_ip()=="no")
+									{
+										alert("您已经选择过了");
+										return;
+									};
+									var num_n=$("select").val(); //姓名id
+									query_shuju();//获取新的数据
+									
+									var u_shu='name: '+data.n[num_n]+"----任务名称: "+data.shu[$(this).val()];
+									alert(u_shu);  // 用户看到的数据
+									$(".t").append(u_shu+'<br/>');									
+									return;
+								}
+							});
+							
+						});
+					}
+				
+				},
+			   error: function(xhr){
+				console.log(xhr);
+				},
+		});
+	}
+
+	
+
+	$.post("4.php",'',function(data){	
+		if(data>0)
+		  {
+			  var t=setInterval(function(){
+				  $.post("5.php",{t:data},function(data){
+					 var data=JSON.parse(data);					 
+					  if(data.t<1)
+					     {
+						 	clearInterval(t);
+							$("time").html("现在开始");
+							 query_shuju();
+						 }
+					  else
+					  	$("time").html(data.meg);
+					  });
+				  },1000);
+		  }
+		else
+		  {
+			$("time").html("现在开始");
+			query_shuju();
+		  }
+		 
+	});//开抢记时---从后台取数据
+
+	
+	
+ 
+	function get_ip()
+	{  
+		$.post("ip.php",'',function(data){
+			if(data=="no")
+			{
+			ip.ip="no"
+			}else
+			{ip.ip="ok"}
+		})
+		return ip.ip;	
+	}
+	 get_ip();	//---获取用户ip 写入数组
+
+
+
+	
+});
+</script>
+</head>
+
+<body>
+
+<h2>开抢到计时 -- <time></time></h2>
+<p class="t"></p>
+<form  method="post">
+    <select name="n"></select>  
+    <p class="p"></p>
+</form>
+</body>
+</html>
