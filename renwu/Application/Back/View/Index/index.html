@@ -1,0 +1,40 @@
+<layout name="layout" /><!--后台首页页面-->
+        <style>
+            h3{padding-left: 40px;}
+            ul.list{line-height: 2; font-size:20px; margin-top: 50px;}
+            ul.list li{width:25%; text-align: center;float: left; }
+            ul.list li img{ display: block; margin:0 auto 10px;width:80px;}
+            sup a,h2 a{color:#0F85D4;}
+        </style>
+<div class="padding">
+<h2 class="padding">
+    {$n} 用户欢迎进入<a>{$Think.const.WBE_NAME}</a>
+</h2>
+    <h3>快捷操作
+        <hr/>
+    </h3>
+    <ul class="list">
+        <foreach name="task" item="v"  key="k">
+           <li><a href="__MODULE__/{$v.execs}"><img src="__PUBLIC__/back/images/{$k}.png">
+               <php>
+               if($k==0 && isset($p_c) && $p_c>0)
+               {
+               echo '<span style="margin-left:68px;">'. $v['n'].'</span></a><sup><a href="__MODULE__/Task/index?p_id='.$p_id.'"><span class="red">'.$p_c.'</span> 条新任务</a></sup>';
+               }else
+               {
+                   echo $v['n'].'</a>';
+                }
+           </php>
+           </li>
+        </foreach>
+        <php>
+            if(isset($meg) && $meg>0)
+            {
+            $n=$k+1;
+            echo '<li><a href="__MODULE__/Personal/megList?id='.$u_id.'"><img src="__PUBLIC__/back/images/'.$n.'.png">现有<span class="red"> '.$meg.' </span>条反馈信息</a></li>';
+            }
+
+        </php>
+
+    </ul>
+</div>

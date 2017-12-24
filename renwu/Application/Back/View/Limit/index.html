@@ -1,0 +1,33 @@
+<layout name="layout" /><!--角色列表页面-->
+        <style>
+            ul{margin-bottom: 20px;}
+            h4{padding-left: 40px; padding-top: 20px;}
+            h5{padding-left: 60px; margin-bottom: 5px}
+            .none{display: none}
+            .table{font-size:14px;}
+        </style>
+<div class="panel">
+         <php>
+             foreach($s_l_a[0] as $k=>$v)
+             {
+             echo '<ul><h3>'.$v["n"].'</h3>';
+             foreach($s_l_a[1] as $kk=>$vv)
+             {
+             if($v["pid"]==$vv["pid"])
+             echo '<h4 class="clear">'.$vv["n"].'</h4>';
+             foreach($s_l_a[2] as $vvv)
+             {
+                 if(stripos($vvv["execs"],$vv["execs"])!==FALSE && $vvv["pid"]==$v["pid"])
+                 {
+                     if(stripos($vvv["execs"],"exec")===FALSE)
+                     {
+                        echo '<h5 class="float-left w50">'.$vvv["n"].'</h5>';}
+                     }
+                 }
+             }
+             echo '<hr/></ul>';
+             }
+         </php>
+     <!-- </tbody>
+      </table>-->
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>网站信息</title>  
+    <link rel="stylesheet" href="/Public/back/css/pintuer.css">
+    <link rel="stylesheet" href="/Public/back/css/admin.css">
+    <script src="/Public/back/js/jquery.js"></script>
+    <script src="/Public/back/js/pintuer.js"></script>
+    <script src="/Public/back/js/install.js"></script>
+   <style>
+       h1{text-align:center;}
+       .panel{width:700px; margin:0 auto;}
+       .form-x .form-group .label{width:15%;}
+       .input{width:85%;}
+       .load{width:500px; height:500px; position: absolute; background-color: rgba(0,0,0,0.5);left:50%;top:50%;margin-left:-250px;margin-top:-250px; display: none;font-size:30px; line-height: 500px; text-align: center;color:#fff;}
+       .load img{display: block;width:100%;animation:mymove 1s linear infinite;
+           -webkit-animation:mymove 1s linear infinite;}
+       @keyframes mymove{
+           from {transform:rotate(0deg);}
+           to {transform:rotate(360deg);}
+       }
+   </style>
+
+</head>
+<body>
+
+<div class="panel" style="padding:20px">
+<h1>任务管理系统安装向导</h1>
+  <div class="body-content">
+  <p  class="red">所有输入以英文字符开头，输入的值为大小写英文 数字 下划线 英文点 @符号</p>
+    <form class="form-x" >
+      <div class="form-group">
+        <div class="label">
+          <label>主机名称：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="host" value=""  data-validate="required:请输入主机名称,host:请输入正确的主机名称"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>数据库端口：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="port" value="3306"  data-validate="number:请输入正确的端口号" /><i>数据库连接类型是MySQL,端口默认3306</i>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>数据库用户：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="root" value=""  data-validate="required:请输入数据库用户名,db:用户名英文开头长度2--10个字符" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>数据库密码：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="pass" value=""  data-validate="required:请输入数据库用户名,wordpass:密码长度5--20个字符" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>数据库名称：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="dbname" value="" id="db"  data-validate="required:请输入数据库用户名,db:数据库名称英文开头长度2--10字符"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>数据表前缀：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="dbpre" value="self_" data-validate="required:请输入数据库用户名,db:表前缀长度2--10个字符" />
+          <div class="tips"></div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="label">
+          <label>用户名：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="u_name" value="admin"  data-validate="required:请输入数据库用户名,title:用户名长度2--10个字符"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>用户密码：</label>
+        </div>
+        <div class="field">
+          <input type="password" class="input" name="u_pass" value="123456" data-validate="required:请输入用户密码,userp:用户密码长度6--12个字符" /><i>默认123456</i>
+          <div class="tips"></div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+          <input type="hidden" name="table_data" value="0" class="table_data">
+        <div class="field">
+          <button class="button bg-main" type="button" id="tijiao" > 保存提交</button>
+          &nbsp; &nbsp; &nbsp;
+           <button class="button bg-main" type="reset"> 重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="load"><img src="/Public/back/images/load.png"> </div>
+</body></html>

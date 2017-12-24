@@ -1,0 +1,53 @@
+<layout name="layout" /><!--任务添加页面-->
+        <style>
+            h4{padding-left: 40px; padding-top: 20px;}
+            h5{padding-left: 60px; margin-bottom: 5px}
+            .none{display: none}
+        </style>
+<link rel="stylesheet" href="__PUBLIC__/kindeditor-4.1.10/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/kindeditor-min.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor-4.1.10/lang/zh_CN.js"></script>
+
+<script>
+    var editor;
+    KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="descr"]', {
+            allowFileManager : true
+        });
+    });
+</script>
+<div class="panel  admin-panel">
+  <div class="body-content">
+    <form method="post" class="form-x" action="__CONTROLLER__/execAdd">
+      <div class="form-group">
+        <div class="label">
+          <label >问题标题：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" name="tit" value="" data-validate="required:,title:标题长度2--20个字符" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>问题描述：</label>
+        </div>
+        <div class="field">
+        <textarea  name="descr"></textarea>
+        </div>
+     </div>
+     <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main" type="submit">保存提交</button>
+             &nbsp;  &nbsp;  &nbsp;
+         <button class="button bg-main" type="button" onclick="javascript :history.back(-1);">直接返回</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body></html>
