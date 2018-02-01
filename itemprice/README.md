@@ -1,11 +1,12 @@
-#用途： 根据不同的用户分组，不同的用户组员看到的项目价格
-#模板字体地址 http://www.bootcss.com/p/font-awesome/
-#上传附件：  文件名是以日期时间中间横线划分命名
-#所有文件编号为 utf8 编码
-用户组数据文件命名为 group.txt
-组成员数据文件命名为 group_编号.txt
-项目数据文件为 product_编号.txt
-删除的项目数据为 dpro_编号.txt
+#用途： 根据不同的用户分组，不同的用户组员看到的项目价格<br/>
+#模板字体地址 http://www.bootcss.com/p/font-awesome/<br/>
+#上传附件：  文件名是以日期时间中间横线划分命名<br/>
+#所有文件编号为 utf8 编码<br/>
+用户组数据文件命名为 group.txt<br/>
+组成员数据文件命名为 group_编号.txt<br/>
+项目数据文件为 product_编号.txt<br/>
+删除的项目数据为 dpro_编号.txt<br/>
+<pre>
 Common 公共文件
      |-----Conf/ 配置文件
 Data 数据文件------// 必须有写权限
@@ -16,7 +17,7 @@ Data 数据文件------// 必须有写权限
         |--- Admin/ 管理员导出时生成的数据文件
     |---- Import/ 导入数据文件位置
     |---- Cache/ 前台用户导出数据缓存数据
-Library 库文件
+Library 库文件<br/>
     |-----Excel/ 读取excel 表格 项目中没有用的--可以单独使用
     |-----Validate/ 验证类
     |-----Down 下载类
@@ -50,3 +51,4 @@ Server version: Apache/2.4.23 (Win32)
 错误日志： Log/error.txt 系统日志
            Log/日志.txt  自定义错误日志
 -----------------------------------------------------
+</pre>
