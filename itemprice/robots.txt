@@ -1,0 +1,5 @@
+#
+# 禁止所有抓取
+#
+User-agent: *
+Disallow: /
