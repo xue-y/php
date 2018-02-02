@@ -5,7 +5,10 @@
  * Date: 18-1-5
  * Time: 下午1:10
  */
-
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class Type extends Pro {
     private $c_name="项目类型"; // 当前操作对象
     private $c_name_c="项目"; // 当前操作组子元素

@@ -6,6 +6,10 @@
  * Time: 上午10:14
  */
 
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class Dpro extends Pro{
 
     private $c_name="项目"; // 当前操作对象

@@ -5,7 +5,10 @@
  * Date: 18-1-24
  * Time: 下午5:08
  */
-
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class Log extends Pro{
 
     public  function index()

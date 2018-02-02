@@ -1,1 +1,15 @@
 [01-Feb-2018 11:47:20 PRC] PHP Notice:  Undefined offset: 4 in D:\phpStudy\WWW\cms\Php\Class\Group.php on line 256
+[02-Feb-2018 09:13:56 PRC] PHP Notice:  Undefined index: HTTP_REFERER in D:\phpStudy\WWW\cms\Php\Controll\Product.php on line 10
+[02-Feb-2018 09:14:18 PRC] PHP Notice:  Undefined index: HTTP_REFERER in D:\phpStudy\WWW\cms\Php\Controll\Product.php on line 10
+[02-Feb-2018 09:14:30 PRC] PHP Notice:  Undefined index: HTTP_REFERER in D:\phpStudy\WWW\cms\Php\Controll\Product.php on line 10
+[02-Feb-2018 10:16:41 PRC] PHP Notice:  Undefined index: HTTP_REFERER in D:\phpStudy\WWW\cms\Php\Controll\Product.php on line 10
+[02-Feb-2018 15:13:46 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:13:47 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:13:52 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:26:58 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:26:58 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:27:39 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:28:07 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:29:20 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:29:27 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17
+[02-Feb-2018 15:29:27 PRC] PHP Notice:  Constant IN_SYS already defined in D:\phpStudy\WWW\cms\Library\Com.php on line 17

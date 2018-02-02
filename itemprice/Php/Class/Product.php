@@ -5,9 +5,11 @@
  * Date: 18-1-15
  * Time: 下午3:03
  */
-
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class Product extends Pro {
-
     private $c_name="项目"; // 当前操作对象
     private $c_name_g="项目类型"; // 当前操作组元素
     public $g_id_field="t_id"; // 当前操作组字段名称

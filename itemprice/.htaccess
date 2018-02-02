@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+Options -Indexes
+DirectoryIndex  index.php
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http://(www\.)?cms.com/ [NC] ## 更换自己的域名
+RewriteRule .*\.(gif|jpg|png)$ /404.html [NC]  ##防盗链图片
+
+RewriteCond %{HTTP_HOST} ^(www\.cms\.com)(:80)? [NC]
+RewriteRule ^(.*) http://cms.com/$1 [L] ## 如果访问的是www.cms.com 就访问 cms.com
+
+RewriteRule (.*)\.(txt|xls|zip)$ /404.html [R,L]  ##禁止访问数据文件 模板静态页面
+RewriteRule [(\/Tem)]/(.*)$ /404.html [R,L]
+RewriteRule [^(\/Php\/Controll)|(\/Static\/img)|(\/Static\/js)|(\/Static\/css)]/(.*)$ /404.html [R,L] ## 允许访问指定目录 ？只对一级 二级目录起作用 三级失效   如： /Data/Txt/type.txt 失效  14 15行 有待改善
+# ~* /(data|uploads|templets|images|a)/.*\.php$
+
+<FilesMatch "(\.htaccess|README\.md|robots\.txt)$"> #禁止访问的根目录文件
+    ## Apache 2.2
+    Order allow,deny
+    Deny from all
+    Satisfy All
+
+    ## Apache 2.4
+    # Require all denied
+</FilesMatch>
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 500 /404.html
+</IfModule>

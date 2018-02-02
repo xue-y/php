@@ -5,7 +5,10 @@
  * Date: 18-1-29
  * Time: 下午4:08
  */
-
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class Clear extends Pro{
 
     /* 清空文件夹

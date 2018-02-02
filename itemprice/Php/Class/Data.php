@@ -7,6 +7,10 @@
  * 数据管理类
  */
 
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class Data extends Pro {
 
     private $table=DATA_PRO;// 当前操作的表名

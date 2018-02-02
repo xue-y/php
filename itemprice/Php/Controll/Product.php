@@ -7,7 +7,6 @@
  */
 require "../../Library/Com.php";
 $Product=Com::getInstance("Product");
-
 if(empty($_POST))
 {
   if(isset($_GET["p"]) ||  empty($_GET) || (isset($_GET["p"]) && isset($_GET[$Product->g_id_field])))

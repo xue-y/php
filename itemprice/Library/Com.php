@@ -14,12 +14,13 @@ class Com {
     public static $zip_class=null;
     public function __construct()
     {
+        define('IN_SYS', TRUE);
         header("Content-type:text/html;charset=utf-8");
         $this->re_file(); // 配置文件只加载一次
 
         ini_set('display_errors',0);            //是否显示错误信息
         ini_set('display_startup_errors',1);    //php启动错误信息
-        error_reporting(-1);                    //打印出所有的 错误信息
+        // error_reporting(-1);                    //打印出所有的 错误信息
         error_reporting(E_ALL);  //所有错误
         $error_file= DATA_LOG.'error'.self::$conf_data["DATA_EXT"];
         touch($error_file);

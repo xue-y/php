@@ -6,7 +6,10 @@
  * Time: 上午11:22
  * 前台用户查看价格表
  */
-
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class Price extends  Pro {
 
     public function  __construct()

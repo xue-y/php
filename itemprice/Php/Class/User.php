@@ -5,7 +5,10 @@
  * Date: 18-1-9
  * Time: 下午5:17
  */
-
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404
+}
 class User extends Pro{
     private $c_name="用户"; // 当前操作对象
     private $c_name_g="用户组"; // 当前操作组元素

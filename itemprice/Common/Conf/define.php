@@ -6,6 +6,10 @@
  * Time: 下午5:17
  * 公共常量文件 $_SERVER['DOCUMENT_ROOT']
  */
+if(!defined('IN_SYS')) {
+    header("Location:/404.html");
+    exit();  // 跳转404 --防止用户之间访问php 文件
+}
 define("DATA_BACK","/Data/Back/"); //  数据备份
 define("DATA_TXT","/Data/Txt/"); // 现在正在使用的数据
 define("DATA_EXPORT","/Data/Export/"); //导出数据文件暂存位置
