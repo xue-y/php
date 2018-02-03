@@ -2,6 +2,7 @@
 #模板字体地址 http://www.bootcss.com/p/font-awesome/<br/>
 #上传附件：  文件名是以日期时间中间横线划分命名<br/>
 #所有文件编号为 utf8 编码<br/>
+#.htaccess 仅支持 apache nginx 系统需要转换<br/>
 用户组数据文件命名为 group.txt<br/>
 组成员数据文件命名为 group_编号.txt<br/>
 项目数据文件为 product_编号.txt<br/>
