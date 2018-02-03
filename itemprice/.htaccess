@@ -13,7 +13,7 @@ RewriteRule ^(.*) http://cms.com/$1 [L] ## 如果访问的是www.cms.com 就访�
 #RewriteRule (.*)\.(txt|xls|zip)$ /404.html [R,L]  ##禁止访问数据文件
 RewriteRule (.*)\.(txt)$ /404.html [R,L]  ##禁止访问数据文件
 #13 14 行 是用于 Price.php 文件 使用用户ajax下载  无法下载
-RewriteRule ^Tem.*\.php /404.html [R,L]
+RewriteRule ^[\/Tem\/](.)* /404.html [R,L]
 RewriteRule [^(\/Php\/Controll)|(\/Static/js)|(\/Static/img)|(\/Static/css)]/(.*)$ /404.html [R,L] ## 允许访问指定目录
 #16,17行 有待改善
 #/Data/Txt/type.txt     /Data/index.php 失效
