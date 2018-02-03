@@ -10,10 +10,12 @@ RewriteRule .*\.(gif|jpg|png)$ /404.html [NC]  ##防盗链图片
 RewriteCond %{HTTP_HOST} ^(www\.cms\.com)(:80)? [NC]
 RewriteRule ^(.*) http://cms.com/$1 [L] ## 如果访问的是www.cms.com 就访问 cms.com
 
-RewriteRule (.*)\.(txt|xls|zip)$ /404.html [R,L]  ##禁止访问数据文件
-RewriteRule [Tem|Log|Static|Common|Data]/.*\.php$ /404.html [R,L]
-RewriteRule [^(\/Php\/Controll)]/(.*)$ /404.html [R,L] ## 允许访问指定目录
-#14 15行 有待改善
+#RewriteRule (.*)\.(txt|xls|zip)$ /404.html [R,L]  ##禁止访问数据文件
+RewriteRule (.*)\.(txt)$ /404.html [R,L]  ##禁止访问数据文件
+#13 14 行 是用于 Price.php 文件 使用用户ajax下载  无法下载
+RewriteRule ^Tem.*\.php /404.html [R,L]
+RewriteRule [^(\/Php\/Controll)|(\/Static/js)|(\/Static/img)|(\/Static/css)]/(.*)$ /404.html [R,L] ## 允许访问指定目录
+#16,17行 有待改善
 #/Data/Txt/type.txt     /Data/index.php 失效
 #/Common/index.php
 #/Tem/index.php
