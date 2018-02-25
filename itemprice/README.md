@@ -45,9 +45,19 @@ Tem 后台操作模板文件
     项目id 项目名称 项目类型
 //------------------------------------------------------
 #环境要求
+window平台：
 php 5.4+
 Server version: Apache/2.4.23 (Win32)
-其他apache 版本未测试
+
+Liunx 平台：
+PHP： 5.3.27p1 (cli) (built: Jul 19 2017 20:09:46) 
+Copyright (c) 1997-2013 The PHP Group
+Zend Engine v2.3.0, Copyright (c) 1998-2013 Zend Technologies
+nginx version: nginx/1.4.7
+系统：CentOS release 6.5
+Linux version 2.6.32-573.22.1.el6.x86_64 
+
+其它版本未测试
 -----------------------------------------------------
 错误日志： Log/error.txt 系统日志
            Log/日志.txt  自定义错误日志
