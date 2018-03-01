@@ -46,8 +46,11 @@ Tem 后台操作模板文件
 //------------------------------------------------------
 #环境要求
 window平台：
-php 5.4+
-Server version: Apache/2.4.23 (Win32)
+php 5.6.27
+Apache: Apache/2.4.23 (Win32) 
+SQLite3　Ver 3.8.10.2
+服务器解译引擎	Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45 建议php版本 5.4.45-nts 或 5.4.45+
+报一下错误：Fatal error: Cannot redeclare class Com in D:\phpStudy\WWW\cms\Library\Com.php on line 11
 
 Liunx 平台：
 PHP： 5.3.27p1 (cli) (built: Jul 19 2017 20:09:46) 
