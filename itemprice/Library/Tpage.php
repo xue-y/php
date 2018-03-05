@@ -1,5 +1,9 @@
 <?php
-
+/**
+* $page=new Tpage();
+* $page->init($total,$page_num,$page_size);
+* $page->show();*/ //1 2 3 >> 
+*/
 class Tpage{
     public $firstRow; // 起始行数
     public $listRows; // 列表每页显示行数

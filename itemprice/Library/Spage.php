@@ -4,6 +4,8 @@
  * User: Administrator
  * Date: 18-1-8
  * Time: 下午12:25
+ * $page=new Spage();
+ * $page->show($total,$page_num,$page_size);
  */
 class Spage
 {

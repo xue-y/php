@@ -6,13 +6,13 @@
  * Time: 上午9:13
  * 调用示例
  * $showrow = 10; //一页显示的行数
-    $curpage = empty($_GET['page']) ? 1 : $_GET['page']; //当前的页,还应该处理非数字的情况
-    $url = "?page={page}"; //分页地址，如果有检索条件 ="?page={page}&q=".$_GET['q']
+ * $curpage = empty($_GET['page']) ? 1 : $_GET['page']; //当前的页,还应该处理非数字的情况
+ * $url = "?page={page}"; //分页地址，如果有检索条件 ="?page={page}&q=".$_GET['q']
 
  * if ($total > $showrow) {//总记录数大于每页显示数，显示分页
-    $page = new page($total, $showrow, $curpage, $url, 2);
-    echo $page->myde_write();
-    }
+ *  $page = new page($total, $showrow, $curpage, $url, 2);
+ *   echo $page->myde_write();
+ *  }
  */
 
 class Page{
