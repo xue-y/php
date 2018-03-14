@@ -130,7 +130,7 @@ class User extends Pro{
         $post=$this->add_slashes($_POST);
         $this->user_gid($post["group"],DATA_GROUP); // 此数据与数据文件里的数据一致
 
-        $Vail=Com::getInstance("Vaildata");
+        $Vail=self::getInstance("Vaildata");
         $Vail->name($post["name"]);
         $user_data["n"]=$post["name"];
 

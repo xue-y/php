@@ -25,7 +25,7 @@ class Com {
             ini_set('log_errors',"On");
         }
         ini_set('display_errors',0);            //是否显示错误信息
-        ini_set('display_startup_errors',1);    //php启动错误信息
+        ini_set('display_startup_errors',0);    //php启动错误信息
        //  error_reporting(-1);                    //打印出所有的 错误信息
            error_reporting(E_ALL);  //所有错误
         $error_file= DATA_LOG.'error'.self::$conf_data["DATA_EXT"];

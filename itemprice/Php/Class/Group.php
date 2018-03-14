@@ -60,7 +60,7 @@ class Group extends Pro {
         }else
         {
             //生成静态页面
-             $Tem=Com::getInstance("Tem");
+             $Tem=self::getInstance("Tem");
              $data=$this->cur_pos(__CLASS__,__FUNCTION__);
              $data["list"]=$this->read_data(strtolower(__CLASS__));
              $Tem->write_html("group",$data,true);
@@ -92,7 +92,7 @@ class Group extends Pro {
      * */
     public function add_exct()
     {
-        $Vail=Com::getInstance("Vaildata");
+        $Vail=self::getInstance("Vaildata");
         $new_data=$Vail->veri_arr($_POST["name"],"添加".$this->c_name);
         if(count($new_data)>10)
         {

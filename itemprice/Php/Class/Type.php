@@ -68,7 +68,7 @@ class Type extends Pro {
      * */
     public function add_exct()
     {
-        $Vail=Com::getInstance("Vaildata");
+        $Vail=self::getInstance("Vaildata");
         $new_data=$Vail->veri_arr($_POST["name"],"添加".$this->c_name);
         if(count($new_data)>10)
         {
