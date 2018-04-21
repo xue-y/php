@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>{$Think.lang.install_tit}</title>
+    <link rel="stylesheet" href="{$Think.config.com_css}pintuer.css">
+    <link rel="stylesheet" href="{$Think.config.back_css}admin.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{$Think.config.com_js}pintuer.js"></script>
+    <script src="{$Think.config.back_js}install.js"></script>
+    <style>
+       h1{text-align:center;}
+       .panel{width:700px; margin:0 auto;}
+       .form-x .form-group .label{width:15%;}
+       .input{width:85%;}
+       .load{position: absolute; background-color: rgba(0,0,0,0.3);font-size:30px; line-height: 500px; text-align: center;color:#fff;}
+       .load img{display: block;animation:mymove 1s linear infinite; margin-top:50%;
+           -webkit-animation:mymove 1s linear infinite;}
+       @keyframes mymove{
+           from {transform:rotate(0deg);}
+           to {transform:rotate(360deg);}
+       }
+    </style>
+</head>
+<body>
+<!--  数据库要求一个新的数据库（里面没有表） --->
+<div class="panel" style="padding:20px">
+<h1>{$Think.lang.install_tit}</h1>
+  <div class="body-content">
+  <p  class="red">{$Think.lang.install_requirement}<br/>
+      {$Think.lang.install_prompt}</p>
+    <form method="post" class="form-x" action="">
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.host_name}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="hostname" value="localhost"  data-validate="required:{$Think.lang.phost_name}"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.database_port}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="hostport" value="3306"  data-validate="number:{$Think.lang.phost_port}" /><i>{$Think.lang.database_type}</i>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.database_user}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="username" value=""  data-validate="required:{$Think.lang.pdatabase_username},db:{$Think.lang.username_length}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.database_password}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="password" value=""  data-validate="required:{$Think.lang.pdatabase_password},db:{$Think.lang.password_length}" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.database_name}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="database" value="" id="db"  data-validate="required:{$Think.lang.pdatabase_name},db:{$Think.lang.database_name_length}"/>
+          <div class="tips"></div>
+        </div>
+      </div> <!--  ajax submit vail database -->
+       <input type="hidden" class="table_data" name="table" value="1">
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.table_Prefix}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="prefix" value="back_" data-validate="db:{$Think.lang.table_prefix_length}" />
+          <div class="tips"></div><i>{$Think.lang.table_Prefix_v}</i>
+        </div>
+      </div>   
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.user_name}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="u_name" value="backsys"  data-validate="required:{$Think.lang.administrator_username},wordpass:{$Think.lang.username_length}"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.user_password}：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="u_pass" value="backsys" data-validate="required:{$Think.lang.administrator_user_password},wordpass:{$Think.lang.user_password_length}" />
+          <div class="tips"></div>
+        </div>
+      </div>  
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main" type="button" id="tijiao" >{$Think.lang.Save_submit}</button>
+          &nbsp; &nbsp; &nbsp;
+           <button class="button bg-main" type="button">{$Think.lang.Direct_return}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="load"><img src="{$Think.config.back_img}loading.gif"> </div>
+</body></html>

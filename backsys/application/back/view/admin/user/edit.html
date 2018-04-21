@@ -1,0 +1,93 @@
+{layout name="layout" /}
+<div class="panel admin-panel">
+  <div class="body-content">
+      <p class="red">{$Think.lang.user_edit_pw}</p>
+    <form method="post" class="form-x" action="/back/admin/User/update">
+        <input type="hidden" value="{$u_info.uid}" name="uid">
+      <div class="form-group">
+        <div class="label">
+          <label>管理员帐号：</label>
+        </div>
+        <div class="field">
+          <label style="line-height:33px;">
+              <input type="text" class="input w50"  value="{$u_info.n}" name="n" size="50" placeholder="请输入用户名" data-validate="required:请输入用户名" />
+          </label>
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="label">
+          <label for="mpass">原密码：</label>
+        </div>
+        <div class="field">
+          <input type="password" class="input w50" id="mpass" name="old_pw" size="50" placeholder="请输入原密码" data-validate="wordpass:{$Think.lang.pw_regex}" />
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="label">
+          <label>新密码：</label>
+        </div>
+        <div class="field">
+          <input type="password" class="input w50" name="pw" size="50" placeholder="请输入新密码" data-validate="wordpass:{$Think.lang.pw_regex}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>确认新密码：</label>
+        </div>
+        <div class="field">
+          <input type="password" class="input w50" name="pw2" size="50" placeholder="请再次输入新密码" data-validate="repeat#pw:两次输入的密码不一致" />
+        </div>
+      </div>
+    {if $Think.cookie.login_uid != $u_info.uid}
+      <div class="form-group">
+        <div class="label">
+            <label>用户角色：</label>
+        </div>
+        <div class="field">
+            <select name="role" class="input" style="width: 25%; line-height: 17px; display: inline-block; border-color: rgb(221, 221, 221);">
+                <option value="-1">{$Think.lang.user_p_role}</option>
+                {foreach $role_arr as $k=>$v}
+                    {eq name="$u_info.role" value="$v.rid"}
+                        <option value="{$v.rid}" selected>&nbsp;├ &nbsp;{$v.r_n}</option>
+                    {else/}
+                        <option value="{$v.rid}" >&nbsp;├ &nbsp;{$v.r_n}</option>
+                    {/eq}
+                {/foreach}
+            </select>
+            &nbsp;  &nbsp;<span class="red" style="display: none;">请选择用户的角色</span>
+        </div>
+      </div>
+    {present name="u_arr"}
+     <div class="form-group"> <!--修改创建人只对 特别 超级管理员 显示-->
+        <div class="label">
+            <label>{$Think.lang.user_founder}：</label>
+        </div>
+        <div class="field">
+            <select name="founder" class="input" style="width: 25%; line-height: 17px; display: inline-block; border-color: rgb(221, 221, 221);">
+                <option value="-1">{$Think.lang.user_p_founder}</option>
+                {foreach $u_arr as $k=>$v}
+                    {eq name="$u_info.founder" value="$v.uid"}
+                     <option value="{$v.uid}" selected>&nbsp;├ &nbsp;{$v.n}</option>
+                    {else/}
+                    <option value="{$v.uid}" >&nbsp;├ &nbsp;{$v.n}</option>
+                    {/eq}
+                {/foreach}
+            </select>
+            &nbsp;  &nbsp;<span class="red" style="display: none;">{$Think.lang.user_f_explain}</span>
+        </div>
+     </div>
+    {/present}
+  {/if}
+       <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main" type="submit">{$Think.lang.Save_submit}</button>
+             &nbsp; &nbsp;
+            <button class="button bg-main" type="button" onclick="window.history.back();">{$Think.lang.Direct_return}</button>
+        </div>
+      </div>      
+    </form>
+  </div>
+</div>

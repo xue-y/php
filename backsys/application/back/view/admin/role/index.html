@@ -1,0 +1,54 @@
+{layout name="layout" /}
+    {php}  $cur_url="/back/admin/Role/";{/php} <!--定义当前路径-->
+<style>
+    .submit input{background: none; border:none;color:#f00;}
+    .submit:hover input{color:#fff;}
+</style>
+<div class="panel">
+  <form method="post" class="form-x" action="{$cur_url}deletes">
+  <div class="padding">  
+  <a class="button border-main" href="create"><span class="icon-plus-square-o"></span> {$Think.lang.r_add_role}</a>
+  <a class="button border-red submit" href="javascript:;" ><span class="icon-trash-o"></span><input type="button" value="{$Think.lang.list_batch_deleting}"  onclick="DelSelect($(this),'{$Think.lang.meun_a_delete}','rid')"></a>
+
+  </div>
+  <table class="table table-hover text-center">
+    <tr>
+      <th  style="text-align:left; padding-left:20px;width:15%"><input type="checkbox" id="checkall"/>{$Think.lang.check_all} <span></span></th>
+      <th>{$Think.lang.s_r_id}</th>
+      <th>{$Think.lang.s_r_n}</th>
+      <th>{$Think.lang.s_r_de}</th>
+      <th>{$Think.lang.power}</th>
+      <th>{$Think.lang.operation}</th>
+    </tr>
+  {present name="role_all"}
+    {foreach $role_all as $v}
+    <tr>
+    {if cookie("login_role") == $v['rid'] || $v['rid']==1}
+       <td></td>
+    {else /}
+      <td><input type="checkbox" name="rid[]" value="{$v['rid']}" /></td>
+    {/if}
+      <td>{$v['rid']}</td>
+      <td>{$v["r_n"]}</td>
+      <td style="width:30%; overflow: hidden">{$v["r_de"]|substr=0,30}</td>
+      <td><a href="/back/admin/Power/read/rid/{$v['rid']}">查看权限</a></td>
+      <td>
+          <div class="button-group">
+           {if ($Think.cookie.login_role != $v['rid']) && ($v['rid']==1)}
+              <a class="icon-edit" href="javascript:void(0)" style="color:#969494" >{$Think.lang.meun_a_edit}</a>
+           {else /}
+              <a class="icon-edit" href="{$cur_url}edit/rid/{$v['rid']}" >{$Think.lang.meun_a_edit}</a>
+           {/if}
+           {if cookie("login_role") == $v['rid'] || $v['rid']==1 } <!--不可删除自己不可删除超级管理员-->
+              <a class="icon-trash-o" style="color:#969494">{$Think.lang.meun_a_delete}</a>
+           {else /}
+              <a class="icon-trash-o" href="javascript:void(0)" data-href="{$cur_url}delete/rid/{$v['rid']}"  onclick="return del($(this),'{$Think.lang.meun_a_delete}')">{$Think.lang.meun_a_delete}</a>
+          {/if}
+        </div>
+      </td>
+    </tr>
+    {/foreach}
+  {/present}
+  </table></form>
+</div>
+<script src="{$Think.config.com_js}arc_list.js"></script>

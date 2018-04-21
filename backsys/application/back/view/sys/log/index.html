@@ -1,0 +1,24 @@
+{layout name="layout" /}
+<div class="panel">
+  <div class="padding">
+  <a class="button border-red" href="javascript:void(0)" onclick="DelSelect()"><span class="icon-trash-o"></span> {$Think.lang.list_batch_deleting}</a>
+  </div>
+  <table class="table table-hover text-center">
+    <tr>
+      <th  style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall" width="20%"/>{$Think.lang.check_all} <span></span></th>
+      <th>文件名称</th>
+      <th>操作</th>
+    </tr>
+
+    <tr>
+      <td><input type="checkbox" name="id[]" value="" width="20%"/></td>
+      <td  width="50%"><a class="icon-folder-open" href="javascript:;">文件夹名称</a></td>
+      <td  width="30%"><div class="button-group">
+      <a class="icon-folder-open" href="javascript:void(0)">{$Think.lang.meun_a_read}</a>
+      <a class="icon-trash-o" href="javascript:void(0)" data-href="delete/:1" onclick="return del($(this),'{$Think.lang.meun_a_delete}')">{$Think.lang.meun_a_delete}</a>
+      </div></td>
+    </tr>
+
+  </table>
+</div>
+<script src="{$Think.config.com_js}arc_list.js"></script>

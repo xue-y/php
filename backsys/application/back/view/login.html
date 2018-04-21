@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>{$Think.lang.login_sign}--{$Think.lang.title}</title>
+    <link rel="stylesheet" href="{$Think.config.com_css}pintuer.css">
+    <link rel="stylesheet" href="{$Think.config.back_css}admin.css">
+    <script src="{$Think.config.com_js}jquery.js"></script>
+    <script src="{$Think.config.com_js}pintuer.js"></script>
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div style="height:150px;"></div>
+            <div class="media media-y margin-big-bottom">           
+            </div>         
+            <form action="/back/Login/sign" method="post">
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>{$Think.lang.title}</h1></div>
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input-big cookie_name" name="n" placeholder="{$Think.lang.login_account}" data-validate="required:,title:{$Think.lang.n_regex}" value="{$Think.cookie.u_name}"
+                                    />
+                            <span class="icon icon-user margin-small"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="password" class="input-big" name="pw" placeholder="{$Think.lang.login_pass}" data-validate="required:,wordpass:{$Think.lang.pw_regex}" />
+                            <span class="icon icon-key margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field">
+                            <input type="text" class="input-big" name="code" placeholder="{$Think.lang.login_vail}" data-validate="required:,code:{$Think.lang.login_code}" />
+                           <img src="/back/Login/verify" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+                                                   
+                        </div>
+                    </div>
+                    {if cookie('u_name')!=""}
+                     <a class="del_name" style="margin-left: 5px; cursor: pointer">删除存储的账号</a>
+                    {/if}
+
+                </div>
+                <div style="padding:30px;"><input type="submit" class="button button-block bg-main input-big" value="{$Think.lang.login_sign}"></div>
+            </div>
+            </form>          
+        </div>
+    </div>
+</div>
+<script>
+$(function(){
+    // autocomplete="off" //delect cookie name
+    $(".del_name").click(function(){
+        var cur_ele=$(this);
+        var cookie_name="{$Think.cookie.u_name}"
+        if($(".cookie_name").val()!="" && $(".cookie_name").val()==cookie_name)
+        {
+            $.post("/back/Login/delName",{del_name:"1"},function(data){
+                if(data=="success")
+                {
+                    $(".cookie_name").val("");
+                    cur_ele.remove();
+                }
+                else
+                    console.log(data);
+            }).error(function(xhr){
+                console.log(xhr);
+            });
+        }
+    })
+})
+</script>
+</body>
+</html>

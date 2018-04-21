@@ -1,0 +1,32 @@
+{layout name="layout" /}
+<div class="panel">
+  <div class="padding">  
+  <a class="button border-main" href="create"><span class="icon-download-alt"></span> {$Think.lang.db_batch_download}</a>
+  <a class="button border-red" href="javascript:void(0)" onclick="DelSelect()"><span class="icon-trash-o"></span> {$Think.lang.list_batch_deleting}</a>
+  <div class="right">
+      <a href="backup" class="button border-main icon-cloud-download">{$Think.lang.meun_a_backup}</a>
+  </div>
+  </div>
+  <table class="table table-hover text-center">
+    <tr>
+      <th  style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall"/>{$Think.lang.check_all} <span></span></th>
+      <th>备份文件名</th>
+      <th>备份人</th>
+      <th>{$Think.lang.operation}</th>
+    </tr>
+
+    <tr>
+      <td><input type="checkbox" name="id[]" value="" /></td>
+      <td>1</td>     
+
+      <td></td>
+      <td><div class="button-group">
+      <a class="icon-refresh" href="edit">还原</a>
+      <a class="icon-arrow-down" href="edit">下载</a>
+      <a class="icon-trash-o" href="javascript:void(0)" data-href="delete/:1" onclick="return del($(this),'{$Think.lang.meun_a_delete}')">{$Think.lang.meun_a_delete}</a>
+      </div></td>
+    </tr>
+    
+  </table>
+</div>
+<script src="{$Think.config.com_js}arc_list.js"></script>

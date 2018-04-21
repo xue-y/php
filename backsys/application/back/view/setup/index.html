@@ -1,0 +1,27 @@
+{layout name="layout" /}
+<div class="panel admin-panel">
+  <div class="body-content">
+    <form method="post" class="form-x" action="">
+
+      <div class="form-group">
+        <div class="label">
+          <label>底部信息：</label>
+        </div>
+        <div class="field">
+          <textarea name="scopyright" class="input" style="height:120px;"></textarea>
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+            <button class="button bg-main" type="submit">{$Think.lang.Save_submit}</button>
+            &nbsp; &nbsp;
+            <button class="button bg-main" type="button" onclick="window.history.back();">{$Think.lang.Direct_return}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

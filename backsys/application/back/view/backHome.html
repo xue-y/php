@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title>{$Think.lang.index_backstage}</title>
+    <link rel="stylesheet" href="{$Think.config.com_css}pintuer.css">
+    <link rel="stylesheet" href="{$Think.config.back_css}admin.css">
+
+</head>
+<body>
+    <ul class="bread  clearfix">
+      <li><a href="##" class="icon-home"> {$Think.lang.index_backstage}</a></li>
+      <p class="help icon-exclamation-sign"><a href="##"> {$Think.lang.index_help}</a></p>
+    </ul>
+    <div class="padding">
+        <h2 class="padding" style="line-height: 2em;">
+           <span class="red">{$Think.cookie.u_name}</span>  {$Think.lang.user}{$time} {$Think.lang.index_welcome}{$Think.lang.title}<br/>
+           {$Think.lang.index_last_t}：{$Think.cookie.login_t}<br/>
+            {notempty   name="Think.cookie.login_ip"}
+             {$Think.lang.index_last_ip}: {$Think.cookie.login_ip}<br/>
+            {/notempty}
+            <a href="#"  style="color:#0ae;" >{$Think.lang.index_save_pw}</a>
+        </h2>
+    </div>
+</body>
+</html>

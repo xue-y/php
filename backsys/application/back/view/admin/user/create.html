@@ -1,0 +1,60 @@
+{layout name="layout" /}
+<div class="panel admin-panel">
+  <div class="body-content">
+    <p class="red">{$Think.lang.u_add_pw_empty}</p>
+    <form method="post" class="form-x" action="/back/admin/User/save">
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.s_a_n}：</label>
+        </div>
+        <div class="field">
+          <label style="line-height:33px;">
+              <input type="text" class="input w50" name="n" size="50" placeholder="{$Think.lang.n_require}" data-validate="required:,title:{$Think.lang.n_regex}" />
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.user_pass}：</label>
+        </div>
+        <div class="field">
+          <input type="password" class="input w50" name="pw" size="50" placeholder="{$Think.lang.pw_require}" data-validate="required:,wordpass:{$Think.lang.pw_regex}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.user_pass2}：</label>
+        </div>
+        <div class="field">
+          <input type="password" class="input w50" name="pw2" size="50" placeholder="{$Think.lang.user_w_pw2}" data-validate="required:,repeat#pw:{$Think.lang.user_w_nopw2}" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="label">
+            <label>{$Think.lang.user_role}：</label>
+        </div>
+        <div class="field">
+            <select name="role" class="input" style="width: 25%; line-height: 17px; display: inline-block; border-color: rgb(221, 221, 221);">
+                <option value="-1">{$Think.lang.user_p_role}</option>
+                {foreach $role_arr as $k=>$v}
+                <option value="{$v.rid}">&nbsp;├ &nbsp;{$v.r_n}</option>
+                {/foreach}
+            </select>
+            &nbsp;  &nbsp;<span class="red" style="display: none;">{$Think.lang.user_p_role}</span>
+        </div>
+      </div>
+
+       <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main" type="submit">{$Think.lang.Save_submit}</button>
+             &nbsp; &nbsp;
+          <button class="button bg-main" type="button" onclick="window.history.back();">{$Think.lang.Direct_return}</button>
+        </div>
+      </div>      
+    </form>
+  </div>
+</div>

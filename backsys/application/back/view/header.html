@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>{$pos["m"]}-{$pos["c"]}-{$pos["a"]}</title>
+    <link rel="stylesheet" href="{$Think.config.com_css}pintuer.css">
+    <link rel="stylesheet" href="{$Think.config.back_css}admin.css">
+    <script src="{$Think.config.com_js}jquery.js"></script>
+    <!--<script src="{$Think.config.com_js}pintuer.js"></script>-->
+</head>
+<body>
+<ul class="bread  clearfix">
+    <li><a href="javascript:;" target="right" class="icon-home">{$pos["m"]}</a></li>
+    <li><a href="/{$Request.module}/{$pos['c_url']}/index" id="a_leader_txt"> {$pos["c"]}</a></li>
+    <li> {$pos["a"]}</li>
+    <p class="help icon-exclamation-sign"> {$Think.lang.index_help}</p>
+</ul>

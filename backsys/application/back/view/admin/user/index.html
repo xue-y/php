@@ -1,0 +1,74 @@
+{layout name="layout" /}
+        {php}  $cur_url="/back/admin/User/";{/php} <!--定义当前路径-->
+<style>
+    .submit input{background: none; border:none;color:#f00;}
+    .submit:hover input{color:#fff;}
+</style>
+<div class="panel">
+ <form action="{$cur_url}/deletes" method="post">
+  <div class="padding">  
+  <a class="button border-main" href="{$cur_url}create"><span class="icon-plus-square-o"></span> {$Think.lang.list_add_user}</a>
+      <a class="button border-red submit" href="javascript:;" ><span class="icon-trash-o"></span><input type="button" value="{$Think.lang.list_batch_deleting}"  onclick="DelSelect($(this),'{$Think.lang.meun_a_delete}','uid')"></a>
+   <div class="right">
+           <input type="text" placeholder="搜索用户名" value="" class="input keywords" style="width:190px; line-height:17px;display:inline-block">
+           <a href="#" class="button border-main icon-search"> 搜索</a>
+   </div>
+  </div>
+  <table class="table table-hover text-center">
+    <tr>
+      <th  style="text-align:left; padding-left:20px; width:15%"><input type="checkbox" id="checkall"/>{$Think.lang.check_all} <span></span></th>
+      <th>ID</th>
+      <th>用户名</th>
+      <th>角色</th>
+      <th>创建人</th>
+      <th>操作</th>
+    </tr>
+     <tr style="border-bottom: 1px solid #bbbbbb">
+      <td></td>
+      <td>{$c_user["uid"]}</td>
+      <td>{$c_user["n"]}</td>
+      <td><a href="{$cur_url}index/rid/{$c_user['role']}">{$c_user["r_n"]}</a></td>
+      <td> <a href="{$cur_url}index/fid/{$c_user['fid']}">{$c_user["f_n"]}</a></td>
+      <td><div class="button-group">
+          <a class="icon-edit" href="{$cur_url}edit/uid/{$c_user['uid']}">{$Think.lang.meun_a_edit}</a>
+      </div></td>
+     </tr>
+  {present name="$list"}
+    {foreach $list as $k=>$v}
+    <tr>
+      <td><input type="checkbox" name="uid[]" value="{$v['uid']}" /></td>
+      <td>{$v["uid"]}</td>
+      <td>{$v["n"]}</td>
+      <td><a href="{$cur_url}index/rid/{$v['role']}">{$v["r_n"]}</a></td>
+    <td><!-- 超级管理员或 有访问权限的管理员-->
+        {if (($Think.cookie.login_uid==1) AND ($Think.cookie.login_role==1)) || $Think.config.no_admin_see_user==true}
+            {if $v["uid"] == $v["founder"]}  <!-- 创建人如果是 当前访问的用户-->
+            <a href="{$cur_url}index/fid/{$v['founder']}">{$v["n"]}</a>
+            {elseif $v["founder"]==1 /}  <!-- 创建人如果是 特别 超级管理员-->
+            <a href="{$cur_url}index/fid/{$v['founder']}">{php}echo select_fa();{/php} </a>
+             {else /}                    <!-- 创建人如果是 其他人员-->
+            <a href="{$cur_url}index/fid/{$v['founder']}">{php}echo select_f($v["founder"]);{/php}</a>
+            {/if}
+        {else /} <!--只访问自己创建的用户-->
+             <a href="{$cur_url}index/fid/{$c_user['uid']}">{$c_user["n"]}</a>
+        {/if}
+    </td>
+      <td><div class="button-group">
+      <a class="icon-edit" href="{$cur_url}edit/uid/{$v['uid']}">{$Think.lang.meun_a_edit}</a>
+      <a class="icon-trash-o" href="javascript:void(0)" data-href="{$cur_url}delete/uid/{$v['uid']}" onclick="return del($(this),'{$Think.lang.meun_a_delete}')">{$Think.lang.meun_a_delete}</a>
+      </div></td>
+    </tr>
+    {/foreach}
+      <tr><td colspan="6">{$c} / {$total}</td></tr>
+ {/present}
+
+  </table>
+    {present name="$list"} {$page|raw}  {/present}
+ </form></div>
+<script src="{$Think.config.com_js}arc_list.js"></script>
+        <script>
+            $(".icon-search").click(function(){
+               var k=$(this).siblings("input").val();
+               $(this).attr("href","{$cur_url}index/n/"+k);
+            });
+        </script>

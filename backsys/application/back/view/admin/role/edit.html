@@ -1,0 +1,122 @@
+{layout name="layout" /}
+<div class="panel admin-panel">
+  <div class="body-content">
+    <form method="post" class="form-x" action="/back/admin/Role/update">
+        <input type="hidden" name="rid" value="{$role.rid}">
+      <div class="form-group">
+        <div class="label">
+          <label>{$Think.lang.r_name}：</label>
+        </div>
+        <div class="field">
+          <label style="line-height:33px;">
+              <input type="text" class="input w50" name="r_n" size="50" placeholder="{$Think.lang.r_n_require}" data-validate="required:,title:{$Think.lang.r_n_regex}" value="{$role.r_n}" />
+          </label>
+        </div>
+      </div>
+      <div class="form-group check-success">
+        <div class="label">
+            <label>{$Think.lang.r_de}：</label>
+        </div>
+        <div class="field">
+            <textarea type="text" class="input" name="r_de" style="height:100px;" data-validate="descipt:{$Think.lang.r_de_length}">{$role.r_de}</textarea><i>{$Think.lang.r_de_xizhi}</i>
+        </div>
+      </div>
+      {present name="menu_data"}
+        {foreach $menu_data['m_de'] as $k=>$v}
+        <div class="block"><h3><input type="checkbox" value="{$k}">{$v}</h3>
+            {foreach $menu_data['c_de'][$k] as $kk=>$vv}
+            <h4><input type="checkbox" value="{$k}-{$kk}" class="{$k}">{$vv}</h4>
+                {foreach $menu_data['a_de'][$k][$kk] as $kkk=>$vvv}
+                    {php}
+                        $str=$k.'-'.$kk.'-'.$kkk;
+                        $style='';
+                        if(in_array($str,$power))
+                        { $style="checked";}
+                    {/php}
+                    <h5><input  type="checkbox"  value="{$k}-{$kk}-{$kkk}" name="power[]" class="{$k}-{$kk}" {$style}> {$vvv}</h5>
+                {/foreach}
+            {/foreach}
+        </div>
+        {/foreach}
+      {/present}
+        <div class="form-group">
+            <div class="label">
+                <label></label>
+            </div>
+            <div class="field">
+                <button class="button bg-main" type="submit">{$Think.lang.Save_submit}</button>
+                &nbsp; &nbsp;
+                <button class="button bg-main" type="button" onclick="window.history.back();">{$Think.lang.Direct_return}</button>
+            </div>
+        </div>
+    </form>
+  </div>
+</div>
+<style>
+    .block{ margin: 20px 50px; display: inline-table; line-height: 2em;}
+    h4{ padding-left: 20px;}
+    h5{ padding-left: 60px;}
+</style>
+<script>
+    $(function(){
+        $("h4").each(function(){
+            $(this).find("input").click(function(){
+                var val=$(this).val();
+                if($(this).is(':checked')==true)
+                {
+                    $("."+val).prop("checked",true);
+                }else
+                {
+                    $("."+val).prop("checked",false);
+                }
+            });
+        });
+        $("h3").each(function(){
+            $(this).find("input").click(function(){
+                var val=$(this).val();
+                if($(this).is(':checked')==true)
+                {
+
+                    $("."+val).prop("checked",true);
+                    $("."+val).each(function(){
+                        var val2=$(this).val();
+                        $("."+val2).prop("checked",true);
+                    })
+                }else
+                {
+                    $("."+val).prop("checked",false);
+                    $("."+val).each(function(){
+                        var val2=$(this).val();
+                        $("."+val2).prop("checked",false);
+                    })
+                }
+            });
+        });
+        $("h5").each(function(){
+            var h5_t=$(this);
+            $(this).find("input").click(function(){
+                if($(this).is(':checked')==true && h5_t.next().hasClass("none"))
+                {
+                    h5_t.next().find('input').prop("checked",true);
+                }
+                else if($(this).is(':checked')!=true && h5_t.next().hasClass("none"))
+                {
+                    h5_t.next().find('input').prop("checked",false);
+                } //-------------------------------选择执行的添加。修改 id
+                var T=$(this).attr('class');
+                $("h4").each(function(){
+                    var val3=$(this).find("input").val();
+                    if(val3==T)
+                    {
+                        var f_c=$(this).find("input").attr('class');
+                        $("h3 input").each(function(){
+                            if($(this).val()==f_c)
+                                $(this).prop("checked",true);
+                        });
+                        $(this).find("input").prop("checked",true);
+                    }
+                })
+            });
+        });
+    })
+</script>

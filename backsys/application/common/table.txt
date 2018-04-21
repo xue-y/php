@@ -1,0 +1,24 @@
+创建用户并创建同名数据库
+CREATE USER 'back'@'%' IDENTIFIED BY  'back';
+GRANT USAGE ON * . * TO  'back'@'%' IDENTIFIED BY  'back' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+CREATE DATABASE IF NOT EXISTS  `back` ;
+GRANT ALL PRIVILEGES ON  `back` . * TO  'back'@'%';
+
+数据库字符集 utf8_general_ci
+表type<myisam>
+admin ----- 管理员用户--系统默认创建的用户
+用户名n  密码pw   登录时间t   登录ip    角色role(1)
+
+users ----- 其他管理员用户--后期超级管理员创建
+uid  用户名n    密码pw   登录时间t   登录ip    角色role  创建人founder
+创建新用户必须大于当前用户角色权重的
+
+roles ----- 角色表
+编号rid  角色名称r_n  角色描述r_de  角色权重r_w(0，255 权重值越小权利越大，默认从1 开始，操作用户时只可操作角色权重值大于自己的) 权限power
+添加角色或修改角色权限时，列出当前用户自己所拥有的所有权限，这是当前用户所能分配的最大权限
+权限power 字段：模块-类-方法
+
+优化表
+OPTIMIZE TABLE  `back_roles`
+admin --- users  用户名不可重复
+users   表允许中文名
