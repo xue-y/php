@@ -11,6 +11,7 @@ ThinkPHP 5.1
 	--PHP Version 7.0.12
 	--MySql 5.5.53-log MySQL Community Server (GPL)
 	--文件字符集 utf8  数据库字符集 utf8_general_ci 
+	* 其他版本系统未测试
 	
 ## 系统功能
 	--后台管理系统
