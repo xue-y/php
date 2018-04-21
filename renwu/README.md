@@ -22,3 +22,4 @@ Zend版本	2.4.0<br/>
 SQLite3　Ver 3.8.10.2<br/>
 mysql  Ver 14.14 Distrib 5.5.53, for Win32 (AMD64)<br/>
 注：其他版本未测试<br/>
+安装说明文件 根目录Install/install.php

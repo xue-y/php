@@ -20,3 +20,10 @@
 #安装完成之后请检查 ./Application/Log/admin.contrroll.txt  //错误日志文件
 #入口文件 如果是 index.php define('APP_DEBUG',True); 改为false
 
+安装访问根目录下的install.html， 请求的控制器是InstallControll.class.php
+安装完成锁定文件是 LockController.class.php
+install.html 更改文件为/Install/lock.php;
+InstallController.class.php 更改为 Lock_Controller.class.php
+根目录下创建 lock.txt 文件
+如果需要重装 文件名一一改回就可以
+
