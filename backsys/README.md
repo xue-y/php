@@ -10,7 +10,7 @@ ThinkPHP 5.1
 	--Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9
 	--PHP Version 7.0.12
 	--MySql 5.5.53-log MySQL Community Server (GPL)
-	--文件字符集 utf8  数据库字符集 utf8_general_ci 
+	--文件字符集 utf8  数据库字符集 utf8_general_ci  数据表引擎MyISAM
 	* 其他版本系统未测试
 	
 ## 系统功能
