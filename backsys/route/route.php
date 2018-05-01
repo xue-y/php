@@ -9,11 +9,11 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 // 定义路由
-/*use think\facade\Route;
+use think\facade\Route;
 
 Route::resource("back/user","/back/admin/User");
 Route::resource("back/power","/back/admin/Power");
-Route::resource("back/role","/back/admin/Role");*/
+Route::resource("back/role","/back/admin/Role");
 return [
    // 'AuthCheck'	=>	app\back\http\middleware\LoginCheck::class,
 ];
