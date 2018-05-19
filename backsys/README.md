@@ -16,18 +16,18 @@ ThinkPHP 5.1
 ## 系统功能
 	--后台管理系统
 	--back 模块
-	  |--admin 管理员管理子模块
+	  |--admin 管理员管理模块
 		 |--user 管理员用户
 		 |--role 角色管理
 		 |--power 权限查看（权限数据存放 common.php 文件中）
-	  |--sys 系统管理子模块
+	  |--sys 系统管理模块
 		 |--db 数据库管理
 		 |--log 日志管理
-	  |--sysup 系统设置子模块
+	  |--sysup 系统设置模块
 		 |--sysup 基本设置
 		 
-## 已完成功功能
-  安装、登录、退出、admin(管理员管理子模块) 所有功能；
+## 已完成功能
+  安装、登录、退出、admin(管理员管理模块) 所有功能；
   #### 如需安装
 	> 先删除 /route/install.php 文件中
 	> /application/back/controller/.Lock.php 更改为 /application/back/controller/Lock.php
