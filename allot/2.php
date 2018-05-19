@@ -15,10 +15,10 @@ if(isset($_POST))
 	   unset($_SESSION["ip"]);
 	if(isset($_SESSION["user"]))
 		unset($_SESSION["user"]);
-	if(isset($_SERVER["renwu"]))	
-		unset($_SERVER["renwu"]);
-	if(isset($_SERVER["t"]))
-		unset($_SERVER["t"]);
+	if(isset($_SESSION["renwu"]))	
+		unset($_SESSION["renwu"]);
+	if(isset($_SESSION["t"]))
+		unset($_SESSION["t"]);
 	if(isset($_SESSION['start_t']))
 		unset($_SESSION['start_t']);
 	if(file_exists("data.php"))
@@ -70,7 +70,7 @@ if(isset($_POST))
 		if($c<1)
 		{
 			$_SESSION["user"]=$user;
-			$_SERVER["renwu"]=$renwu;
+			$_SESSION["renwu"]=$renwu;
 			if(file_exists("data.php"))
 			   @unlink("data.php");
 		}

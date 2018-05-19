@@ -39,7 +39,7 @@ if(!empty($_POST)) //当用户选择了之后
 		if(is_file("data.php") && $c<1)
 		{
 			$_SESSION["user"]=$user;
-			$_SERVER["renwu"]=$renwu;
+			$_SESSION["renwu"]=$renwu;
 			if(file_exists("data.php"))
 			   @unlink("data.php");
 		}
