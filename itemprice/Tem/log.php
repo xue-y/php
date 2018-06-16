@@ -45,10 +45,10 @@
                 <a class="button border-green" href="?h=sel&n='.$v['n'].'"><span class="icon-refresh"></span>查看</a>';
                       if($v['n']=='error'.self::$conf_data["DATA_EXT"])
                        {
-                           echo '<a class="button border-red" data-href="?h=del&n='.$v['n'].'"  href="javascript:;"  onclick="del($(this),\'清空\')" title="系统自动生成日志"><span class="icon-trash-o">清空</span>';
+                           echo '<a class="button border-red" data-href="?h=del&n='.$v['n'].'"  href="javascript:;"  onclick="del($(this),\'清空\')" title="系统自动生成日志"><span class="icon-trash-o"> 清空</span>';
                        }else
                       {
-                          echo '<a class="button border-red" data-href="?h=del&n='.$v['n'].'"  href="javascript:;"  onclick="del($(this),\'删除\')"><span class="icon-trash-o">删除</span>';
+                          echo '<a class="button border-red" data-href="?h=del&n='.$v['n'].'"  href="javascript:;"  onclick="del($(this),\'删除\')"><span class="icon-trash-o"> 删除</span>';
                       }
                     echo '</a></div></td></tr>';
                     } //foreach 结束

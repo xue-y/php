@@ -188,7 +188,7 @@ class MyController extends Controller {
                 echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";
              }
          }
-        if(CONTROLLER_NAME=="Login")
+        if(CONTROLLER_NAME=="Login"  && ACTION_NAME!="login_out")
         {
             is_login($this->s_pix);//验证是否登录
         }//------------------验证登录页面是否已经登录了

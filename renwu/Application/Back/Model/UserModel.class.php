@@ -63,7 +63,8 @@ class UserModel extends Model{
     public function  found_all()
     {
         //查询创建人
-       $sql="select `id`,`u_name` from `rw_user` where `id` in ( SELECT `found` FROM __USER__ GROUP BY `found`)";
+	   $pix= C("DB_PREFIX");
+	   $sql="select `id`,`u_name` from `{$pix}user` where `id` in ( SELECT `found` FROM __USER__ GROUP BY `found`)";
        $found=$this->query($sql);
        return $found;
     }
