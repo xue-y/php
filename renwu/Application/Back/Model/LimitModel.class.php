@@ -65,7 +65,8 @@ class LimitModel extends Model{
     {
         $w["execs"]=array("neq","");
         $w["pid"]=array("eq",QUICK);
-        $task=$this->where($w)->select();
+      //  $task=$this->where($w)->select();
+	  return $this->where($w)->select();
     }
 
     //当前位置
