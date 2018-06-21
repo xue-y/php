@@ -23,7 +23,7 @@
 	SQLite3　Ver 3.8.10.2<br/>
 	mysql  Ver 14.14 Distrib 5.5.53, for Win32 (AMD64)<br/>
 	注：其他版本未测试<br/>
-####安装说明
+#### 安装说明
 	根目录 install.html 安装文件-----> 安装完成后移动并更名为 /Install/lock.php
 	根目录 生成 lock.txt 文件并写入 "lock"
 	应用目录 Application\Back\Controller\InstallController.class.php 
@@ -36,7 +36,7 @@
 		#Install/ 有创建文件权限 建议 755
 		#ThinkPhp/ 有读取执行的权限建议 755
 
-####注意事项
+#### 注意事项
 	U() liunx 平台会自动生成 .html 后缀页面访问不到，需要从新配置vhost.conf 文件
 	nginx 下/usr/local/nginx/conf/vhost/XXX.conf 文件修改路由 -- 根目录 vhost.conf
 	TP3 中 U()  $this->redirect() 跳转地址默认会添加html后缀  nginx 环境需要配置 vhost.conf 文件
