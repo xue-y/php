@@ -41,3 +41,10 @@
 	nginx 下/usr/local/nginx/conf/vhost/XXX.conf 文件修改路由 -- 根目录 vhost.conf
 	TP3 中 U()  $this->redirect() 跳转地址默认会添加html后缀  nginx 环境需要配置 vhost.conf 文件
     ajax 请求php 数据，服务端如果使用exit("数据")返回;如果数据是数字,前端接收不到,echo(数字)前端可以接收到
+	
+#### 系统附件
+	根目录下 attached 文件夹 用户添加附件（图片存放位置）, 文件夹按照年月命名，文件按照年月日时分秒命名
+	文件清理 系统设置--->图片清理 操作文件名：Application\Back\Controller\SyssetController.class.php  oldf()函数
+	上传插件 Public\kindeditor-4.1.10 官网地址 http://kindeditor.net/demo.php
+	
+	
