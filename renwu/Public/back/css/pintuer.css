@@ -1129,5 +1129,6 @@ a.icon-plus-square-o:hover{color: #0ae;}
 textarea{width:40%; resize:vertical; }
 td a{color:#09F}
 .bor{border-bottom: 1px dashed  #b5cfd9; margin: 10px 0px;width:50%}
+button.bg-main{cursor: pointer;}
 
 

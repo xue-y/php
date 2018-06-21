@@ -14,7 +14,10 @@ class LockController extends Controller{ //安装程序完成之后
             $bool=rename($old_name,$new_name);
             if(!file_exists($new_name) ||  file_exists($old_name) || !isset($bool))
             {echo '安装类文件删除失败';exit;}
-        }
+        }else
+		{
+			echo "锁定类文件已存在请手动删除"; exit;
+		}
 
         if(!file_exists('lock.txt'))
         {

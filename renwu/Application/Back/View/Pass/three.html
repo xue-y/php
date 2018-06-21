@@ -1,5 +1,5 @@
 <include file="Public:pass_h" /><!--用户找回密码第三步页面-->
-<div class="panel  admin-panel">
+<div class="admin-panel">
   <div class="body-content">
     <form method="post" class="form-x" action="__CONTROLLER__/index">
         <p class="red">请在半个小时内完成操作</p>
@@ -10,7 +10,7 @@
                 <label >新密码：</label>
             </div>
             <div class="field">
-                <input type="password" class="input w50" name="u_pass" size="50" placeholder="请输入新密码" data-validate="required:请输入新密码,userp:密码6--12位字符英文 数字 .@ ! - _" />
+                <input type="password" class="input" name="u_pass" size="50" placeholder="请输入新密码" data-validate="required:请输入新密码,userp:密码6--12位字符英文 数字 .@ ! - _" />
             </div>
         </div>
         <div class="form-group">
@@ -18,7 +18,7 @@
                 <label>确认密码：</label>
             </div>
             <div class="field">
-                <input type="password" class="input w50" name="u_pass2" size="50" placeholder="请再次输入新密码" data-validate="required:请再次输入新密码,repeat#u_pass:两次输入的密码不一致" />
+                <input type="password" class="input" name="u_pass2" size="50" placeholder="请再次输入新密码" data-validate="required:请再次输入新密码,repeat#u_pass:两次输入的密码不一致" />
             </div>
         </div>
 
@@ -29,7 +29,7 @@
          <div class="field">
              <button class="button bg-main" type="submit">确认完成</button>
              &nbsp;  &nbsp;  &nbsp;
-             <a class="button bg-main" href="__CONTROLLER__/one">返回上一步</a>
+             <a class="button bg-main" onclick="javascript :history.back(-1);">返回上一步</a>
          </div>
       </div>
     </form>

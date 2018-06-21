@@ -55,12 +55,14 @@
     </div>
   </div>
 </div>
+<div class="hidden mail_send_c">{$mail_send_c}</div>
+<div class="hidden mail_deny_t">{$mail_deny_t}</div>
 <div class="no-skin">
         <div class="error-container">
             <h1>验证邮箱</h1><span class="close" onclick="javascript:$('.no-skin').fadeOut();"></span>
             <div class="errorcon">
                 <p>
-                    <input type="text" value="{$info.mail}" class="input" readonly="" >
+                    <input type="text" value="{$info.mail}" class="input" readonly >
                     <button class="button bg-main" type="button"   onclick="email_send($(this),'{$info.id}','{$info.mail}','{$info.mail_state}')">发送验证</button>
                 </p>
                     <i class="clear">验证码发送到邮箱后台，请一个小时内完成验证</i>
@@ -84,88 +86,147 @@
        .input a,a.input{color:#0F85D4;}
     </style>
     <script>
-                function email(id)  //写入邮箱字段
-                {
-                    var mail = prompt("请输入您的邮箱", ""); //将输入的内容赋给变量 name ，
-                    //这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
-                    if (mail)//如果返回的有内容
-                    {
-                      //  alert("邮件稍后发送您的邮箱，请验证")
-                        $.post("__CONTROLLER__/email",{"id":id,"mail":mail},function(data){
+			function email(id)  //写入邮箱字段
+			{
+				var mail = prompt("请输入您的邮箱", ""); //将输入的内容赋给变量 name ，
+				//这里需要注意的是，prompt有两个参数，前面是提示的话，后面是当对话框出来后，在对话框里的默认值
+				if (mail)//如果返回的有内容
+				{
+				  //  alert("邮件稍后发送您的邮箱，请验证")
+					$.post("__CONTROLLER__/email",{"id":id,"mail":mail},function(data){
 
-                            if(data=="ok")
-                            {
-                                alert("您已绑定邮箱，请激活验证邮箱");
-                                location.reload();
-                            }
-                            ver_eid(data); //验证 用户ID 邮箱返回信息
-                        })
-                    }
-                }
+						if(data=="ok")
+						{
+							alert("您已绑定邮箱，请激活验证邮箱");
+							location.reload();
+						}
+						ver_eid(data); //验证 用户ID 邮箱返回信息
+					})
+				}
+			}
 
-                function email_send(t,id,mail,state)//执行邮箱验证--发送验证
-                {
-                    if(send_t)
-                    {
-                        clearInterval(send_t);
-                        t.html("发送验证");
-                        $('.email_ver_info').find("span").text('');
-                    }
-                    // 发送邮件 id 用户ID email 用户邮箱 state 绑定1、解除0
-                    $.post("__CONTROLLER__/emailSend",{'id':id,'mail':mail,'state':state},function(data){
-                      //  console.log(data)  // 取得发送邮件后是否成功
-                        ver_eid(data); //验证 用户ID 邮箱返回信息
-                        if($(".no-skin").is(":hidden")) // 邮箱绑定时
-                        {
-                            $('.no-skin').fadeIn();
-                        }
-                        if(data=="send_mail_c")
-                        {
-                            $('.no-skin').find("h1").html("今天邮件发送超过5次");
-                            $('.no-skin').find("p").html("请明天在验证");
-                        }
-                        if(data=="mail_send_error")
-                        {
-                            $('.no-skin').find("h1").html("邮件发送失败");
-                            var cf='<a onclick="email_send(t,id,mail,state")>重新发送</a>';
-                            $('.no-skin').find("p").html(cf);
+			function email_send(t,id,mail,state)//执行邮箱验证--发送验证
+			{
+				if(send_t)
+				{
+					clearInterval(send_t);
+					t.html("发送验证");
+					$('.email_ver_info').find("span").text('');
+				}
+				// 发送邮件 id 用户ID email 用户邮箱 state 绑定1、解除0
+				$.post("__CONTROLLER__/emailSend",{'id':id,'mail':mail,'state':state},function(data){
+				  //  console.log(data)  // 取得发送邮件后是否成功
+					ver_eid(data); //验证 用户ID 邮箱返回信息
+					if($(".no-skin").is(":hidden")) // 邮箱绑定时
+					{
+						$('.no-skin').fadeIn();
+					}
+					if(data=="delay_time")
+					{
+						var s=$(".mail_deny_t").text();
+						$('.no-skin').find("h1").html("请稍后发送");
+						$('.no-skin').find("p").html("发送邮件间隔时间 "+s+"秒");
+					}
+					if(data=="send_mail_c")
+					{
+						var mail_send_c=$(".mail_send_c").text();
+						$('.no-skin').find("h1").html("今天邮件发送超过 "+mail_send_c+" 次");
+						$('.no-skin').find("p").html("请明天在验证");
+					}
+					if(data=="mail_send_error")
+					{
+						$('.no-skin').find("h1").html("邮件发送失败");
+						var cf='<a onclick="email_send(t,id,mail,state")>重新发送</a>';
+						$('.no-skin').find("p").html(cf);
 
-                        }
-                        if(data=="mail_send_ok")
-                        {
-                            var mail_url = gotoEmail(mail);
-                            mail_url='<a target="_blank" href="http://'+mail_url+'">去我的邮箱</a>';
-                            $('.no-skin').find("h1").html("邮件发送成功");
-                            $('.no-skin').find("p").html(mail_url);
-                        }
+					}
+					if(data=="mail_send_ok")
+					{
+						var mail_url = gotoEmail(mail);
+						mail_url='<a target="_blank" href="http://'+mail_url+'">去我的邮箱</a>';
+						$('.no-skin').find("h1").html("邮件发送成功");
+						$('.no-skin').find("p").html(mail_url);
+					}
 
-                    });//发送邮件
-                    $('.email_ver_info').css("visibility","visible");
-                    $('.email_ver_info').find("span")
-                    var s=60;
-                    var send_t=setInterval(function(){
-                        t.html(s+"秒后重新发送");
-                        $('.email_ver_info').find("span").text(s)
-                        s--;
-                        if(s<0)
-                        {clearInterval(send_t);
-                            $(".no-skin").fadeOut();
-                            t.html("发送验证");
-                        }
-                    },1000);
+				});//发送邮件
+				$('.email_ver_info').css("visibility","visible");
+				$('.email_ver_info').find("span")
+				var s=$(".mail_deny_t").text();
+				var send_t=setInterval(function(){
+					t.html(s+"秒后重新发送");
+					$('.email_ver_info').find("span").text(s)
+					s--;
+					if(s<0)
+					{clearInterval(send_t);
+						$(".no-skin").fadeOut();
+						t.html("发送验证");
+					}
+				},1000);
 
-                }
+			}
 
-                function ver_eid(data)//验证 用户ID 邮箱返回信息
-                {
-                    if(data=="mail_error")
-                    {
-                        alert("邮箱错误，请检查邮箱格式或更换邮箱");
-                    }
-                    if(data=="id_error")
-                    {
-                        alert("用户信息错误");
-                    }
-                }
+			function ver_eid(data)//验证 用户ID 邮箱返回信息
+			{
+				if(data=="mail_error")
+				{
+					alert("邮箱错误，请检查邮箱格式或更换邮箱");
+				}
+				if(data=="id_error")
+				{
+					alert("用户信息错误");
+				}
+			}
+		
+			//功能：根据用户输入的Email跳转到相应的电子邮箱首页---这个js 函数只在当前页面起作用
+		   function gotoEmail(mail) {
+				$t = mail.split('@')[1];
+				$t = $t.toLowerCase();
+				if ($t == '163.com') {
+					return 'mail.163.com';
+				} else if ($t == 'vip.163.com') {
+					return 'vip.163.com';
+				} else if ($t == '126.com') {
+					return 'mail.126.com';
+				} else if ($t == 'qq.com' || $t == 'vip.qq.com' || $t == 'foxmail.com') {
+					return 'mail.qq.com';
+				} else if ($t == 'gmail.com') {
+					return 'mail.google.com';
+				} else if ($t == 'sohu.com') {
+					return 'mail.sohu.com';
+				} else if ($t == 'tom.com') {
+					return 'mail.tom.com';
+				} else if ($t == 'vip.sina.com') {
+					return 'vip.sina.com';
+				} else if ($t == 'sina.com.cn' || $t == 'sina.com') {
+					return 'mail.sina.com.cn';
+				} else if ($t == 'tom.com') {
+					return 'mail.tom.com';
+				} else if ($t == 'yahoo.com.cn' || $t == 'yahoo.cn') {
+					return 'mail.cn.yahoo.com';
+				} else if ($t == 'tom.com') {
+					return 'mail.tom.com';
+				} else if ($t == 'yeah.net') {
+					return 'www.yeah.net';
+				} else if ($t == '21cn.com') {
+					return 'mail.21cn.com';
+				} else if ($t == 'hotmail.com') {
+					return 'www.hotmail.com';
+				} else if ($t == 'sogou.com') {
+					return 'mail.sogou.com';
+				} else if ($t == '188.com') {
+					return 'www.188.com';
+				} else if ($t == '139.com') {
+					return 'mail.10086.cn';
+				} else if ($t == '189.cn') {
+					return 'webmail15.189.cn/webmail';
+				} else if ($t == 'wo.com.cn') {
+					return 'mail.wo.com.cn/smsmail';
+				} else if ($t == '139.com') {
+					return 'mail.10086.cn';
+				} else {
+					return '';
+				}
+			};	
+								
     </script>
 

@@ -43,13 +43,13 @@ class PersonalController extends MyController{  //用户信息
           }
         $pos["c"]="个人资料";
         $is_admin=$this->is_admin($user);
-        $this->assign(array("info"=>$u_info,"pos"=>$pos,"is_admin"=>$is_admin));
+        $this->assign(array("info"=>$u_info,"pos"=>$pos,"is_admin"=>$is_admin,"mail_send_c"=>P_O_C,"mail_deny_t"=>MAIL_DENY_T));
         $this->display();
     }
 
     public function email() //邮箱操作
     {
-       $this->ver_eid();
+       $this->ver_eid(); //邮箱验证 用户ID 邮箱 是否合法
        $mail=$this->add_slashes($_POST["mail"]);
        $user=D("User");
        $af=$user->mail_ver($mail,$this->u_id);
@@ -79,41 +79,43 @@ class PersonalController extends MyController{  //用户信息
         }//解除绑定
 
         //--------------------------------------发送邮件的时间
-         $send_mail_t=S('send_mail_t');
+         $send_mail_t=S($this->u_id.'send_mail_t');
          if(!isset($send_mail_t) || empty($send_mail_t))
          {
-             S('send_mail_t',time(),60);
+             S($this->u_id.'send_mail_t',time(),MAIL_DENY_T);
          }
          else
-         {
-             $sleep=60-(time()-$send_mail_t);
+         {			
+             $sleep=MAIL_DENY_T-(time()-$send_mail_t); // 时间间隔到达60 秒如果用户点击 再次发送
              if($sleep>0)
-             {sleep($sleep);}
+             {
+				echo "delay_time";exit;
+			 }
          }
         //--------------------------------------发送邮件的次数
-        $send_mail_c= S("send_mail_c");
+        $send_mail_c=S($this->u_id."send_mail_c");
         if(!isset($send_mail_c) || empty($send_mail_c))
         {
             if(isset($mail_ver) && !empty($mail_ver))
             {
-                S("mail_ver",NULL);
+                S($this->u_id."mail_ver",NULL);
             }
-            S("send_mail_c",1,3600*24);
+            S($this->u_id."send_mail_c",1,3600*24);
         }else
         {
-            $send_mail_c= S("send_mail_c")+1;
-            if($send_mail_c>5)
+            $send_mail_c= S($this->u_id."send_mail_c")+1; // // 限制一天发送邮件的个数 包含找回密码的发送邮件次数
+            if($send_mail_c>=P_O_C)
             {
                 echo "send_mail_c";exit;
             }
             else
             {
-                S("send_mail_c",$send_mail_c,3600*24);
+                S($this->u_id."send_mail_c",$send_mail_c,3600*24);
             }
         }
         $num=substr(sha1(uniqid(TRUE)),mt_rand(0,35),5);
-        S("mail_ver",$num,3600);
-        $mail_ver=S("mail_ver");
+        S($this->u_id."mail_ver",$num,3600);
+        $mail_ver=S($this->u_id."mail_ver");
 
         // 执行发送邮件
         //******************** 配置信息 ********************************
@@ -135,9 +137,9 @@ class PersonalController extends MyController{  //用户信息
         if($state=="")
         {
             echo "mail_send_error";
-            S("mail_ver",NULL);
-            S("send_mail_c",NULL);
-            S('send_mail_t',NULL);
+			
+            S($this->u_id."mail_ver",NULL);
+
             exit();
         }
         echo "mail_send_ok";
@@ -157,7 +159,7 @@ class PersonalController extends MyController{  //用户信息
            $this->error("个人信息错误");// 用户id出错
        }
 
-       $mail_ver=S("mail_ver");
+       $mail_ver=S($this->u_id."mail_ver");
        if(!isset($mail_ver) || empty($mail_ver))
        {
            $this->error("验证码已过期请重新验证");
@@ -181,10 +183,11 @@ class PersonalController extends MyController{  //用户信息
         {
             $this->error("用户信息以及用户邮箱信息不全");
         }
-        $mail_ver=S("mail_ver");
+        $mail_ver=S($this->u_id."mail_ver");
         if(!isset($mail_ver) || empty($mail_ver))
         {
-            $this->error("验证码已过期请重新验证",U("Main/index#Personal"));
+           // $this->error("验证码已过期请重新验证",U("Main/index#Personal")); // liunx 平台会自动生成 .html 后缀页面访问不到，需要从新配置vhost.conf 文件
+			$this->error("验证码已过期请重新验证",__MODULE__."/Main/index#Personal");
         }
 
         $post=$this->add_slashes($_POST);
@@ -203,9 +206,10 @@ class PersonalController extends MyController{  //用户信息
             }else
             {     if(isset($mail_ver))
                   {
-                    S("mail_ver",NULL);
+                    S($this->u_id."mail_ver",NULL);
                   }
-                $this->success("邮箱激活成功",U("Main/index#Personal"));
+               // $this->success("邮箱激活成功",U("Main/index#Personal"));
+			     $this->success("邮箱激活成功",__MODULE__."/Main/index#Personal");
             };
         }else               //---------------------------解除绑定
         {
@@ -217,9 +221,10 @@ class PersonalController extends MyController{  //用户信息
             {
                 if(isset($mail_ver))
                 {
-                    S("mail_ver",NULL);
+                    S($this->u_id."mail_ver",NULL);
                 }
-                $this->success("邮箱解除绑定成功",U("Main/index#Personal"));
+             //   $this->success("邮箱解除绑定成功",U("Main/index#Personal"));
+				$this->success("邮箱解除绑定成功",__MODULE__."/Main/index#Personal");
             };
         }
 
@@ -279,7 +284,7 @@ class PersonalController extends MyController{  //用户信息
         $this->display();
     }
 
-    /**邮箱验证 用户ID 邮箱
+    /**邮箱验证 用户ID 邮箱 是否合法
     */
     private function ver_eid()
     {

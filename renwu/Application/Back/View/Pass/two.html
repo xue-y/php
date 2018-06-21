@@ -1,5 +1,5 @@
 <include file="Public:pass_h" /><!--用户找回密码第一步页面-->
-<div class="panel  admin-panel">
+<div class="admin-panel">
   <div class="body-content">
     <form method="post" class="form-x" action="__CONTROLLER__/index">
         <input type="hidden" value="2" name="setup">
@@ -14,7 +14,7 @@
                 <label>邮箱：</label>
             </div>
             <div class="field">
-                <input type="text" class="input w50"  size="50" value="{$mail}"  name="mail"  />
+                <input type="text" class="input"  size="50" value="{$mail}"  name="mail"  />
                 &nbsp;
                 <a class="button bg-main"  href="javascript:;" onclick="email_send('{$id}','{$mail}')">发送验证</a>
             </div>
@@ -24,7 +24,7 @@
                 <label >邮箱验证码：</label>
             </div>
             <div class="field">
-                <input type="text" class="input w50" name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" /> &nbsp;
+                <input type="text" class="input" name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" /> &nbsp;
 
             </div>
         </div>
@@ -35,12 +35,14 @@
         <div class="field">
           <button class="button bg-main" type="submit">下一步</button>
              &nbsp;  &nbsp;  &nbsp;
-         <a class="button bg-main" href="__CONTROLLER__/one">返回上一步</a>
+         <a class="button bg-main" onclick="javascript :history.back(-1);">返回上一步</a>
         </div>
       </div>
     </form>
   </div>
 </div>
+<div class="hidden mail_send_c">{$mail_send_c}</div>
+<div class="hidden mail_deny_t">{$mail_deny_t}</div>
 <div class="no-skin">
     <div class="error-container">
         <h1></h1><span class="close" onclick="javascript:$('.no-skin').fadeOut();"></span>
@@ -88,7 +90,8 @@
                             $('.no-skin').find("p").html("用户信息错误或用户不存在");
                         break;
                         case "send_mail_c":
-                            $('.no-skin').find("h1").html("今天邮件发送超过5次");
+                             var mail_send_c=$(".mail_send_c").text();
+                            $('.no-skin').find("h1").html("今天邮件发送超过 "+mail_send_c+" 次");
                             $('.no-skin').find("p").html("请明天在验证");
                         break;
                         case "mail_send_error":
@@ -102,9 +105,66 @@
                             $('.no-skin').find("p").html(mail_url);
                             $('.no-skin').find("i").text("验证码发送到邮箱后台，请一个小时内完成验证");
                         break;
+						case "delay_time":
+                            var s=$(".mail_deny_t").text();
+                            $('.no-skin').find("h1").html("请稍后发送");
+                            $('.no-skin').find("p").html("发送邮件间隔时间 "+s+"秒");
+                        break;
                     }
+					 $('.no-skin').delay(2000).fadeOut();
 
                 });//发送邮件
+				
+				  //功能：根据用户输入的Email跳转到相应的电子邮箱首页--- 只在当前页面起作用，放入引用js 中不起作用
+                function gotoEmail(mail) {
+                    $t = mail.split('@')[1];
+                    $t = $t.toLowerCase();
+                    if ($t == '163.com') {
+                        return 'mail.163.com';
+                    } else if ($t == 'vip.163.com') {
+                        return 'vip.163.com';
+                    } else if ($t == '126.com') {
+                        return 'mail.126.com';
+                    } else if ($t == 'qq.com' || $t == 'vip.qq.com' || $t == 'foxmail.com') {
+                        return 'mail.qq.com';
+                    } else if ($t == 'gmail.com') {
+                        return 'mail.google.com';
+                    } else if ($t == 'sohu.com') {
+                        return 'mail.sohu.com';
+                    } else if ($t == 'tom.com') {
+                        return 'mail.tom.com';
+                    } else if ($t == 'vip.sina.com') {
+                        return 'vip.sina.com';
+                    } else if ($t == 'sina.com.cn' || $t == 'sina.com') {
+                        return 'mail.sina.com.cn';
+                    } else if ($t == 'tom.com') {
+                        return 'mail.tom.com';
+                    } else if ($t == 'yahoo.com.cn' || $t == 'yahoo.cn') {
+                        return 'mail.cn.yahoo.com';
+                    } else if ($t == 'tom.com') {
+                        return 'mail.tom.com';
+                    } else if ($t == 'yeah.net') {
+                        return 'www.yeah.net';
+                    } else if ($t == '21cn.com') {
+                        return 'mail.21cn.com';
+                    } else if ($t == 'hotmail.com') {
+                        return 'www.hotmail.com';
+                    } else if ($t == 'sogou.com') {
+                        return 'mail.sogou.com';
+                    } else if ($t == '188.com') {
+                        return 'www.188.com';
+                    } else if ($t == '139.com') {
+                        return 'mail.10086.cn';
+                    } else if ($t == '189.cn') {
+                        return 'webmail15.189.cn/webmail';
+                    } else if ($t == 'wo.com.cn') {
+                        return 'mail.wo.com.cn/smsmail';
+                    } else if ($t == '139.com') {
+                        return 'mail.10086.cn';
+                    } else {
+                        return '';
+                    }
+                };
             }
 
         </script>

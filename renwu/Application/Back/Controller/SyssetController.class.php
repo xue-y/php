@@ -169,7 +169,7 @@ class SyssetController extends MyController { // 系统设置
             $con_arr['spass']=$s_pass[1];
 
             $limit=D("Limit");
-            $class=lcfirst(CONTROLLER_NAME);
+            $class=lcfirst(CONTROLLER_NAME); // 取得系统控制器的其他方法 --模板页面js（ajax）方式点击哪个方法就执行哪个方法
             $operate=$limit->sysset_operate($class);
             if(!empty($operate))
             {
@@ -189,7 +189,7 @@ class SyssetController extends MyController { // 系统设置
     public function oldf()
     {
         $pro=D("Problem");
-        $p_mint=$pro->min_t(); // 最小的提交任务时间
+        $p_mint=$pro->min_t(); // 最小的提交任务时间---文件夹名称是按照日期时间命名的
         $task=D("Task");
         $t_mint=$task->min_t(); //最小的执行任务时间
         $min=min($p_mint,$t_mint);

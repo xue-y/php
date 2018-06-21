@@ -14,6 +14,7 @@ define("TAST_W_N",0);// 任务个数
 define("LOCK_F","./Application/Back/Conf/lock.txt"); //--------------添加任务时的锁文件
 define("OLD_PIC",'./attached/image/'); // 清理图片路径
 define('S_MAIL_TYPE','HTML');//邮件格式（HTML/TXT）,TXT为文本邮件*/
+define("MAIL_DENY_T",60);//  发送邮件间隔秒数
 
 require "define.php"; // 引入自定义常量
 
