@@ -39,6 +39,7 @@
     #安装完成之后请将应用文件夹的公共配置文件注释打开
     #安装完成之后请检查运行日志  //错误日志文件
     #入口文件 如果是 index.php define('APP_DEBUG',True); 改为false
+	#fenxiao.sql 数据库文件 ---- 用于查看
 
 #### 安装说明
 	安装文件 运行目录下 Back/InstallController.class.php 

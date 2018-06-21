@@ -46,5 +46,6 @@
 	根目录下 attached 文件夹 用户添加附件（图片存放位置）, 文件夹按照年月命名，文件按照年月日时分秒命名
 	文件清理 系统设置--->图片清理 操作文件名：Application\Back\Controller\SyssetController.class.php  oldf()函数
 	上传插件 Public\kindeditor-4.1.10 官网地址 http://kindeditor.net/demo.php
+	数据库文件 renwu.sql---用于查看
 	
 	
