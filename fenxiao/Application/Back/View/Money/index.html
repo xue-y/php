@@ -1,0 +1,101 @@
+<layout name="layout" /><!--客户佣金详情列表页面-->
+ <div class="padding">
+      <ul class="search" style="padding-left:10px;">
+
+          <div class="right">
+              <li>
+                  <select name="zx"  class="input"  style="width:150px; line-height:17px; display:inline-block" >
+                      <option value="-1">按咨询师搜索</option>
+                      <foreach name="all_zx" item="zx">
+                          <option value="{$zx.id}" >{$zx.u_name}</option>
+                      </foreach>
+                  </select>
+              </li>
+             
+              <li>
+                  <input type="text" placeholder="请输入客户编号" class="input id" style="width:250px; line-height:17px;display:inline-block" />
+                  <a href="javascript:void(0)" class="button border-main icon-search" > 搜索</a></li>
+          </div>
+      </ul>
+  </div> 
+<div class="panel padding-big-top">
+  <table class="table table-hover text-center">
+    <tr>
+      <th>客户编号</th>
+      <th>操作管理员</th>
+      <th>交易金额</th>
+      <th>操作后金额</th>
+      <th>时间</th>
+      <th>备注</th>
+    </tr>
+   <tbody>
+    <notempty name="list">
+     <foreach name="list" item="v" >
+       <tr>
+       <td><a href="__MODULE__/Customer/update?id={$v.id}">{$v.id}</a></td>
+       <td>
+           <foreach name="all_zx" item="zx" >
+               <if condition="$v.cid eq $zx.id ">{$zx.u_name}</if>
+           </foreach>
+       </td>
+       <td>{$v.num}</td>
+       <td>{$v.jine}</td>
+       <td>{$v.t}</td>
+       <td>{$v.info|str_slashes}</td>
+      </tr>
+     </foreach>
+     </notempty>
+  </tbody>  
+  </table>
+ <notempty name="list"><ul class="pagelist"> {$page} <span>共 {$count} 条记录</span></ul></notempty>
+</div>
+<script  type="text/javascript">
+    $(".icon-search").click(function(){
+        //
+        var s="__CONTROLLER__/index?";
+        
+        var id=$(".id").val();
+        var zx=$(".search").find("select").eq(0).val();
+        
+        if(id!="" && id!=undefined)
+        {
+            s+="id="+id+"&";
+        }
+        if(zx!="-1")
+        {
+            s+="zx="+zx+"&";
+        }
+        s=s.substring(0,s.length-1);
+        $(this).attr("href",s);
+    });
+
+    // 取得url 参数-- 必须当前页面调用否则无效
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+              //  theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+              theRequest[strs[i].split("=")[0]]=strs[i].split("=")[1];
+            }
+        }
+        return theRequest;
+    }
+    var Request = new Object();
+    Request = GetRequest();
+    // 选中搜索条件
+    $("#inpstart").val(Request['t_start']);
+    $("#inpend").val(Request['t_end']);
+    var zx_id=Request['zx'];
+
+    var zx_list=$("select option");
+    zx_list.each(function(i,ele){
+      if(zx_list.eq(i).val()==zx_id)
+      {
+          zx_list.eq(i).attr("selected",true);
+      }
+    });
+</script>
+

@@ -1,0 +1,43 @@
+<layout name="layout" />
+    <title>我的消息</title>
+</head>
+<body class="info-index">
+<h3>
+    <a onclick="javascript :history.back(-1)" >←</a> | 我的消息
+    <a href="__MODULE__/Index/index" class="float-right">主页</a>
+</h3>
+<ul class="list clear">
+    <present name="status">
+        <li><a href="__ACTION__">全部消息</a></li>
+        <if condition="$status eq 2 ">
+            <li>已读消息</li>
+            <li><a href="__ACTION__?status=1">未读消息</a></li>
+            <else />
+            <li><a href="__ACTION__?status=2">已读消息</a></li>
+            <li>未读消息</li>
+        </if>
+        <else />
+        <li>全部消息</li>
+        <li><a href="__ACTION__?status=2">已读消息</a></li>
+        <li><a href="__ACTION__?status=1">未读消息</a></li>
+    </present>
+</ul>
+
+    <empty name="list">
+        <table class="table table-hover text-center">
+           <tr><td> 暂无消息</td></tr>
+        </table>
+        <else />
+        <table class="table table-hover text-center">
+        <foreach name="list" item="v" >
+            <tr>
+            <eq name="v.is_read" value="2">
+                <td><a style="color:#666" href="__CONTROLLER__/infoRead?id={$v.id}">{$v.easy}</a></td>
+            <else/>
+                <td><a style="color:#0099FF" href="__CONTROLLER__/infoRead?id={$v.id}">{$v.easy}</a></td>
+            </eq>
+            </tr>
+        </foreach>
+        </table>
+        <ul class="pagelist">    {$page} <span>共 {$count} 条消息</span></ul>
+    </empty>

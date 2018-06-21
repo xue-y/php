@@ -1,0 +1,1 @@
+a:6:{i:0;s:2:"id";i:1;s:5:"phone";i:2;s:4:"pass";i:3;s:6:"is_del";s:3:"_pk";s:2:"id";s:5:"_type";a:4:{s:2:"id";s:20:"smallint(5) unsigned";s:5:"phone";s:8:"char(11)";s:4:"pass";s:8:"char(32)";s:6:"is_del";s:7:"char(1)";}}

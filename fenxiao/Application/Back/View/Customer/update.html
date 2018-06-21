@@ -1,0 +1,166 @@
+<layout name="layout" /><!--客户信息查看修改页面-->
+<div class="panel  admin-panel">
+  <div class="body-content">
+    <p class="red">密码不填写默认不修改，手机号或微信号至少必填其中一个,用于客户登录<br/>
+    执行修改只可是自己（咨询）的客户
+    </p>
+    <form method="post" class="form-x" action="__CONTROLLER__/execUate">
+
+       <div class="form-group"><!--修改客户基本信息-->
+        <div class="label">
+          <label>用户名：</label>
+        </div>
+        <div class="field">
+          <input type="text"  value="{$info.n}" class="input w50" name="n"  data-validate="title:用户名长度1--5个字符" />
+          <div class="tips"></div>
+        </div>
+      </div>
+        <div class="form-group">
+            <div class="label">
+                <label>手机号：</label>
+            </div>
+            <div class="field">
+                <input type="text" class="input w50" name="phone" value="{$info.phone}"   data-validate="mobile:请输入正确的手机号"  />
+                <div class="tips"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label">
+                <label>微信号：</label>
+            </div>
+            <div class="field">
+                <input type="text" class="input w50" name="wx" value="{$info.wx}"  data-validate="key:微信号字符长度3--20个字符"  value=""/>  &nbsp;
+                <!--<a style="margin-top: 10px; display: inline-block">
+                    <lt  name="info.is_wx" value="1">
+                         微信未验证
+                    <else/>
+                        微信已验证
+                    </lt>
+                </a>-->
+                <div class="tips"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label">
+                <label>年龄：</label>
+            </div>
+            <div class="field">
+                <input type="number" class="input w50" name="age"  value="{$info.age}" data-validate="number:请输入数字"  value=""/>
+                <div class="tips"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label">
+                <label>客户性别：</label>
+            </div>
+            <div class="field">
+                <div class="button-group radio">
+                    <if condition="$info.sex eq  '男' ">
+                        <label class="button">
+                            <input name="sex" value="女" type="radio">女
+                        </label>
+                        <label class="button active">
+                            <input name="sex" value="男" type="radio" checked="checked">男
+                        </label>
+                        <else/>
+                        <label class="button active">
+                            <input name="sex" value="女" type="radio" checked="checked">女
+                        </label>
+
+                        <label class="button">
+                            <input name="sex" value="男" type="radio">男
+                        </label>
+                    </if>
+                </div>
+            </div>
+        </div>
+       
+       <div class="form-group"><!--密码修改-->
+            <div class="label">
+                <label >新密码：</label>
+            </div>
+            <div class="field">
+                <input type="password" class="input w50" name="pass" size="50" placeholder="请输入新密码" data-validate="userp:密码6--12位字符英文 数字 .@ ! - _" value="" />
+            </div>
+        </div>
+       <div class="form-group">
+            <div class="label">
+                <label>确认密码：</label>
+            </div>
+            <div class="field">
+                <input type="password" class="input w50" name="pass2" size="50" placeholder="请再次输入新密码" data-validate="repeat#u_pass:两次输入的密码不一致"  value=""/>
+            </div>
+        </div>
+
+          <div class="form-group"><!--其他信息不可更改-->
+              <div class="label">
+                  <label>咨询师：</label>
+              </div>
+              <div class="field">
+                  <p  class="input w50" readonly>{$info.u_name}</p>
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="label">
+                  <label>注册时间：</label>
+              </div>
+              <div class="field">
+                  <p  class="input w50" readonly>{$info.t}</p>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="label">
+                  <label>推荐人ID：</label>
+              </div>
+              <div class="field">
+                  <p  class="input w50" readonly>
+                      <lt  name="info.tid" value="1">
+                          无推荐人
+                          <else/>
+                          <a href="?id={$info.tid}" >{$info.tid} &nbsp; 点击查看推荐人</a>
+                      </lt>
+                  </p>
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="label">
+                  <label>下线个数：</label>
+              </div>
+              <div class="field">
+                  <p  class="input w50" readonly >
+                      <lt  name="info.sub_num" value="1">
+                          无下线
+                          <else/>
+                          <a href="__MODULE__/Line/index?id={$info.sub_num}" >{$info.sub_num} &nbsp; 点击查看下线</a>
+                      </lt>
+                  </p>
+              </div>
+          </div>
+
+        <div class="form-group">
+            <div class="label">
+                <label>备注信息：</label>
+            </div>
+            <div class="field">
+                <textarea  name="descr">{$info.descr|str_slashes}</textarea>
+                <span>字符不得超过80个</span>
+            </div>
+        </div>
+
+     <input type="hidden" value="{$info.cid}" name="cid">
+     <input type="hidden" value="{$info.id}" name="id">
+     <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main" type="submit">保存提交</button>
+             &nbsp;  &nbsp;  &nbsp;
+         <button class="button bg-main" type="button" onclick="javascript :history.back(-1);">直接返回</button>
+        </div>
+     </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,112 @@
+body{ max-width: 640px; margin: 0 auto;width:100%;}
+.form-group {
+    margin-bottom: 12px;
+}
+textarea {
+    height: 100px;
+    width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    padding: 5px;
+}
+.pagelist span, .pagelist a {
+    border-radius: 3px;
+    border: 1px solid #dfdfdf;
+    display: inline-block;
+    font-size:14px;
+    padding: 0px 12px;
+}
+.table th {
+    text-align: center;
+}
+.table td {
+    vertical-align: middle;
+}
+.pagelist {
+    padding: 20px 0;
+    text-align: center;
+}
+ul{ list-style: none;font-size:16px; line-height: 2em;}
+.fixed-bottom{max-width: 640px;width:100%; height: 50px; line-height: 50px;border-top:1px solid #d5d5d5; z-index: 9999; background-color: #fff; }
+.fixed-bottom a{display:block; float: left;width:25%;  text-align: center}
+.icon-bell-alt:before {content:"\f0a2";}
+.icon-signout:before { content: "\f08b";}
+
+.red{color: #ff0000;}
+@media (min-width: 760px) {
+    .form-x .form-group .field {
+        float: none;
+        width: 100%;
+    }
+}
+@media (min-width: 760px) {
+    .form-x .form-group .label {
+        width: auto;
+    }
+}
+
+sup{top: -0.5em;left: 2px;color:red;}
+.w100, .form-group{width:100%}
+
+h3{background: #0ae;color:#fff;font-size: 16px;}
+h3 a{color:#fff; cursor:pointer;}
+h3 a:hover{color:#d1edf8;}
+.line-add h3,.cusBase h3,.login h3,.info-index h3,.set-index h3,.line-index  h3,.zx h3{ padding: 10px; border-bottom:1px solid #d5d5d5;}
+.info-index li,.set-index li{border-bottom: 1px solid #efe7e7;margin-bottom: 10px;}
+
+/*index-index 页面*/
+.index-index h3,h2,h2 a,h2 a:hover{ color:#fff;}
+.index-index h3{ padding: 10px;border-bottom:1px solid #d5d5d5;  background: url("../back/images/h-bg.jpg");}
+.index-index h2{ padding-top: 20px; text-align: center; height: 178px; line-height: 50px; background: url("../back/images/h-bg.jpg") 0px -50px;}
+.index-index li{border-bottom: 1px solid #efe7e7;margin-bottom: 20px; line-height: 2em;}
+.index-index .text-center{ line-height: 40px; background-color: #ececec;    box-shadow: 0 1px 1px 0 rgba(158,172,182,.1);}
+.index-index ul a{color:#333; display: block;}
+.index-index ul a span{ margin-right: 10px;color:#03b6fd;font-size: 18px;}
+
+/*line-add 页面*/
+.line-add form,.line-add p.red{ margin: 10px;}
+
+/*line-index*/
+.line-index{ overflow: hidden;}
+.line-index  .submit{ border:none; background: none; font-weight: normal;color:#0099FF}
+
+/* wx duan tiao zhuan tisp*/
+.no-skin  .error-container{ background:#fff; border:1px solid #0ae;  text-align:center; width:80%; margin:15% auto; font-family:Microsoft Yahei; padding-bottom:20px; border-top-left-radius:5px; border-top-right-radius:5px;  }
+.no-skin .error-container h1{ font-size:16px; padding:12px 0; background:#0ae; color:#fff;}
+.no-skin i{color:#0ae;}
+.no-skin .errorcon{ padding-bottom:10px; text-align:center;  font-size:15px;width: 90%;
+    margin: 0 auto;}
+.no-skin .errorcon i{ display:block; margin:12px auto; font-size:40px; }
+.no-skin .errorcon span{color:red;}
+.no-skin  h4{ font-size:14px; color:#666;}
+.no-skin a{color:#0ae;}
+
+/*login-sign*/
+.login form{ padding:0px 10px;}
+.login h3{margin-bottom: 20px;}
+
+/*info-index*/
+.info-index .list{ overflow: hidden;padding-left:0px; height: 40px; line-height: 40px;  background-color: #f0f5f7;border-bottom: 1px solid #e6f0f4; box-shadow: 0px 0px 1px #e6f0f4; border-left:1px solid #ddd;border-right: 1px solid #ddd;}
+.info-index .list li{ float: left;width:33.33%;   text-align: center;}
+.info-index .list li:nth-of-type(2){border-left:1px solid #ddd;border-right: 1px solid #ddd;}
+.info-index table,.line-index table{width:100%; border-top: none;margin:0px;border-left:none; border-right: none;}
+.info-index table th{border-right: dotted 1px #c7c7c7;}
+
+/*set cusBase*/
+.cusBase form{ margin: 30px 10px 0px 10px;}
+.cusBase .field{overflow: hidden;    margin-top: -30px;}
+.cusBase  .fixed-left{ margin-left: 5px; margin-top: 15px;}
+.cusBase  .label{ display: inline-block;}
+.cusBase  .label label {
+    font-weight: normal;
+}
+/*set index*/
+.set-index ul a{color:#333; display: block;}
+.set-index ul a span{ margin-right: 10px;color:#03b6fd;font-size: 18px;}
+
+/*zx*/
+.zx ul{padding-top: 30px;width:100%; line-height: 2em;}
+.zx li{ clear: both; overflow: hidden;border-bottom: 1px solid #efe7e7;margin-bottom: 20px;}
+.zx li span:nth-of-type(1){display: block;width:15%;min-width:100px;}
+.zx li span:nth-of-type(2){display: block;max-width:85%;width:auto;margin-left: 15%;}

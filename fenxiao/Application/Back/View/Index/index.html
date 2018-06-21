@@ -1,0 +1,19 @@
+<layout name="layout" /><!--后台首页页面-->
+        <style>
+
+            ul.list{/*line-height: 2;*/ font-size:16px; margin-top: 10px;}
+           /* ul.list li{width:25%; text-align: center;float: left; }
+            ul.list li img{ display: block; margin:0 auto 10px;width:80px;}
+            sup a,h2 a{color:#0F85D4;}*/
+        </style>
+<div class="padding-large">
+    <h2 >
+        {$n} 用户欢迎进入 <a>{$Think.const.WBE_NAME}</a>
+    </h2>
+     <h3 class="padding-left">快捷操作</h3>
+    <foreach name="quick" item="v" >
+    <ul  class="list">
+        <li><a href="__MODULE__/{$v.execs}">{$v.n}</a></li>
+    </ul>
+    </foreach>
+</div>

@@ -1,0 +1,146 @@
+<layout name="layout" /><!--咨询审核客户推荐的下线页面-->
+<div class="panel  admin-panel">
+    <div class="body-content">
+
+        <if condition="$type eq  'eye' ">
+            <p class="red">
+            您已经审核过了，只可查看<br/>
+            审核状态：
+            <if condition="$info.state eq '2'">通过审核</if>
+            <if condition="$info.state eq '3'">未通过审核</if>
+            -- 审核时间：{$info.s_t}
+          </p>
+          <form  class="form-x" >
+        <else/>
+              <p class="red">审核通过后此客户为当前管理员的客户</p>
+        <form method="post" class="form-x" action="__CONTROLLER__/execEnsor">
+        </if>
+            <div class="form-group">
+                <div class="label">
+                    <label>推荐人姓名：</label>
+                </div>
+                <div class="field">
+                    <p class="input w50"  style="height:40px;">
+                        <a href="__MODULE__/Customer/update?id={$info.tid}" title="查看推荐人信息">{$info.t_n}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>客户手机号：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" name="phone"    value="{$info.phone}"/>
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>客户微信号：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" name="wx"    value="{$info.wx}"/>
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>客户姓名：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input w50" name="n"    value="{$info.n}"/>
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>年龄：</label>
+                </div>
+                <div class="field">
+                    <input type="number" class="input w50" name="age"  value="{$info.age}" data-validate="number:请输入数字"  value=""/>
+                    <div class="tips"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>客户性别：</label>
+                </div>
+                <div class="button-group radio">
+                    <if condition="$info.sex eq  '男' ">
+                        <label class="button">
+                            <input name="sex" value="女" type="radio">女
+                        </label>
+                        <label class="button active">
+                            <input name="sex" value="男" type="radio" checked="checked">男
+                        </label>
+                        <else/>
+                        <label class="button active">
+                            <input name="sex" value="女" type="radio" checked="checked">女
+                        </label>
+
+                        <label class="button">
+                            <input name="sex" value="男" type="radio">男
+                        </label>
+                    </if>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>推荐时间：</label>
+                </div>
+                <div class="field">
+                    <p  class="input w50">{$info.t}</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>备注信息：</label>
+                </div>
+                <div class="field">
+                    <textarea>{$info.remarks|str_slashes}</textarea>
+                </div>
+            </div>
+         <if condition="$type eq  'edit' ">
+          <hr/>
+            <input type="hidden" name="id" value="{$info.id}">
+            <input type="hidden" name="tid" value="{$info.tid}">
+            <div class="form-group">
+                <div class="label">
+                    <label>审核：</label>
+                </div>
+                <div class="button-group radio">
+                    <label class="button active">
+                        <input name="state" value="2" type="radio" checked="checked">通过
+                    </label>
+
+                    <label class="button">
+                        <input name="state" value="3" type="radio">未通过
+                    </label>
+                </div>
+             </div>
+
+            <div class="form-group">
+                <div class="label">
+                    <label>审核备注：</label>
+                </div>
+                <div class="field">
+                    <textarea name="descr">{$info.remarks|str_slashes}</textarea>
+                    <span>字符不得超过80个</span>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <div class="label">
+                        <label></label>
+                    </div>
+                    <div class="field">
+                        <button class="button bg-main" type="submit">保存提交</button>
+                        &nbsp;  &nbsp;  &nbsp;
+                        <button class="button bg-main" type="button" onclick="javascript :history.back(-1);">直接返回</button>
+                    </div>
+                </div>
+            </if>
+        </form>
+    </div>
+</div>

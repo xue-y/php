@@ -1,0 +1,207 @@
+<layout name="layout" /><!--客户列表页面-->
+<link rel="stylesheet" type="text/css" href="/Public/back/css/time.css">
+<script src="/Public/back/js/time.js"></script>
+<style>
+    .submit input{background: none; border:none;color:#f00;}
+    .submit:hover input{color:#fff;}
+</style>
+<div class="panel">
+<form method="post" action="__CONTROLLER__/del">
+  <div class="padding">
+      <ul class="search" style="padding-left:10px;">
+          <a class="button border-blue" href="__CONTROLLER__/add"><span class="icon-plus-square-o"></span>{$action_name.add}用户</a>
+          <a class="button border-red submit" href="javascript:;" ><span class="icon-trash-o"></span><input type="button"  value="批量{$action_name.del}" onclick="DelSelect($(this))"></a>
+
+          <div class="right">
+              <li>
+                  <select name="zx"  class="input"  style="width:150px; line-height:17px; display:inline-block" >
+                      <option value="-1">按咨询师搜索</option>
+                      <foreach name="all_zx" item="zx">
+                          <option value="{$zx.id}" >{$zx.u_name}</option>
+                      </foreach>
+                  </select>
+              </li>
+              <li>
+                  <input class="datainp input" id="inpstart" type="text" placeholder="开始日期" readonly>
+              </li>
+              <li><input class="datainp input" id="inpend" type="text" placeholder="结束日期" readonly></li>
+              <li>
+                  <input type="text" placeholder="请输入搜索姓名或手机号" name="keywords" class="input n" style="width:250px; line-height:17px;display:inline-block" />
+                  <a href="javascript:void(0)" class="button border-main icon-search" > 搜索</a></li>
+          </div>
+      </ul>
+  </div> 
+  <table class="table table-hover text-center">
+    <tr>
+
+      <th  width="10%" style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall"/>全选</th>
+      <th>客户名称名</th>
+      <th>手机号</th>
+      <th>微信<!--（ 是否验证 ）--></th>
+      <th>注册时间</th>
+      <th>操作</th>
+    </tr>
+   <tbody>
+  <notempty name="list">
+   <foreach name="list" item="v" >
+    <tr>
+       <td><input type="checkbox" name="id[]" value="{$v.id}" /></td>
+       <td>{$v.n}</td>
+       <td>{$v.phone}</td>
+       <td>{$v.wx}
+           <!--<if condition="$v.wx neq ''">
+                <eq name="v.is_wx" value="1">已激活<else/> 未激活</eq>
+           </if>-->
+       </td>
+       <td>{$v.t}</td>
+      <td>
+      <div class="button-group">
+        <egt name="v.money" value="1">
+          <a class="icon-folder-open-alt" href="__MODULE__/Money/index?id={$v.id}"> {$action_name.money}</a>
+        </egt>
+          &nbsp;
+       <if condition="$v.cid eq $uid"><!-- 只可咨询删除自己的客户-->
+           <a class="icon-edit" href="__MODULE__/Money/update?id={$v.id}"> {$action_name.moneyUate}</a>
+           <a class="icon-edit" href="__CONTROLLER__/update?id={$v.id}"> {$action_name.update}/ {$action_name.show}</a>
+           <a class="icon-trash-o" href="__CONTROLLER__/del?id={$v.id}" onclick="return confirm('您确定要删除吗?')"> {$action_name.del}</a>
+           <else/>
+           <a class="icon-eye-open" href="__CONTROLLER__/update?id={$v.id}"> {$action_name.show}</a>
+       </if>
+      </div>
+      </td>
+    </tr>
+   </foreach>
+   </notempty>
+  </tbody>  
+  </table>
+</form>
+   <notempty name="list"><ul class="pagelist"> {$page} <span>共 {$count} 个用户</span></ul></notempty>
+</div>
+<script type="text/javascript">
+    //时间插件
+    var start = {
+        dateCell: '#inpstart',
+        //      format: 'YYYY-MM-DD hh:mm',
+        format: 'YYYY-MM-DD',
+        minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+        festival:true,
+        maxDate: '2099-06-16 23:59:59', //最大日期
+        isTime: true,
+        choosefun: function(datas){
+            end.minDate = datas; //开始日选好后，重置结束日的最小日期
+        }
+    };
+    var end = {
+        dateCell: '#inpend',
+        //     format: 'YYYY-MM-DD hh:mm',
+        format: 'YYYY-MM-DD',
+        minDate: jeDate.now(0), //设定最小日期为当前日期
+        festival:true,
+        maxDate: '2099-06-16 23:59:59', //最大日期
+        isTime: true,
+        choosefun: function(datas){
+            start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+        },
+        okfun:function(val){alert(val)}
+    };
+    jeDate(start);
+    jeDate(end);
+
+    jeDate({
+        dateCell:"#textymdhms",
+        format:"YYYY-MM-DD hh:mm:ss",
+        //isinitVal:true,
+        isTime:true,
+        festival: true, //显示节日
+        minDate:"2015-09-19 00:00:00",
+        maxDate:"2019-09-19 00:00:00"
+    })
+
+    jeDate({
+        dateCell:"#texthms",
+        format:"hh:mm"
+    });
+
+    jeDate({
+        dateCell: '#testym',
+        isinitVal:true,
+        format: 'YYYY/MM', // 分隔符可以任意定义，该例子表示只显示年月
+        minDate: '2015-06-01', //最小日期
+        maxDate: '2017-06-01',  //最大日期
+        choosefun:function(val){alert(val)}
+    });
+    jeDate({
+        dateCell: '#testy',
+        isinitVal:true,
+        format: 'YYYY-MM-DD', // 分隔符可以任意定义，该例子表示只显示年月
+        minDate: '2010-06-01', //最小日期
+        maxDate: '2020-06-01' //最大日期
+    })
+    jeDate({
+        dateCell:"input.datep",
+        format:"YYYY-MM-DD hh:mm:ss",
+        minDate:"2015-09-19 00:00:00",
+        isinitVal:true,
+        isDisplay:true,
+        displayCell:".discls",
+        isTime:true,
+        festival: true //显示节日
+    })
+</script>
+<script  type="text/javascript">
+    $(".icon-search").click(function(){
+        //
+        var s="__CONTROLLER__/index?";
+        var t_start=$("#inpstart").val()
+        var t_end=$("#inpend").val()
+        var n=$(".n").val();
+        var zx=$(".search").find("select").eq(0).val();
+        if(t_start!='')
+        {
+            s+="t_start="+t_start+"&";
+        }
+        if(t_end!="")
+        {
+            s+="t_end="+t_end+"&";
+        }
+        if(n!="" && n!=undefined)
+        {
+            s+="key="+n+"&";
+        }
+        if(zx!="-1")
+        {
+            s+="zx="+zx+"&";
+        }
+        s=s.substring(0,s.length-1);
+        $(this).attr("href",s);
+    });
+
+    // 取得url 参数-- 必须当前页面调用否则无效
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+              //  theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+              theRequest[strs[i].split("=")[0]]=strs[i].split("=")[1];
+            }
+        }
+        return theRequest;
+    }
+    var Request = new Object();
+    Request = GetRequest();
+    // 选中搜索条件
+    $("#inpstart").val(Request['t_start']);
+    $("#inpend").val(Request['t_end']);
+    var zx_id=Request['zx'];
+
+    var zx_list=$("select option");
+    zx_list.each(function(i,ele){
+      if(zx_list.eq(i).val()==zx_id)
+      {
+          zx_list.eq(i).attr("selected",true);
+      }
+    });
+</script>

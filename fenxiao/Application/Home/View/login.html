@@ -1,0 +1,38 @@
+<layout name="layout" /><!--wx 端客户登录-->
+    <title>客户登录页面</title>
+</head>
+<body class="login">
+<h3>
+    登录
+</h3>
+  <form class="form-x" action="__CONTROLLER__/login"  method="post">
+      <div class="form-group">
+          <div class="field">
+              <input type="text" class="input w100" name="phone" placeholder="请输入手机号"  data-validate="mobile:请输入正确的手机号"  value='<present name="id">{$id}</present>' required=""/>
+              <div class="tips"></div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <div class="field">
+              <input type="password" class="input w100" name="pass" size="50" placeholder="请输入密码" data-validate="userp:密码6--12位字符英文 数字 .@ ! - _"  value="" required=""/>
+          </div>
+      </div>
+
+      <div class="form-group" >
+          <div class="field"  class="input-big"  >
+              <input   type="checkbox"  value="1" name="Long-term"/> 记住手机号
+              <!--<a  class="float-right" href="__MODULE__/Pass/index">忘记密码 使用微信找回</a>-->
+          </div>
+      </div>
+     <!--<p>微信授权登录</p>-->
+      <div class="form-group margin-large-top" >
+          <div class="field" style="text-align: center">
+              <button class="button bg-main" type="submit">登录</button>
+              &nbsp;  &nbsp;  &nbsp;
+              <input type="reset" value="重置" class="button bg-main" >
+          </div>
+      </div>
+
+  </form>
+

@@ -1,0 +1,31 @@
+<layout name="layout" />
+    <title>个人主页</title>
+</head>
+<body class="index-index">
+<h3>
+    我的主页--{$info.n} <a class="float-right" href="__MODULE__/Set/index">设置</a> <!--后期改为设置-->
+</h3>
+    <h2>
+        <img src="__PUBLIC__/back/images/user.png" width="70">
+        <div  style="font-size:18px;">
+        佣金金额：
+        <lt name="info.money" value="1">
+            暂无佣金
+            <p><a href="__MODULE__/Line/add">推荐好友赚佣金</a></p>
+            <else/>
+            {$info.money}
+        </lt>
+        </div>
+   </h2>
+    <p  class="text-center">佣金提现说明：<a href="__MODULE__/Zx/index">请联系您的咨询师</a></p>
+    <ul class="padding">
+
+        <li><a href="__MODULE__/Set/cusBase"><span class="icon-cog"></span> 基本信息</a></li>
+        <li><a href="__MODULE__/Line/index"><span  class="icon-star"></span> 我的推荐</a></li>
+        <li><a href="__MODULE__/Info/index?status=1"><span  class=" icon-bell"></span>
+            我的消息<egt name="meg" value="1"><sup>{$meg}</sup></egt>
+            </a></li>
+        <li><a href="__MODULE__/Set/index"><span class="icon-cogs"></span> 我的设置</a></li>
+        <li><a href="__MODULE__/Zx/index"><span class="icon-user"></span> 我的客服</a></li>
+    </ul>
+  <include file="Public:foot_nav" />

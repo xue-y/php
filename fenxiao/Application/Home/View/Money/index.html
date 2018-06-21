@@ -1,0 +1,35 @@
+<layout name="layout" />
+<title>我的佣金</title>
+</head>
+<body class="info-index">
+<h3>
+    <a  onclick="javascript :history.back(-1)" >←</a> | 我的佣金
+    <a  href="__MODULE__/Index/index" class="float-right">主页</a>
+</h3>
+
+<empty name="list">
+    <table class="table table-hover text-center">
+        <tr><td> 暂无佣金记录</td></tr>
+    </table>
+    <else />
+    <table class="table table-hover text-center">
+        <foreach name="list" item="v" >
+            <tr>
+                <td  class="text-right padding-right">
+                    <egt name="v.num" value="1">
+                        + {$v.num}
+                        <else/>
+                        {$v.num}
+                    </egt><br/>
+                    <span  style="color:#A0A0A0">余额：{$v.jine}</span>
+                    <br/>
+                    <i style="color:#A0A0A0;font-size: 13px">{$v.t}</i>
+                </td>
+                <td  width="60%">{$v.info|str_slashes}</td>
+            </tr>
+        </foreach>
+        <tr><td colspan="4">如对此账单有疑问,请联系<a href="__MODULE__/Zx/index">我的客服</a></td></tr>
+    </table>
+
+    <ul class="pagelist">    {$page} <span>共 {$count} 条消息</span></ul>
+</empty>

@@ -1,0 +1,29 @@
+<layout name="layout" />
+    <title>手机号</title>
+</head>
+<body class="cusBase">
+<h3>
+    <a    onclick="javascript :history.back(-1)" >←</a> | 手机号 <a class="float-right" href="__CONTROLLER__/index">设置</a>
+</h3>
+<form action="__CONTROLLER__/execPhone" method="post" >
+    <div class="form-group">
+        <div class="label">
+            <label class="x0-left">手机号：</label>
+        </div>
+        <div class="field">
+            <input type="text" class="input  x2-move x10" name="phone"  data-validate="mobile:请输入正确的手机号"  value="{$phone}"/>
+            <div class="tips"></div>
+        </div>
+    </div>
+    &nbsp;
+    <input type="hidden" name="id" value="{$id}">
+    <div class="form-group margin-large-top">
+        <div class="field" style="text-align: center">
+            <button class="button bg-main" type="submit">保存提交</button>
+            &nbsp;  &nbsp;  &nbsp;
+            <button class="button bg-main" type="button" onclick="javascript :history.back(-1);">直接返回</button>
+        </div>
+    </div>
+</form>
+
+<include file="Public:foot_nav" />

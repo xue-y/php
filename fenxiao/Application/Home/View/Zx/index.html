@@ -1,0 +1,14 @@
+<layout name="layout" />
+    <title>我的客服</title>
+</head>
+<body class="zx">
+<h3>
+    <a    onclick="javascript :history.back(-1)" >←</a> | 我的客服 <a class="float-right" href="__MODULE__/index/index">主页</a>
+</h3>
+<ul class="container">
+    <li> <span  class="float-left"> 姓 &nbsp; 名 : </span><span>{$info.u_name}</span></li>
+    <li> <span  class="float-left">手机号 : </span><span>{$info.phone}</span></li>
+    <li> <span  class="float-left">微信号 : </span><span>{$info.wx}</span></li>
+    <li> <span  class="float-left">个人说明 : </span><span>{$info.info|str_slashes}</span></li>
+</ul>
+<include file="Public:foot_nav" />

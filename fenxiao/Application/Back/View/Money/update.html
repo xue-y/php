@@ -1,0 +1,46 @@
+<layout name="layout" /><!--修改客户佣金页面-->
+<div class="panel  admin-panel">
+  <div class="body-content">
+   
+    <form method="post" class="form-x" action="__CONTROLLER__/execUate">
+
+        
+        <div class="form-group"><!--佣金修改-->
+            <div class="label">
+                <label>修改佣金：</label>
+            </div>
+            <div class="field">
+                <input type="text" class="input w50" name="money"  value=""  data-validate="currency:请输入+\-数字" />
+                <egt  name="info.money" value="1">
+                    &nbsp; [ {$info.money} ] <a href="moneyList?id={$info.id}" style="margin-top: 10px; display: inline-block">查询佣金记录</a>
+                 </egt> 
+                <div class="tips"></div>
+                 <p style="color:#666666" class="clear">  &nbsp;  减加佣金直接写要加减的数字即可 减 -3,加 3</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="label">
+                <label>佣金备注：</label>
+            </div>
+            <div class="field">
+                <textarea name="money_info"></textarea>&nbsp;
+                <span class="red" style="margin-top: 10px; display:block">如果修改佣金金额，请填写佣金操作说明，字符不得超过80个</span>
+            </div>
+        </div>
+
+     <input type="hidden" value="{$info.cid}" name="cid">
+     <input type="hidden" value="{$info.id}" name="id">
+     <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main" type="submit">保存提交</button>
+             &nbsp;  &nbsp;  &nbsp;
+         <button class="button bg-main" type="button" onclick="javascript :history.back(-1);">直接返回</button>
+        </div>
+     </div>
+    </form>
+  </div>
+</div>
+

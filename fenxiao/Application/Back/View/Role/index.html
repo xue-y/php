@@ -1,0 +1,57 @@
+<layout name="layout" /><!--角色列表页面-->
+        <style>
+            .submit input{background: none; border:none;color:#f00;}
+            .submit:hover input{color:#fff;}
+            .table{font-size:14px;}
+        </style>
+<div class="panel">
+  <form method="post" action="__CONTROLLER__/del">
+      <div class="padding">
+          <present name="is_admin">
+          <a class="button border-blue" href="__CONTROLLER__/add"><span class="icon-plus-square-o"></span>{$action_name.add}角色</a>
+          <a class="button border-red submit" href="javascript:;" ><span class="icon-trash-o"></span><input type="submit"  value="批量{$action_name.del}" ></a>
+         </present>
+      </div>
+      <table class="table table-hover text-center">
+        <tr><present name="is_admin">
+          <th  width="15%" style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall"/>全选</th>
+        </present>
+          <th width="15%">角色ID</th>
+          <th>角色名称</th>
+          <th>角色描述</th>
+          <th>权限</th>
+          <th>操作</th>
+        </tr>
+       <tbody>
+         <foreach name="list" item="v" >
+           <tr>
+           <present  name="is_admin"><td>
+               <neq name="r_id" value="$v.id">
+                 <input type="checkbox" name="id[]" value="{$v.id}" />
+               </neq>   <!--不显示当前超级管理员用户的角色 删除选框-->
+           </td>
+           </present >
+           <td>{$v.id}</td>
+           <td>{$v.n}</td>
+          <td>{$v.descr|mb_substr=###,0,20,'utf-8'}</td>
+          <td><a href="__MODULE__/Limit/index?id={$v.id}">查看权限</a> </td>
+          <td>
+          <div class="button-group">
+              <if condition="$is_admin eq 1"><!--如果登录用户是超级管理员-->
+                  <a class="icon-edit" href="__CONTROLLER__/update?id={$v.id}"> {$action_name.update}</a><!--自己所属的角色-->
+                  <neq name="r_id" value="$v.id">
+                      <a class="icon-trash-o" href="__CONTROLLER__/del?id={$v.id}" onclick="return confirm('您确定要删除吗?')"> {$action_name.del}</a>
+                  </neq><!--其他用户-->
+                  <else />
+                  <eq name="r_id" value="$v.id">
+                      <a class="icon-edit" href="__CONTROLLER__/update?id={$v.id}"> {$action_name.update}</a><!--自己所属的角色-->
+               </eq>
+              </if>
+          </div>
+          </td>
+        </tr>
+         </foreach>
+      </tbody>
+      </table>
+ </form>
+</div>
