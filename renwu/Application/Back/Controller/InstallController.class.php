@@ -68,6 +68,10 @@ class InstallController extends MyController{ //安装类文件
         $run_n='./Application/Runtime/';
         if(is_dir($run_n))
         {
+			$run_file=$run_n."common~runtime.php";
+			if(file_exists($run_file))   // 如果存在运行文件删除
+				@unlink($run_file);
+			
             $run=opendir($run_n);
             while(($run_f=readdir($run))!==FALSE)
             {
