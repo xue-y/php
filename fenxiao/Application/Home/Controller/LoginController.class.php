@@ -14,6 +14,9 @@ class LoginController extends Controller{
     // 进入登录
     public function sign()
     {
+		$id=null;
+        $s_pix=C('SESSION_PREFIX');
+		
         if(isset($_COOKIE[$s_pix.'phone']))
             $id=$_COOKIE[$s_pix.'phone'];
 
