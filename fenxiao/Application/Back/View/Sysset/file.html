@@ -1,0 +1,33 @@
+<layout name="layout" /> <!--文件管理-->
+<div class="panel admin-panel">
+    <div class="body-content">
+        <ul>
+            <notempty name="operate">
+                <foreach name="operate" item="v" >
+                    <li  class="button-big"><a href="javascript:;" onclick="clear_img('{$v.execs}','wximg')">{$v.n}</a></li>
+                </foreach>
+            </notempty>
+        </ul>
+    </div>
+</div>
+<script>
+    // 清理微信二维码图片
+    //action  操作方法
+    //dirimg 清理文件夹名称 ，相对于 public 文件夹
+    function clear_img(action,dirimg)
+    {
+        $.post('__CONTROLLER__/'+action,{'file':dirimg},function(data){
+            if(data!="ok")
+            {
+                alert(data);
+            }else
+            {
+                alert("删除完成");
+            }
+
+        }).error(function(xhr,errorCode,errorInfo){
+            console.log(errorCode);
+            console.log(errorInfo);
+        });
+    }
+</script>

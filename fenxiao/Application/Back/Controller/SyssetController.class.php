@@ -1,7 +1,9 @@
 <?php
 namespace Back\Controller;
 use My\MyController;
+
 class SyssetController extends MyController { // 系统设置
+   // 设置首页
     public function index(){
         $config=file_get_contents(APP_PATH.'Back/Conf/define.php');
         if(isset($_POST) && !empty($_POST))

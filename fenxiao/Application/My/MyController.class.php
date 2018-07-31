@@ -19,7 +19,6 @@ class MyController extends Controller {
 		{
 			$this->is_install(); // 验证是否安装过系统
 		}
-		
 
         if(!isset($_SESSION))
         {session_start();}
@@ -71,7 +70,7 @@ class MyController extends Controller {
 
         $bu_men=array("不受限","主管","咨询" ); // 公司部门
 
-        $class_allow="Login,Install,Pass";// 不用登录即可访问
+        $class_allow="Login,Install,Pass";// 不用登录即可访问的类
         $class_allow=explode(',',$class_allow);
         $class_refuse="Login,Install,Index,Main,Personal,Pass"; // 不用权限--只需登录或不登录都可访问
         $class_refuse=explode(',',$class_refuse);
@@ -114,7 +113,7 @@ class MyController extends Controller {
              if(!isset($_SESSION[$this->s_pix.'id']) || !isset($_SESSION[$this->s_pix.'n']) || !isset($_COOKIE[$this->s_pix.'token']))
              {
               //   $this->error('请先登录','/Back/Login/sign',3);
-              echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";
+              echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";exit;
              }
              $user=D('User');
              $info=$user->login_select($_SESSION[$this->s_pix.'id']);
@@ -123,7 +122,7 @@ class MyController extends Controller {
              {
 
                //  $this->error('请先登录','/Back/Login/sign',3);
-                echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";
+                echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";exit;
              }
          }
         if(CONTROLLER_NAME=="Login" && ACTION_NAME!="login_out")

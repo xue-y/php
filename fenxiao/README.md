@@ -60,7 +60,7 @@
 	安装完成建议 将 CONF_PATH 应用公共配置目录 中的注释去掉
 
 ##### 目录权限
-	#Application/Back/Cache/ 有写入读取权限 建议 755
+	#Application/Back/Cache/ 有写入读取权限 建议 777
 	#Application/Back/Conf/ 有写入读取权限 建议 777
 	#Application/Runtime/*  有写入读取权限 建议 777
 	#Application/Common/Conf/ 有写入读取权限 建议 777

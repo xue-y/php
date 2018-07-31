@@ -7,11 +7,10 @@
  */
 
 //服务器地址(URL)
-//http://wx.com/Public/wx_token.php
+//http://域名/Public/wx_token.php
 
 //定义TOKEN密钥
 define("TOKEN","loginzf");
-
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 

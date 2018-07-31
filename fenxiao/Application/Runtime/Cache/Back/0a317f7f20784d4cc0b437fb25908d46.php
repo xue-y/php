@@ -18,6 +18,7 @@
   <div class="head-l">
   <a class="button button-little bg-green" href="/Home/Login/sign" target="_blank" ><span class="icon-home"></span>&nbsp;前台首页</a>
   <a href="/Back/Personal/index" class="button button-little bg-blue" target="right"><span class="icon-user"></span> &nbsp;<?php echo ($n); ?> </a>
+  <a class="button button-little bg-yellow" onclick="clear_img('wximg')" href="#"><span class="icon-folder-open-alt"></span> 清理图片</a>
   <a class="button button-little bg-red" href="/Back/Login/login_out"><span class="icon-power-off"></span> 退出登录</a> </div>
 </div>
 <div class="leftnav">

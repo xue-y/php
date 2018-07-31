@@ -22,6 +22,16 @@ class LimitModel extends Model{
             if(file_exists($file_name))
             { return $file_name;}
             else{
+                // 判断权限配置文件夹写入权限
+                $admin_limit_dir=dirname(L_A_D_F);
+                if(!is_writable($admin_limit_dir))
+                {
+                   $is_w=@chmod(L_O_D_F,0777);
+                    if(!isset($is_w))
+                    {
+                        exit("读取权限文件失败");
+                    }
+                }
                 $limit_info=$this->order("pid asc,id asc")->select();
             }
         }else{//其他用户
@@ -31,6 +41,24 @@ class LimitModel extends Model{
             { return $file_name;}
             else
             {
+                // 判断权限配置文件夹写入权限
+                if(!is_dir(L_O_D_F))
+                {
+                    $is_d=@mkdir(L_O_D_F,0777);
+                    if(!isset($is_d))
+                    {
+                        exit("权限目录不存在");
+                    }
+                }
+                if(!is_writable(L_O_D_F))
+                {
+                    $is_w=@chmod(L_O_D_F,0777);
+                    if(!isset($is_w))
+                    {
+                        exit("读取权限文件失败");
+                    }
+                }
+
                 $w['id']  = array('in',$limit_id);
                 $limit_info=$this->where($w)->order("pid asc,id asc")->select();
             }
@@ -53,8 +81,7 @@ class LimitModel extends Model{
         file_put_contents($file_name,$con);
         if(!file_exists($file_name))
         {
-            return "系统繁忙2，请稍后再试";
-            $this->write_log("登录时写入权限文件失败---提示信息：系统繁忙，请稍后再试");
+            exit("系统繁忙，生成权限文件失败") ;
         }
         else
         { return $file_name;}
@@ -89,24 +116,32 @@ class LimitModel extends Model{
      * @parem $limit_id($string) 要查询的权限id 类型为字符串
      * @parem $is_all 是否取出全部 默认false 不取
      * */
-    public function select_limit_all($limit_id,$is_all=FALSE)
+    public function select_limit_all($limit_id,$is_all=FALSE,$r_id=null)
     {
         if(!isset($limit_id) || empty($limit_id))
         {
             echo "<script>alert('当前用户权限出错');window.location.href='/Back/Role/index'</script>";
             exit;
         }
-
         if(($limit_id=="-1" && $is_all==TRUE) ||  ($limit_id=="-1" && A_S_A==TRUE) )
         {
            $l_all=$this->order("pid asc,id asc")->select();  // 取得所有权限
         }else if($limit_id=="-1")
         {
+            // 判断 用户权限文件是否存在
+          /*  if(!file_exists(L_A_D_F) && isset($r_id))  // 超级管理员
+            {
+               $this->limit_all("-1",$r_id); // 生成权限文件
+            }*/
             $w["id"]=array("not in",DENY_L_ID); //禁止取出的权限
             $l_all=$this->where($w)->order("pid asc,id asc")->select();
         }
         else
         {  //------------------------根据权限ID取得权限
+           /* if(isset($r_id) && !file_exists(L_O_D_F.$r_id.".php")) // 判断权限文件是否存在
+            {
+                $this->limit_all("null",$r_id); // 生成权限文件
+            }*/
             $w["id"]=array("in",$limit_id);
             $l_all=$this->where($w)->order("pid asc,id asc")->select();
         }

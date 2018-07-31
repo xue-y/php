@@ -35,7 +35,6 @@ class RoleController extends MyController{  //角色
                 $list=$role->where("id=$r_id")->field("id,n,descr")->select();
             }
         }
-
         $this->assign(array(
             'list'=>$list,"r_id"=>$r_id,"is_admin"=>$is_admin
         ));
@@ -109,8 +108,10 @@ class RoleController extends MyController{  //角色
             }else       // 并且修改的是其他角色
             {
                 $allow=$role->limit_id($r_id); // 允许用户可以添加 修改的权限
+
                 $r_info=$role->find($g_id);
-                $s_l_a=$limit->select_limit_all($allow,FALSE); // 允许添加的的权限
+                $s_l_a=$limit->select_limit_all($allow,FALSE,$g_id); // 允许添加的的权限
+
                 $my_l2=array();
 
                 $my_l=$this->rid_lid($g_id,$r_info["limit_id"]);// 用当前拥有的权限
@@ -128,7 +129,7 @@ class RoleController extends MyController{  //角色
             $r_info=$role->field("id,n,descr")->find($r_id);
 
         }else{
-            $this->error("您没有权限修改此角色");
+           $this->error("您没有权限修改此角色");
         }
         $r_info=$this->str_slashes($r_info);
         $this->assign(array(

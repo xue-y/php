@@ -15,22 +15,22 @@
 <body>
 <ul class="bread  clearfix">
     <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
-    <li><a href="/Back/Index/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/Back/Index/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a href="/Back/Limit/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
+    <li><a href="/Back/Limit/index"><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
-<!--后台首页页面-->
+<!--角色列表页面-->
         <style>
-            ul.list{font-size:16px; margin-top: 10px;}
+            ul{margin-bottom: 20px;}
+            h4{padding-left: 40px; padding-top: 20px;}
+            h5{padding-left: 60px; margin-bottom: 5px}
+            .none{display: none}
+            .table{font-size:14px;}
         </style>
-<div class="padding-large">
-    <h2 >
-        <?php echo ($n); ?> 用户欢迎进入 <a><?php echo (WBE_NAME); ?></a>
-    </h2>
-     <h3 class="padding-left button-big">快捷操作</h3>
-    <?php if(is_array($quick)): foreach($quick as $key=>$v): ?><ul  class="list">
-        <li><a href="/Back/<?php echo ($v["execs"]); ?>"><?php echo ($v["n"]); ?></a></li>
-    </ul><?php endforeach; endif; ?>
+<div class="panel">
+         <?php foreach($s_l_a[0] as $k=>$v) { echo '<ul><h3>'.$v["n"].'</h3>'; foreach($s_l_a[1] as $kk=>$vv) { if($v["pid"]==$vv["pid"]) echo '<h4 class="clear">'.$vv["n"].'</h4>'; foreach($s_l_a[2] as $vvv) { if(stripos($vvv["execs"],$vv["execs"])!==FALSE && $vvv["pid"]==$v["pid"]) { if(stripos($vvv["execs"],"exec")===FALSE) { echo '<h5 class="float-left w50">'.$vvv["n"].'</h5>';} } } } echo '<hr/></ul>'; } ?>
+     <!-- </tbody>
+      </table>-->
 </div>
 
 <script type="text/javascript" src="/Public/back/js/arc_list.js"></script>

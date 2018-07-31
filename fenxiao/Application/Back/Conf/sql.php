@@ -161,7 +161,10 @@
 		(42, '客户佣金', 'money', 3),
 		(43, '佣金列表', 'money-index', 3),
 		(44, '修改佣金', 'money-update', 3),
-		(45, '修改佣金', 'money-execUate', 3)";
+		(45, '修改佣金', 'money-execUate', 3),
+        (46, '文件管理', 'file', 1),
+        (47, '文件管理首页', 'file-index', 1),
+        (48, '文件清理', 'file-file', 1)";
 		
 	$add_role="INSERT INTO `{$prefix}role`( `n`, `descr`, `limit_id`) VALUES ('超级管理员','拥有所有权限','-1')";// 添加角色数据
 	$add_user="INSERT INTO `{$prefix}user` (`u_name`, `u_pass`, `bumen`, `role_id`,`found`) VALUES ('$u_name','$u_pass', '$bu_men', 1,'00001')";// 添加管理员
