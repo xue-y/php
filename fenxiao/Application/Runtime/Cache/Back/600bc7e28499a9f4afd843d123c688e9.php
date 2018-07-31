@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>首页-<?php echo ($pos["c"]); ?></title>
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/admin.css">
-    <script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-    <script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/admin.css">
+    <script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 
 </head>
 <body>
 <ul class="bread  clearfix">
-    <li><a href="/wx/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
-    <li><a href="/wx/Back/Line/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/wx/Back/Line/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
+    <li><a href="/Back/Line/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
+    <li><a href="/Back/Line/index"><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--客户下线列表页面-->
@@ -25,7 +25,7 @@
     .submit:hover input{color:#fff;}
 </style>
 <div class="panel">
-    <form method="post" action="/wx/Back/Line/del">
+    <form method="post" action="/Back/Line/del">
         <div class="padding">
             <ul class="search" style="padding-left:10px;">
                 <div class="right">
@@ -78,9 +78,9 @@
                     <td><?php echo ($v["t"]); ?></td>
                     <td>
                         <div class="button-group">
-                            <?php if($v["state"] == '1' AND $v["cid"] == $u_id): ?><a class="icon-edit" href="/wx/Back/Line/censor?id=<?php echo ($v["id"]); ?>&type=edit"> 审核</a>
+                            <?php if($v["state"] == '1' AND $v["cid"] == $u_id): ?><a class="icon-edit" href="/Back/Line/censor?id=<?php echo ($v["id"]); ?>&type=edit"> 审核</a>
                                 <?php else: ?>
-                                <a class="icon-eye-open" href="/wx/Back/Line/censor?id=<?php echo ($v["id"]); ?>&type=eye"> 查看</a><?php endif; ?>
+                                <a class="icon-eye-open" href="/Back/Line/censor?id=<?php echo ($v["id"]); ?>&type=eye"> 查看</a><?php endif; ?>
                         </div>
                     </td>
                 </tr><?php endforeach; endif; ?>
@@ -92,7 +92,7 @@
 <script  type="text/javascript">
     $(".icon-search").click(function(){
         //
-        var s="/wx/Back/Line/index?";
+        var s="/Back/Line/index?";
         var state=$(".search").find("select").eq(0).val();
         var zx=$(".search").find("select").eq(1).val();
         var key=$(".search").find("select").eq(2).val();
@@ -151,5 +151,5 @@
 
 </script>
 
-<script type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 </body></html>

@@ -20,6 +20,7 @@ class WxController extends Controller{
     {
         header("Content-Type:text/html;charset=utf-8");
         parent:: __construct();
+        visit_num();// 限制用户频繁刷新页面
 
         if(!isset($_SESSION))
         {session_start();}

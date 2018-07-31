@@ -22,9 +22,13 @@ class SetController extends WxController{
     public function cusBase()
     {
         $cus=D("Customer");
-        $info=$cus->base($_SESSION[$this->s_pix.'id']);
+
+        $info=$cus->base($this->uid);
         // 客户推荐下线个数单独统计---客户资料表在客户添加删除下线时没有更新
         $info["sub_num"]=D("Line")->cus_sub_num($this->uid);;
+        $info["id"]=$this->uid;
+        $info["history"]=CONTROLLER_NAME.FEN_FU.ACTION_NAME;
+
         if(!empty($info))
         {
             $this->assign("info",$info);
@@ -57,7 +61,7 @@ class SetController extends WxController{
                 $this->error("您没有修改或修改失败");
             }else
             {
-                $this->success("修改成功",'index',30);
+                $this->success("修改成功",'index');
             }
         }else
         {
@@ -124,6 +128,9 @@ class SetController extends WxController{
     // 进入修改密码页面
     public function pass()
     {
+       // $this->assign("id",$this->uid);
+        $history=CONTROLLER_NAME.FEN_FU.ACTION_NAME;
+        $this->assign("history",$history);
         $this->display();
     }
 

@@ -31,10 +31,10 @@
     })();
 </script>
 
-<link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-<link type="text/css" rel="stylesheet" href="/wx/Public/home/home.css" >
-<script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-<script  type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
-<script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+<link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+<link type="text/css" rel="stylesheet" href="/Public/home/home.css" >
+<script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+<script  type="text/javascript" src="/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 </body>
 </html>

@@ -37,7 +37,7 @@
       <th  width="10%" style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall"/>全选</th>
       <th>客户名称名</th>
       <th>手机号</th>
-      <th>微信<!--（ 是否验证 ）--></th>
+      <th>微信（ 是否验证 ）</th>
       <th>注册时间</th>
       <th>操作</th>
     </tr>
@@ -48,10 +48,10 @@
        <td><input type="checkbox" name="id[]" value="{$v.id}" /></td>
        <td>{$v.n}</td>
        <td>{$v.phone}</td>
-       <td>{$v.wx}
-           <!--<if condition="$v.wx neq ''">
-                <eq name="v.is_wx" value="1">已激活<else/> 未激活</eq>
-           </if>-->
+       <td>{$v.wx} &nbsp;
+           <if condition="$v.wx neq ''">
+                <eq name="v.is_wx" value="1"><a><已验证></a><else/><a  style="color:#ee3333"><未验证><a></eq>
+           </if>
        </td>
        <td>{$v.t}</td>
       <td>

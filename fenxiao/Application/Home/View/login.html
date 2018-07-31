@@ -6,6 +6,7 @@
     登录
 </h3>
   <form class="form-x" action="__CONTROLLER__/login"  method="post">
+      <input type="hidden" value="{$history}" name="history">
       <div class="form-group">
           <div class="field">
               <input type="text" class="input w100" name="phone" placeholder="请输入手机号"  data-validate="mobile:请输入正确的手机号"  value='<present name="id">{$id}</present>' required=""/>
@@ -22,10 +23,10 @@
       <div class="form-group" >
           <div class="field"  class="input-big"  >
               <input   type="checkbox"  value="1" name="Long-term"/> 记住手机号
-              <!--<a  class="float-right" href="__MODULE__/Pass/index">忘记密码 使用微信找回</a>-->
+              <a  class="float-right" href="__MODULE__/Wx/index?state={$Think.WX_PASS}&history={$history}">忘记密码微信找回</a>
           </div>
       </div>
-     <!--<p>微信授权登录</p>-->
+     <p><a href="__MODULE__/Wx/index?state={$Think.WX_LOGIN}&history={$history}">微信授权登录</a></p>
       <div class="form-group margin-large-top" >
           <div class="field" style="text-align: center">
               <button class="button bg-main" type="submit">登录</button>

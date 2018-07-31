@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>首页-<?php echo ($pos["c"]); ?></title>
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/admin.css">
-    <script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-    <script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/admin.css">
+    <script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 
 </head>
 <body>
 <ul class="bread  clearfix">
-    <li><a href="/wx/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
-    <li><a href="/wx/Back/Customer/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/wx/Back/Customer/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
+    <li><a href="/Back/Customer/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
+    <li><a href="/Back/Customer/index"><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--客户列表页面-->
@@ -27,10 +27,10 @@
     .submit:hover input{color:#fff;}
 </style>
 <div class="panel">
-<form method="post" action="/wx/Back/Customer/del">
+<form method="post" action="/Back/Customer/del">
   <div class="padding">
       <ul class="search" style="padding-left:10px;">
-          <a class="button border-blue" href="/wx/Back/Customer/add"><span class="icon-plus-square-o"></span><?php echo ($action_name["add"]); ?>用户</a>
+          <a class="button border-blue" href="/Back/Customer/add"><span class="icon-plus-square-o"></span><?php echo ($action_name["add"]); ?>用户</a>
           <a class="button border-red submit" href="javascript:;" ><span class="icon-trash-o"></span><input type="button"  value="批量<?php echo ($action_name["del"]); ?>" onclick="DelSelect($(this))"></a>
 
           <div class="right">
@@ -56,7 +56,7 @@
       <th  width="10%" style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall"/>全选</th>
       <th>客户名称名</th>
       <th>手机号</th>
-      <th>微信<!--（ 是否验证 ）--></th>
+      <th>微信（ 是否验证 ）</th>
       <th>注册时间</th>
       <th>操作</th>
     </tr>
@@ -65,20 +65,20 @@
        <td><input type="checkbox" name="id[]" value="<?php echo ($v["id"]); ?>" /></td>
        <td><?php echo ($v["n"]); ?></td>
        <td><?php echo ($v["phone"]); ?></td>
-       <td><?php echo ($v["wx"]); ?>
-           <!--<?php if($v["wx"] != ''): if(($v["is_wx"]) == "1"): ?>已激活<?php else: ?> 未激活<?php endif; endif; ?>-->
+       <td><?php echo ($v["wx"]); ?> &nbsp;
+           <?php if($v["wx"] != ''): if(($v["is_wx"]) == "1"): ?><a><已验证></a><?php else: ?><a  style="color:#ee3333"><未验证><a><?php endif; endif; ?>
        </td>
        <td><?php echo ($v["t"]); ?></td>
       <td>
       <div class="button-group">
-        <?php if(($v["money"]) >= "1"): ?><a class="icon-folder-open-alt" href="/wx/Back/Money/index?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["money"]); ?></a><?php endif; ?>
+        <?php if(($v["money"]) >= "1"): ?><a class="icon-folder-open-alt" href="/Back/Money/index?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["money"]); ?></a><?php endif; ?>
           &nbsp;
        <?php if($v["cid"] == $uid): ?><!-- 只可咨询删除自己的客户-->
-           <a class="icon-edit" href="/wx/Back/Money/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["moneyUate"]); ?></a>
-           <a class="icon-edit" href="/wx/Back/Customer/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["update"]); ?>/ <?php echo ($action_name["show"]); ?></a>
-           <a class="icon-trash-o" href="/wx/Back/Customer/del?id=<?php echo ($v["id"]); ?>" onclick="return confirm('您确定要删除吗?')"> <?php echo ($action_name["del"]); ?></a>
+           <a class="icon-edit" href="/Back/Money/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["moneyUate"]); ?></a>
+           <a class="icon-edit" href="/Back/Customer/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["update"]); ?>/ <?php echo ($action_name["show"]); ?></a>
+           <a class="icon-trash-o" href="/Back/Customer/del?id=<?php echo ($v["id"]); ?>" onclick="return confirm('您确定要删除吗?')"> <?php echo ($action_name["del"]); ?></a>
            <?php else: ?>
-           <a class="icon-eye-open" href="/wx/Back/Customer/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["show"]); ?></a><?php endif; ?>
+           <a class="icon-eye-open" href="/Back/Customer/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["show"]); ?></a><?php endif; ?>
       </div>
       </td>
     </tr><?php endforeach; endif; endif; ?>
@@ -161,7 +161,7 @@
 <script  type="text/javascript">
     $(".icon-search").click(function(){
         //
-        var s="/wx/Back/Customer/index?";
+        var s="/Back/Customer/index?";
         var t_start=$("#inpstart").val()
         var t_end=$("#inpend").val()
         var n=$(".n").val();
@@ -216,5 +216,5 @@
     });
 </script>
 
-<script type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 </body></html>

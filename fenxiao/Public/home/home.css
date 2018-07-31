@@ -18,16 +18,17 @@ textarea {
     padding: 0px 12px;
 }
 .table th {
-    text-align: center; font-size: 15px;
+    text-align: center;    font-size: 15px;
     font-weight: normal;
 }
 .table th:nth-of-type(2){border-left: 1px solid #ddd;border-right: 1px solid #ddd;}
+
 .table td {
     vertical-align: middle;
 }
 .pagelist {
     padding: 20px 0;
-    text-align: center;
+    text-align: center;margin-bottom: 30px;
 }
 ul{ list-style: none;font-size:15px; line-height: 2em;}
 .fixed-bottom{max-width: 640px;width:100%; height: 50px; line-height: 50px;border-top:1px solid #d5d5d5; z-index: 9999; background-color: #fff; }
@@ -63,6 +64,7 @@ h3 a:hover{color:#d1edf8;}
 .index-index h2{ padding-top: 20px; text-align: center; height: 178px; line-height: 50px; background: url("../back/images/h-bg.jpg") 0px -50px;}
 .index-index li{border-bottom: 1px solid #efe7e7;margin-bottom: 20px; line-height: 2em;}
 .index-index .text-center{ line-height: 40px; background-color: #ececec;    box-shadow: 0 1px 1px 0 rgba(158,172,182,.1);}
+.index-index ul{margin-bottom: 30px;}
 .index-index ul a{color:#333; display: block;}
 .index-index ul a span{ margin-right: 10px;color:#03b6fd;font-size: 18px;}
 
@@ -72,6 +74,7 @@ h3 a:hover{color:#d1edf8;}
 /*line-index*/
 .line-index{ overflow: hidden;}
 .line-index  .submit{ border:none; background: none; font-weight: normal;color:#0099FF}
+.line-index  p:hover {background-color:#f9f9f9;}
 
 /* wx duan tiao zhuan tisp*/
 .no-skin  .error-container{ background:#fff; border:1px solid #0ae;  text-align:center; width:80%; margin:15% auto; font-family:Microsoft Yahei; padding-bottom:20px; border-top-left-radius:5px; border-top-right-radius:5px;  }

@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
             <title>登录</title>
-    <link rel="stylesheet" href="/wx/Public/back/css/pintuer.css" type="text/css">
-            <link rel="stylesheet" href="/wx/Public/back/css/admin.css" type="text/css">
-            <script src="/wx/Public/back/js/jquery.js" type="text/javascript"></script>
-    <script src="/wx/Public/back/js/pintuer.js"  type="text/javascript"></script>
+    <link rel="stylesheet" href="/Public/back/css/pintuer.css" type="text/css">
+            <link rel="stylesheet" href="/Public/back/css/admin.css" type="text/css">
+            <script src="/Public/back/js/jquery.js" type="text/javascript"></script>
+    <script src="/Public/back/js/pintuer.js"  type="text/javascript"></script>
     <script>
      $(function(){
          $('input[type=button]').click(function(){
              $.ajax({
                  type:"POST",
-                 url:"/wx/Back/Login/login",  //Login/login
+                 url:"/Back/Login/login",  //Login/login
                  data:$('form').serialize(),
                  success: function(data,status,xhr){
                     console.log(status);
 
                      if(data=="okok")
-                     { window.location.href="/wx/Back/Main/index";}
+                     { window.location.href="/Back/Main/index";}
                      else
                      {
                          alert(data);
@@ -63,14 +63,14 @@
                     <div class="form-group">
                         <div class="field code">
                             <input type="text" class="input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码,code:请填写正确的5位 验证码"/>
-                           <img src="/wx/Back/Login/verify"  width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src='/wx/Back/Login/verify?r='+Math.random()"  title="验证码仅此一次有效，输入错误后请点击刷新">
+                           <img src="/Back/Login/verify"  width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src='/Back/Login/verify?r='+Math.random()"  title="验证码仅此一次有效，输入错误后请点击刷新">
                         </div>
                         <i style="font-size:12px;color:#666666">验证码仅此一次有效，输入错误后请点击图片刷新 <?php echo ($code); ?></i>
                     </div>
                     <div class="form-group" >
                         <div class="field"  class="input-big"  >
                             <input   type="checkbox"  value="1" name="Long-term"/> 记住编号
-                            <a  class="float-right" href="/wx/Back/Pass/index">忘记密码</a>
+                            <a  class="float-right" href="/Back/Pass/index">忘记密码</a>
                         </div>
                     </div>
                 </div>

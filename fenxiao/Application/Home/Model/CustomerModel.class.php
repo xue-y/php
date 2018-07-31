@@ -20,7 +20,7 @@ class CustomerModel extends Model {
         /* array('phone','/^1(\d){10}$/','请输入正确的手机号','regex'), // 客户端设置--客户修改手机号时不起作用
        */
         array('age','/^\d{1,3}$/','用户年龄必须是数字',2,'regex'),
-        array('money','/^\d+$/','请输入数字',2,'regex'),
+    //    array('money','/^\d+$/','请输入数字',2,'regex'),
         array('n','/^[\s\S]{2,15}$/i','用户名2--5位',2,'regex'),
         array('wx','/^[\s\S]{3,60}$/','微信号字符长度3--20个字符',2,'regex'),
         array('old_pass','/^([\w\.\@\!\-\_]){6,12}$/i','原密码6--12位数字、英文 . ! @ - _',2,'regex'),
@@ -54,7 +54,7 @@ class CustomerModel extends Model {
      * */
     public function money_n($id)
     {
-        return $this->field("money,n")->find($id);
+        return $this->field("money,n,headimg")->find($id);
     }
 
     /***根据客户id 取得客户 基本信息
@@ -63,7 +63,7 @@ class CustomerModel extends Model {
      * */
     public function base($id)
     {
-        return $this->field("age,n,sex,wx,id")->find($id);
+        return $this->field("age,n,sex,wx,id,is_wx")->find($id);
     }
 
     /** 根据客户id 取得自己咨询的id
@@ -107,6 +107,30 @@ class CustomerModel extends Model {
         return $this->alias("a")->where($w)->field("b.phone,b.wx,b.info,c.u_name")
             ->join("__USER__ as c ON c.id=a.cid")
             ->join("__USER_FJ__ as b ON b.id=a.cid")->find();
+    }
+
+    /** 判断数据库中是否有用户的openid
+     * @parem 用户的openid
+     * @return type arr
+     * */
+    public function openid_is($openid)
+    {
+        $w["a.openid"]=array("eq",$openid);
+        $w["b.is_del"]=array("neq",1);
+        return $this->alias("a")->where($w)->field("a.id,a.n,a.headimg,b.phone")
+            ->join("__CUS_BASE__ as b ON a.id=b.id")->find();
+    }
+
+    /** 根据用户 id 取得用户信息
+     * @parem $id 用户的id
+     * @return type arr
+     * */
+    public function id_is($id)
+    {
+        $w["a.id"]=array("eq",$openid);
+        $w["b.is_del"]=array("neq",1);
+        return $this->alias("a")->where($w)->field("a.n,a.headimg,b.phone")
+            ->join("__CUS_BASE__ as b ON a.id=b.id")->find();
     }
 
 

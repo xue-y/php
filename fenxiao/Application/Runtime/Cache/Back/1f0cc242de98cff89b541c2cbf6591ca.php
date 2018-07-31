@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>首页-<?php echo ($pos["c"]); ?></title>
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/admin.css">
-    <script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-    <script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/admin.css">
+    <script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 
 </head>
 <body>
 <ul class="bread  clearfix">
-    <li><a href="/wx/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
-    <li><a href="/wx/Back/User/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/wx/Back/User/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
+    <li><a href="/Back/User/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
+    <li><a href="/Back/User/index"><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--用户列表页面-->
@@ -25,12 +25,12 @@
     .submit:hover input{color:#fff;}
 </style>
 <div class="panel">
-<form method="post" action="/wx/Back/User/del">
+<form method="post" action="/Back/User/del">
   <div class="padding">
       <ul class="search" style="padding-left:10px;">
           <!-- 超级管理员 或普通管理员可以操作用户 -->
           <?php if($u_id==$a_id || $u_role_id==P_R_ID) { ?>
-          <a class="button border-blue" href="/wx/Back/User/add"><span class="icon-plus-square-o"></span><?php echo ($action_name["add"]); ?>用户</a>
+          <a class="button border-blue" href="/Back/User/add"><span class="icon-plus-square-o"></span><?php echo ($action_name["add"]); ?>用户</a>
           <a class="button border-red submit" href="javascript:;" ><span class="icon-trash-o"></span><input type="submit"  value="批量<?php echo ($action_name["del"]); ?>" ></a>
           <?php } ?>
           <div class="right">
@@ -80,18 +80,18 @@
        <?php } ?>
        <?php if(($u_id) == $a_id): ?><td><?php echo ($v["id"]); ?></td><?php endif; ?>
        <td><?php echo ($v["u_name"]); ?></td>
-      <td><a href="/wx/Back/User/index?bumen=<?php echo ($v["bumen"]); ?>"><?php echo ($v["bumen"]); ?></a></td>
-       <?php if(is_array($role_n)): foreach($role_n as $key=>$role): if(($role["id"]) == $v["role_id"]): ?><td><a href="/wx/Back/User/index?role=<?php echo ($role["id"]); ?>"><?php echo ($role["n"]); ?></a></td><?php endif; endforeach; endif; ?>
+      <td><a href="/Back/User/index?bumen=<?php echo ($v["bumen"]); ?>"><?php echo ($v["bumen"]); ?></a></td>
+       <?php if(is_array($role_n)): foreach($role_n as $key=>$role): if(($role["id"]) == $v["role_id"]): ?><td><a href="/Back/User/index?role=<?php echo ($role["id"]); ?>"><?php echo ($role["n"]); ?></a></td><?php endif; endforeach; endif; ?>
       <td>
       <?php if(is_array($found)): foreach($found as $key=>$fv): if(($fv["id"]) == $v["found"]): echo ($fv["u_name"]); endif; endforeach; endif; ?>
       </td>
       <td>
       <div class="button-group">
       <?php if($u_id==$a_id || $u_role_id==P_R_ID) { ?>
-       <a class="icon-edit" href="/wx/Back/User/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["update"]); ?></a>
-          <?php if(($u_id) != $v["id"]): ?><a class="icon-trash-o" href="/wx/Back/User/del?id=<?php echo ($v["id"]); ?>" onclick="return confirm('您确定要删除吗?')"> <?php echo ($action_name["del"]); ?></a><?php endif; ?>
+       <a class="icon-edit" href="/Back/User/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["update"]); ?></a>
+          <?php if(($u_id) != $v["id"]): ?><a class="icon-trash-o" href="/Back/User/del?id=<?php echo ($v["id"]); ?>" onclick="return confirm('您确定要删除吗?')"> <?php echo ($action_name["del"]); ?></a><?php endif; ?>
        <?php }else{ ?>
-      <?php if(($u_id) == $v["id"]): ?><a class="icon-edit" href="/wx/Back/User/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["update"]); ?></a>
+      <?php if(($u_id) == $v["id"]): ?><a class="icon-edit" href="/Back/User/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["update"]); ?></a>
           <?php else: ?>
         <span class="color:#666">不可操作</span><?php endif; ?>
      <?php } ?>
@@ -106,7 +106,7 @@
 <script>
     $(".icon-search").click(function(){
 
-        var s="/wx/Back/User/index?";
+        var s="/Back/User/index?";
 
         var bumen=$("select").eq(0).val();
         var role=$("select").eq(1).val();
@@ -135,5 +135,5 @@
 
 </script>
 
-<script type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 </body></html>

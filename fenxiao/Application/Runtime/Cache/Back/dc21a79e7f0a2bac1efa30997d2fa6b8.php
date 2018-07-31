@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>首页-<?php echo ($pos["c"]); ?></title>
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/admin.css">
-    <script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-    <script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/admin.css">
+    <script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 
 </head>
 <body>
 <ul class="bread  clearfix">
-    <li><a href="/wx/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
-    <li><a href="/wx/Back/Recovery/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/wx/Back/Recovery/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
+    <li><a href="/Back/Recovery/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
+    <li><a href="/Back/Recovery/index"><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--客户回收站列表页面-->
@@ -78,9 +78,9 @@
       <div class="button-group">
 
        <?php if($v["cid"] == $uid): ?><!-- 只可咨询删除自己的客户-->
-           <a class="icon-reply" href="/wx/Back/Recovery/restore?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["restore"]); ?></a>
+           <a class="icon-reply" href="/Back/Recovery/restore?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["restore"]); ?></a>
            &nbsp;
-           <a class="icon-trash-o" href="/wx/Back/Recovery/del?id=<?php echo ($v["id"]); ?>" onclick="return confirm('您确定要删除吗?')"> <?php echo ($action_name["del"]); ?></a><?php endif; ?>
+           <a class="icon-trash-o" href="/Back/Recovery/del?id=<?php echo ($v["id"]); ?>" onclick="return confirm('您确定要删除吗?')"> <?php echo ($action_name["del"]); ?></a><?php endif; ?>
       </div>
       </td>
     </tr><?php endforeach; endif; ?>
@@ -163,7 +163,7 @@
 <script  type="text/javascript">
     $(".icon-search").click(function(){
         //
-        var s="/wx/Back/Recovery/index?";
+        var s="/Back/Recovery/index?";
         var t_start=$("#inpstart").val()
         var t_end=$("#inpend").val()
         var n=$(".n").val();
@@ -228,7 +228,7 @@
         if (Checkbox){
             var t=confirm("您确认要删除选中的内容吗？");
             if (t!=true) return false;
-            $("form").attr("action","/wx/Back/Recovery/"+url);
+            $("form").attr("action","/Back/Recovery/"+url);
             th.attr("type","submit");
         }
         else{
@@ -239,5 +239,5 @@
 
 </script>
 
-<script type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 </body></html>

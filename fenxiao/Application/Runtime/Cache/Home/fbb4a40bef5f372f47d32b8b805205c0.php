@@ -9,9 +9,9 @@
 </head>
 <body class="cusBase">
 <h3>
-    <a    onclick="javascript :history.back(-1)" >←</a> | 手机号 <a class="float-right" href="/wx/Home/Set/index">设置</a>
+    <a    onclick="javascript :history.back(-1)" >←</a> | 手机号 <a class="float-right" href="/Home/Set/index">设置</a>
 </h3>
-<form action="/wx/Home/Set/execPhone" method="post" >
+<form action="/Home/Set/execPhone" method="post" >
     <div class="form-group">
         <div class="label">
             <label class="x0-left">手机号：</label>
@@ -33,16 +33,16 @@
 </form>
 
 <div class="fixed-bottom"> <!-- 只可在 Info 控制器中使用-->
-    <a href="/wx/Home/Money/index">¥ 佣金</a>
+    <a href="/Home/Money/index">¥ 佣金</a>
     <a href="http://m.caoboshi.cn/" class=" icon-gift"> 项目</a>
-    <a href="/wx/Home/Line/index" class="icon-star-empty"> 推荐</a>
-    <a href="/wx/Home/Info/index?status=1" class="icon-bell-alt"> 我的
+    <a href="/Home/Line/index" class="icon-star-empty"> 推荐</a>
+    <a href="/Home/Info/index?status=1" class="icon-bell-alt"> 我的
         <?php if(($meg) >= "1"): ?><sup><?php echo ($meg); ?></sup><?php endif; ?></a>
 </div>
-<link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-<link type="text/css" rel="stylesheet" href="/wx/Public/home/home.css" >
-<script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-<script  type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
-<script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+<link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+<link type="text/css" rel="stylesheet" href="/Public/home/home.css" >
+<script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+<script  type="text/javascript" src="/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 </head>
 <body class="cusBase">
 <h3>
-    <a    onclick="javascript :history.back(-1)" >←</a> | 基本信息 <a class="float-right" href="__CONTROLLER__/index">设置</a>
+    <a onclick="javascript :history.back(-1)" >←</a> | 基本信息 <a class="float-right" href="__CONTROLLER__/index">设置</a>
 </h3>
 <form action="__CONTROLLER__/execBase" method="post">
     <div class="form-group">
@@ -56,7 +56,18 @@
             <label class="x0-left">微信号：</label>
         </div>
         <div class="field">
-            <input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value="{$info.wx}"/>
+            <empty name="info.wx">
+                <input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value=""
+                        placeholder="请设置微信号用于微信登录或找回密码"/>
+                <else />
+                <input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value="{$info.wx}"/>
+
+                <neq name="info.is_wx" value="1">
+                    <a href="__MODULE__/Wx/index?state={$Think.WX_VALIWX}_{$info.id}&history={$info.history}"  class="clear" style="margin-left:10%;padding-top:5px; display: block">
+                        &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 请验证微信用于微信登录或找回密码</a>
+                </neq>
+            </empty>
+
             <div class="tips"></div>
         </div>
     </div>
@@ -68,7 +79,7 @@
         <div class="field">
             <p  class="input  x2-move x10" readonly >
                 <lt  name="info.sub_num" value="1">
-                    暂无下线<a href="__MODULE__/Line/add">现在去推荐</a>
+                    暂无下线<a href="__MODULE__/Line/add"> 现在去推荐 </a>
                     <else/>
                     <a href="__MODULE__/Line/index">{$info.sub_num} 个</a>
                 </lt>

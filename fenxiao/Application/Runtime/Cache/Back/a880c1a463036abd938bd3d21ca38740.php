@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>首页-<?php echo ($pos["c"]); ?></title>
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/admin.css">
-    <script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-    <script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/admin.css">
+    <script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 
 </head>
 <body>
 <ul class="bread  clearfix">
-    <li><a href="/wx/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
-    <li><a href="/wx/Back/Personal/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/wx/Back/Personal/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
+    <li><a href="/Back/Personal/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
+    <li><a href="/Back/Personal/index"><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--管理员个人信息页面-->
@@ -53,7 +53,7 @@
         </div>
         <div class="form-group">
              <label class="label">用户角色：</label>
-             <p><a class="input w50" href="/wx/Back/Limit/index?id=<?php echo ($info["role_id"]); ?>" title="查看权限"><?php echo ($info["role_n"]); ?></a></p>
+             <p><a class="input w50" href="/Back/Limit/index?id=<?php echo ($info["role_id"]); ?>" title="查看权限"><?php echo ($info["role_n"]); ?></a></p>
         </div>
     <!--  附加表信息  -->
     <?php if(!empty($u_fj)): ?>&nbsp;
@@ -80,7 +80,7 @@
                 <label>消息个数：</label>
             </div>
             <div class="field">
-                <p class="input w50"  readonly><a href="/wx/Back/Line/index"><?php echo ($u_fj["meg"]); ?></a></p>
+                <p class="input w50"><a href="/Back/Line/index"><?php echo ($u_fj["meg"]); ?></a></p>
                 <div class="tips"></div>
             </div>
         </div>
@@ -136,7 +136,7 @@
                     if (mail)//如果返回的有内容
                     {
                       //  alert("邮件稍后发送您的邮箱，请验证")
-                        $.post("/wx/Back/Personal/email",{"id":id,"mail":mail},function(data){
+                        $.post("/Back/Personal/email",{"id":id,"mail":mail},function(data){
 
                             if(data=="ok")
                             {
@@ -157,7 +157,7 @@
                         $('.email_ver_info').find("span").text('');
                     }
                     // 发送邮件 id 用户ID email 用户邮箱 state 绑定1、解除0
-                    $.post("/wx/Back/Personal/emailSend",{'id':id,'mail':mail,'state':state},function(data){
+                    $.post("/Back/Personal/emailSend",{'id':id,'mail':mail,'state':state},function(data){
                       //  console.log(data)  // 取得发送邮件后是否成功
                         ver_eid(data); //验证 用户ID 邮箱返回信息
                         console.log(data);
@@ -275,5 +275,5 @@
     </script>
 
 
-<script type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 </body></html>

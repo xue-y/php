@@ -90,7 +90,8 @@ class MyController extends Controller {
             "del"=>"删除",
             "restore"=>"还原",
             "show"=>"查看",
-			"moneyUate"=>"修改佣金"
+			"moneyUate"=>"佣金",
+            "money"=>"佣金"
         );
         $data=array(
             "class_refuse"=>$class_refuse,

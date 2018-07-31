@@ -11,7 +11,8 @@
 <h3>
     登录
 </h3>
-  <form class="form-x" action="/wx/Home/Login/login"  method="post">
+  <form class="form-x" action="/Home/Login/login"  method="post">
+      <input type="hidden" value="<?php echo ($history); ?>" name="history">
       <div class="form-group">
           <div class="field">
               <input type="text" class="input w100" name="phone" placeholder="请输入手机号"  data-validate="mobile:请输入正确的手机号"  value='<?php if(isset($id)): echo ($id); endif; ?>' required=""/>
@@ -28,10 +29,10 @@
       <div class="form-group" >
           <div class="field"  class="input-big"  >
               <input   type="checkbox"  value="1" name="Long-term"/> 记住手机号
-              <!--<a  class="float-right" href="/wx/Home/Pass/index">忘记密码 使用微信找回</a>-->
+              <a  class="float-right" href="/Home/Wx/index?state=<?php echo (WX_PASS); ?>&history=<?php echo ($history); ?>">忘记密码微信找回</a>
           </div>
       </div>
-     <!--<p>微信授权登录</p>-->
+     <p><a href="/Home/Wx/index?state=<?php echo (WX_LOGIN); ?>&history=<?php echo ($history); ?>">微信授权登录</a></p>
       <div class="form-group margin-large-top" >
           <div class="field" style="text-align: center">
               <button class="button bg-main" type="submit">登录</button>
@@ -43,10 +44,10 @@
   </form>
 
 
-<link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-<link type="text/css" rel="stylesheet" href="/wx/Public/home/home.css" >
-<script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-<script  type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
-<script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+<link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+<link type="text/css" rel="stylesheet" href="/Public/home/home.css" >
+<script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+<script  type="text/javascript" src="/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 </body>
 </html>

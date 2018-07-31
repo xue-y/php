@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>页面跳转提示页面</title>
-    <link rel="stylesheet" href="/wx/Public/back/css/pintuer.css">
+    <link rel="stylesheet" href="/Public/back/css/pintuer.css">
     <style type="text/css">
         *{ margin:0px; padding:0px;}
         .error-container{ background:#fff; border:1px solid #0ae;  text-align:center; width:450px; margin:250px auto; font-family:Microsoft Yahei; padding-bottom:30px; border-top-left-radius:5px; border-top-right-radius:5px;  }

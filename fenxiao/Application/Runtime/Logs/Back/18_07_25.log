@@ -1,0 +1,214 @@
+[2018-07-25 11:09:28] 127.0.0.1 /Back/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined index: my_id D:\phpStudy\WWW\fenxiao\Application\My\MyController.class.php 第 119 行.
+SQL: SELECT `u_name`,`times` FROM `self_user` LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: my_id D:\phpStudy\WWW\fenxiao\Application\My\MyController.class.php 第 120 行.
+NOTIC: [8] Undefined index: my_n D:\phpStudy\WWW\fenxiao\Application\My\MyController.class.php 第 121 行.
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0060s ]
+
+[2018-07-25 11:09:29] 127.0.0.1 /Back/Login/sign
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: code D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\d969c12762d65e2769541579706f2981.php 第 68 行.
+
+[2018-07-25 11:09:29] 127.0.0.1 /Back/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-07-25 11:09:37] 127.0.0.1 /Back/Login/verify?r=0.5680222126613621
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-07-25 11:09:44] 127.0.0.1 /Back/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: SELECT * FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `self_user` SET `times`='1532488184' WHERE ( id=00001 ) [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0040s ]
+SQL: SELECT `limit_id` FROM `self_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_limit` [ RunTime:0.0040s ]
+
+[2018-07-25 11:09:44] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0030s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `limit_id` FROM `self_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `self_user_fj` [ RunTime:0.0050s ]
+SQL: SELECT `meg` FROM `self_user_fj` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-07-25 11:09:44] 127.0.0.1 /Back/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_limit` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `self_limit` WHERE `execs` <> '' AND `pid` = 3  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_user_fj` [ RunTime:0.0030s ]
+SQL: SELECT `meg` FROM `self_user_fj` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-07-25 11:09:47] 127.0.0.1 /Back/Sysset/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0040s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `limit_id` FROM `self_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_limit` [ RunTime:0.0040s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'sysset' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'sysset-index' LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-07-25 11:24:35] 127.0.0.1 /Back/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0040s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `limit_id` FROM `self_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_limit` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `self_limit` ORDER BY pid asc,id asc  [ RunTime:0.0010s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'user' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'user-index' LIMIT 1   [ RunTime:0.0000s ]
+SQL: select self_user.id from self_user,self_role where self_user.id=self_user.found and self_role.id=self_user.role_id and self_role.limit_id=-1 [ RunTime:0.0010s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_user` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`u_name`,`bumen`,`role_id`,`found` FROM `self_user` LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SELECT `n`,`id` FROM `self_role`  [ RunTime:0.0000s ]
+SQL: select `id`,`u_name` from `self_user` where `id` in ( SELECT `found` FROM self_user GROUP BY `found`) [ RunTime:0.0010s ]
+
+[2018-07-25 11:24:37] 127.0.0.1 /Back/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0040s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `limit_id` FROM `self_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_limit` [ RunTime:0.0040s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'user' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'user-index' LIMIT 1   [ RunTime:0.0000s ]
+SQL: select self_user.id from self_user,self_role where self_user.id=self_user.found and self_role.id=self_user.role_id and self_role.limit_id=-1 [ RunTime:0.0000s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_user` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`u_name`,`bumen`,`role_id`,`found` FROM `self_user` LIMIT 0,10   [ RunTime:0.0000s ]
+SQL: SELECT `n`,`id` FROM `self_role`  [ RunTime:0.0000s ]
+SQL: select `id`,`u_name` from `self_user` where `id` in ( SELECT `found` FROM self_user GROUP BY `found`) [ RunTime:0.0010s ]
+
+[2018-07-25 11:24:41] 127.0.0.1 /Back/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+ERR: 非法操作:sign
+
+[2018-07-25 11:24:47] 127.0.0.1 /Back/Login/sign
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0030s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: code D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\d969c12762d65e2769541579706f2981.php 第 68 行.
+
+[2018-07-25 11:24:47] 127.0.0.1 /Back/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-07-25 11:24:47] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0050s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0050s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `limit_id` FROM `self_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `self_user_fj` [ RunTime:0.0040s ]
+SQL: SELECT `meg` FROM `self_user_fj` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+
+[2018-07-25 11:24:47] 127.0.0.1 /Back/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0050s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_limit` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `self_limit` WHERE `execs` <> '' AND `pid` = 3  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_user_fj` [ RunTime:0.0040s ]
+SQL: SELECT `meg` FROM `self_user_fj` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-07-25 11:24:52] 127.0.0.1 /Back/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `self_user` [ RunTime:0.0040s ]
+SQL: SELECT `u_name`,`times` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `self_role` [ RunTime:0.0040s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `limit_id` FROM `self_role` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_limit` [ RunTime:0.0030s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'user' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `n` FROM `self_limit` WHERE `execs` = 'user-index' LIMIT 1   [ RunTime:0.0000s ]
+SQL: select self_user.id from self_user,self_role where self_user.id=self_user.found and self_role.id=self_user.role_id and self_role.limit_id=-1 [ RunTime:0.0010s ]
+SQL: SELECT `role_id` FROM `self_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_user` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `id`,`u_name`,`bumen`,`role_id`,`found` FROM `self_user` LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SELECT `n`,`id` FROM `self_role`  [ RunTime:0.0000s ]
+SQL: select `id`,`u_name` from `self_user` where `id` in ( SELECT `found` FROM self_user GROUP BY `found`) [ RunTime:0.0010s ]
+
+[2018-07-25 11:27:36] 127.0.0.1 /Back/Login/login_out
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-07-25 11:27:36] 127.0.0.1 /Back/Login/sign
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: code D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\d969c12762d65e2769541579706f2981.php 第 68 行.
+
+[2018-07-25 11:27:36] 127.0.0.1 /Back/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+

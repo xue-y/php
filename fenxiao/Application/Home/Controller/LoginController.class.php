@@ -8,23 +8,25 @@
  */
 
 namespace Home\Controller;
-use My\WxController;
 use Think\Controller;
 
 class LoginController extends Controller{
     // 进入登录
     public function sign()
     {
+        if(isset($_COOKIE[$s_pix.'phone']))
+            $id=$_COOKIE[$s_pix.'phone'];
 
-        $s_pix=C('SESSION_PREFIX');
-        if(isset($_SESSION[$s_pix.'phone']))
-            $id=$_SESSION[$s_pix.'phone'];
-        else
+        // 记录用从哪个页面跳转过来的
+        if(isset($_GET["history"]) && !empty($_GET["history"]))
         {
-            if(isset($_COOKIE[$s_pix.'phone']))
-                $id=$_COOKIE[$s_pix.'phone'];
+            $old_url=$_GET["history"];
+        }else
+        {
+            $old_url="";
         }
-        $this->assign("id",$id);
+
+        $this->assign(array("id"=>$id,"history"=>$old_url));  // 用户带上 history
         $this->sign_is_login(); // 如果已经登录直接跳转个人主页
         $this->display("/login");
     }
@@ -47,19 +49,26 @@ class LoginController extends Controller{
 
            $s_pix=C('SESSION_PREFIX');
 
-           $this->de_session($s_pix); //销毁登录的session
+           de_session($s_pix); //销毁登录的session
 
            $_SESSION[$s_pix.'login_status']=1; // 登录状态
            $_SESSION[$s_pix.'id']=$is_user["id"];
            $_SESSION[$s_pix.'phone']=$post["phone"];
            $_SESSION[$s_pix.'token']=pass_md5(sha1($is_user["id"]).$post["phone"]);
 
-           if(isset($_POST['Long-term']) && ($_POST['Long-term']==1))
+           if(isset($post['Long-term']) && ($post['Long-term']==1))
            {
                cookie($s_pix.'phone',$post["phone"],3600*24*30,'/');
            }// 用户信息保存一个月
 
-           header("Location:http://".$_SERVER['SERVER_NAME'].__MODULE__."/Index/index");
+           if(isset($post["history"]) && !empty($post["history"]))
+           {
+               $old_url="/".$post["history"];
+           }else
+           {
+               $old_url="/Index/index";
+           }
+           header("Location:http://".$_SERVER['SERVER_NAME'].__MODULE__.$old_url);
            exit;
            // $this->redirect('Home/Info/index','',0); nginx 不支持
            //登录成功跳转到信息个人主页
@@ -73,8 +82,7 @@ class LoginController extends Controller{
     public  function  logout() //-----------------------退出登录
     {
         $s_pix=C('SESSION_PREFIX');
-        $this->de_session($s_pix); //销毁登录的session
-
+        de_session($s_pix); //销毁登录的session
         echo "<script>window.location.href='".__CONTROLLER__."/sign'</script>";
         exit;
     }
@@ -91,18 +99,6 @@ class LoginController extends Controller{
         }
     }
 
-    /** 删除session 销毁登录的session
-    */
-    private function de_session($s_pix)
-    {
-        unset($_SESSION[$s_pix.'login_status']);
-        unset($_SESSION[$s_pix.'id']);
-        unset($_SESSION[$s_pix.'phone']);
-        unset($_SESSION[$s_pix.'token']);
-        /*session($s_pix.'login_status',null);
-        session($s_pix.'id',null);
-        session($s_pix.'phone',null);
-        session($s_pix.'token',null); */// 清空session
-    }
+
 
 }

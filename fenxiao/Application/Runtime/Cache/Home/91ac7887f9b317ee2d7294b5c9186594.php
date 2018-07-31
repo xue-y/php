@@ -9,10 +9,10 @@
 </head>
 <body class="line-add">
 <h3>
-   <a  onclick="javascript :history.back(-1)" >←</a> | 添加推荐 <a class="float-right" href="/wx/Home/Line/index">推荐</a>
+   <a  onclick="javascript :history.back(-1)" >←</a> | 添加推荐 <a class="float-right" href="/Home/Line/index">推荐</a>
 </h3>
     <p class="red">用户一天(24 小时内)最多推荐不得超过20个 手机号或微信号至少必填其中一个</p>
-<form action="/wx/Home/Line/execAdd" method="post">
+<form action="/Home/Line/execAdd" method="post">
     <div class="form-group">
         <div class="field">
             <input type="text" class="input w100" name="phone" placeholder="请输入好友手机号"  data-validate="mobile:请输入正确的手机号"  value=""/>
@@ -65,10 +65,10 @@
     </div>
 </form>
 
-<link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-<link type="text/css" rel="stylesheet" href="/wx/Public/home/home.css" >
-<script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-<script  type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
-<script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+<link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+<link type="text/css" rel="stylesheet" href="/Public/home/home.css" >
+<script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+<script  type="text/javascript" src="/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 </body>
 </html>

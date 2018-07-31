@@ -14,7 +14,7 @@ namespace Think\Log\Driver;
 class File {
 
     protected $config  =   array(
-        'log_time_format'   =>  ' c ',
+        'log_time_format'   =>  'Y-m-d H:i:s',
         'log_file_size'     =>  2097152,
         'log_path'          =>  '',
     );

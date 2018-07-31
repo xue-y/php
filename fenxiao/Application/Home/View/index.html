@@ -6,7 +6,7 @@
     我的主页--{$info.n} <a class="float-right" href="__MODULE__/Set/index">设置</a> <!--后期改为设置-->
 </h3>
     <h2>
-        <img src="__PUBLIC__/back/images/user.png" width="70">
+        <img src="{$info.headimg}" width="70">
         <div  style="font-size:18px;">
         佣金金额：
         <lt name="info.money" value="1">
@@ -26,6 +26,6 @@
             我的消息<egt name="meg" value="1"><sup>{$meg}</sup></egt>
             </a></li>
         <li><a href="__MODULE__/Set/index"><span class="icon-cogs"></span> 我的设置</a></li>
-        <li><a href="__MODULE__/Zx/index"><span class="icon-user"></span> 我的客服</a></li>
+        <li><a href="__MODULE__/Zx/index"><span class="icon-user"></span> &nbsp;我的客服</a></li>
     </ul>
   <include file="Public:foot_nav" />

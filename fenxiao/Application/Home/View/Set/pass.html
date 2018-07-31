@@ -3,7 +3,7 @@
 </head>
 <body class="line-add">
 <h3>
-    <a    onclick="javascript :history.back(-1)" >←</a> | 修改密码 <a class="float-right" href="__CONTROLLER__/index">设置</a>
+    <a  onclick="javascript :history.back(-1)" >←</a> | 修改密码 <a class="float-right" href="__CONTROLLER__/index">设置</a>
 </h3>
 <p class="red">其中一个值为空默认不修改</p>
 
@@ -12,6 +12,7 @@
         <div class="field">
             <input type="password" class="input w100" name="old_pass" placeholder="原密码"  data-validate="userp:密码6--12位字符英文 数字 .@ ! - _"   value=""/>
             <div class="tips"></div>
+            <a href="__MODULE__/Wx/index?state={$Think.WX_PASS}&history={$history}" class="clear margin-small-top" style="display: block;"  >忘记原密码微信找回</a>
         </div>
     </div>
     <div class="form-group">

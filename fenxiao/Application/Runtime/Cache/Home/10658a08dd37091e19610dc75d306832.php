@@ -9,9 +9,9 @@
 </head>
 <body class="cusBase">
 <h3>
-    <a    onclick="javascript :history.back(-1)" >←</a> | 基本信息 <a class="float-right" href="/wx/Home/Set/index">设置</a>
+    <a onclick="javascript :history.back(-1)" >←</a> | 基本信息 <a class="float-right" href="/Home/Set/index">设置</a>
 </h3>
-<form action="/wx/Home/Set/execBase" method="post">
+<form action="/Home/Set/execBase" method="post">
     <div class="form-group">
         <div class="label">
             <label class="x0-left">姓名：</label>
@@ -60,7 +60,14 @@
             <label class="x0-left">微信号：</label>
         </div>
         <div class="field">
-            <input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value="<?php echo ($info["wx"]); ?>"/>
+            <?php if(empty($info["wx"])): ?><input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value=""
+                        placeholder="请设置微信号用于微信登录或找回密码"/>
+                <?php else: ?>
+                <input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value="<?php echo ($info["wx"]); ?>"/>
+
+                <?php if(($info["is_wx"]) != "1"): ?><a href="/Home/Wx/index?state=<?php echo (WX_VALIWX); ?>_<?php echo ($info["id"]); ?>&history=<?php echo ($info["history"]); ?>"  class="clear" style="margin-left:10%;padding-top:5px; display: block">
+                        &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 请验证微信用于微信登录或找回密码</a><?php endif; endif; ?>
+
             <div class="tips"></div>
         </div>
     </div>
@@ -71,9 +78,9 @@
         </div>
         <div class="field">
             <p  class="input  x2-move x10" readonly >
-                <?php if(($info["sub_num"]) < "1"): ?>暂无下线<a href="/wx/Home/Line/add">现在去推荐</a>
+                <?php if(($info["sub_num"]) < "1"): ?>暂无下线<a href="/Home/Line/add">现在去推荐</a>
                     <?php else: ?>
-                    <a href="/wx/Home/Line/index"><?php echo ($info["sub_num"]); ?> 个</a><?php endif; ?>
+                    <a href="/Home/Line/index"><?php echo ($info["sub_num"]); ?> 个</a><?php endif; ?>
             </p>
         </div>
     </div>
@@ -88,16 +95,16 @@
 </form>
 
 <div class="fixed-bottom"> <!-- 只可在 Info 控制器中使用-->
-    <a href="/wx/Home/Money/index">¥ 佣金</a>
+    <a href="/Home/Money/index">¥ 佣金</a>
     <a href="http://m.caoboshi.cn/" class=" icon-gift"> 项目</a>
-    <a href="/wx/Home/Line/index" class="icon-star-empty"> 推荐</a>
-    <a href="/wx/Home/Info/index?status=1" class="icon-bell-alt"> 我的
+    <a href="/Home/Line/index" class="icon-star-empty"> 推荐</a>
+    <a href="/Home/Info/index?status=1" class="icon-bell-alt"> 我的
         <?php if(($meg) >= "1"): ?><sup><?php echo ($meg); ?></sup><?php endif; ?></a>
 </div>
-<link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-<link type="text/css" rel="stylesheet" href="/wx/Public/home/home.css" >
-<script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-<script  type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
-<script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+<link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+<link type="text/css" rel="stylesheet" href="/Public/home/home.css" >
+<script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+<script  type="text/javascript" src="/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 </body>
 </html>

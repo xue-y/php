@@ -6,7 +6,7 @@
     配置文件 renwu\Application\Back\Conf\define.php   define('A_S_C',FALSE);//为true<br/>
     添加类 方法 MyController.class.php 文件中 function arr_data($key) 函数
     也可 系统设置中设置 普通管理员添加其他部门人员--》是<br/>
-	客户有后台管理员（销售人员分配）,管理员添加客户之后，客户可以前台登录（界面手机端），可以修改个人信息，推荐人员赚取佣金<br/>
+	客户有后台管理员（销售人员分配）,管理员添加客户之后，客户可以前台登录，可以修改个人信息，推荐人员赚取佣金<br/>
 	佣金可以提现，提现需要联系管理员，不支持线下提现。客户推荐的人员需要管理员审核，审核通过客户推荐的人即是<br/>
 	管理员的客户。
 
@@ -39,7 +39,7 @@
     #安装完成之后请将应用文件夹的公共配置文件注释打开
     #安装完成之后请检查运行日志  //错误日志文件
     #入口文件 如果是 index.php define('APP_DEBUG',True); 改为false
-	#fenxiao.sql 数据库文件 ---- 用于查看
+    #变量常量的字段使用 _ 分割
 
 #### 安装说明
 	安装文件 运行目录下 Back/InstallController.class.php 
@@ -62,7 +62,7 @@
 ##### 目录权限
 	#Application/Back/Cache/ 有写入读取权限 建议 755
 	#Application/Back/Conf/ 有写入读取权限 建议 777
-	#Application/Runtime/  有写入读取权限 建议 777
+	#Application/Runtime/*  有写入读取权限 建议 777
 	#Application/Common/Conf/ 有写入读取权限 建议 777
 	#Install/ 有创建文件权限 建议 755
 	#ThinkPhp/ 有读取执行的权限建议 755

@@ -55,4 +55,35 @@ function pass_md5($pass)
 //    md5($this->add_slashes($_POST['u_pass']).C(PWD_PREFIX));
 }
 
+/**判断路径是否存在并且可写
+ * @parem $dir  需要检测的路径
+ * @return 成功返回true失败无返回值
+ *  */
+function dir_write($dir)
+{
+    if(!file_exists($dir))
+    {
+        @mkdir($dir,0777);
+    }
+    if(!is_writable($dir))
+    {
+        @chmod($dir,0777);
+    }
+    if(file_exists($dir) && is_writable($dir))
+    {
+        return true;
+    }
+}
+
+/** 自定义调试格式
+ * @parem $val 需要转换输出的数据
+ * @return type string 返回输出后的数据
+ * */
+function format_debug($val)
+{
+    echo "<pre>";
+    var_dump($val);
+    echo "</pre>";
+}
+
 

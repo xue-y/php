@@ -51,6 +51,8 @@ CREATE TABLE IF NOT EXISTS `self_cus_detailed` (
   `t` datetime NOT NULL COMMENT '注册时间',
   `age` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '客户年龄',
   `sex` varchar(3) COLLATE utf8_unicode_ci NOT NULL COMMENT '客户性别',
+  `openid` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户openid',
+  `headimg` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户头像',
   `descr` varchar(250) COLLATE utf8_unicode_ci NOT NULL COMMENT '用户备注',
   KEY `detailed_base` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='用户资料详细表';

@@ -14,7 +14,7 @@ namespace Think\Log\Driver;
 class Sae {
 
     protected $config  =   array(
-        'log_time_format'   =>  ' c ',
+        'log_time_format'   =>  ' Y-m-d H:i:s ',
     );
 
     // 实例化并传入参数

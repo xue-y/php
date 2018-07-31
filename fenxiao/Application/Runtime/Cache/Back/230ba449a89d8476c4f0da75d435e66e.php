@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>首页-<?php echo ($pos["c"]); ?></title>
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/pintuer.css" >
-    <link type="text/css" rel="stylesheet" href="/wx/Public/back/css/admin.css">
-    <script  type="text/javascript" src="/wx/Public/back/js/jquery.js"></script>
-    <script type="text/javascript" src="/wx/Public/back/js/pintuer.js"></script>
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
+    <link type="text/css" rel="stylesheet" href="/Public/back/css/admin.css">
+    <script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 
 </head>
 <body>
 <ul class="bread  clearfix">
-    <li><a href="/wx/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
-    <li><a href="/wx/Back/Money/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/wx/Back/Money/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
+    <li><a href="/Back/Money/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
+    <li><a href="/Back/Money/index"><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--客户佣金详情列表页面-->
@@ -49,7 +49,7 @@
     </tr>
    <tbody>
     <?php if(!empty($list)): if(is_array($list)): foreach($list as $key=>$v): ?><tr>
-       <td><a href="/wx/Back/Customer/update?id=<?php echo ($v["id"]); ?>"><?php echo ($v["id"]); ?></a></td>
+       <td><a href="/Back/Customer/update?id=<?php echo ($v["id"]); ?>"><?php echo ($v["id"]); ?></a></td>
        <td>
            <?php if(is_array($all_zx)): foreach($all_zx as $key=>$zx): if($v["cid"] == $zx["id"] ): echo ($zx["u_name"]); endif; endforeach; endif; ?>
        </td>
@@ -65,7 +65,7 @@
 <script  type="text/javascript">
     $(".icon-search").click(function(){
         //
-        var s="/wx/Back/Money/index?";
+        var s="/Back/Money/index?";
         
         var id=$(".id").val();
         var zx=$(".search").find("select").eq(0).val();
@@ -113,5 +113,5 @@
 </script>
 
 
-<script type="text/javascript" src="/wx/Public/back/js/arc_list.js"></script>
+<script type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 </body></html>
