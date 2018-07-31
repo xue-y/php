@@ -7,12 +7,11 @@
  */
 
 //服务器地址(URL)
-//http://wx.caoboshimeirong.cn/Public/wx_token.php
+//http://wx.com/Public/wx_token.php
 
 //定义TOKEN密钥
 define("TOKEN","loginzf");
-/*define("AppID", "wx28bd0603f781347d");
-define("EncodingAESKey", "YegVZEWFIUYVCXj6ki9yLPJkDlW44cj6NzwRVVY4kkX");*/
+
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 
