@@ -107,12 +107,12 @@ class LineController  extends MyController{
         }
 
         //收集客户信息---- tp 验证手机不起作用可能是 ：控制器名称不是与模型名称对应的原因
-        if(empty($post["phone"]) || !(preg_match("/1(\d){10}/",$post["phone"])))
+        if(($post["state"]==2) && (empty($post["phone"]) || !(preg_match("/1(\d){10}/",$post["phone"]))))
         {
             $this->error("请填写正确的手机号用于用户登录");
         }
 
-        if($cus->is_phone($post["phone"])>=1)
+        if(($post["state"]==2) && ($cus->is_phone($post["phone"])>=1))
         {
             $this->error("手机号已被注册,请更换手机号或回收站还原");
         }
@@ -126,6 +126,7 @@ class LineController  extends MyController{
 		
 		$detailed["descr"]=$downline["descr"]=$post["descr"];
 		// 更新下线表
+		$downline["s_t"]=date("Y-m-d H:i:s",time());
 		$downline["state"]=$post["state"];
 		$w["id"]=array("eq",$post['id']);
 		$line_af=$line->lock(true)->where($w)->save($downline); // 锁表操作，没有测试
@@ -154,7 +155,7 @@ class LineController  extends MyController{
 			$detailed["id"]=$cus_base_af;
 			$detailed["tid"]=$post["tid"];
 			$detailed["cid"]=$this->u_id;
-			$detailed["t"]=$downline["s_t"]=date("Y-m-d H:i:s",time());
+			$detailed["t"]=$downline["s_t"];
 			$cus_base_af2=$cus->add($detailed);
 			if(!$cus_base_af2)
 			{
