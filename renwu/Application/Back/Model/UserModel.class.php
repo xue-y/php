@@ -10,10 +10,12 @@ namespace Back\Model;
 use Think\Model;
 
 class UserModel extends Model{
+
+    protected $readonlyField = array('id');
+
     public  $_validate=array(
        array('u_name','require','用户名必填'),
         array('u_name',' /^[\s\S]{2,15}$/i','用户名2--5位',0,'regex'),
-        array('u_pass','require','密码必填',0,'',1),
         array('u_pass','/^([\w\.\@\!\-\_]){6,12}$/i','6--12位数字、英文 . ! @ - _',2,'regex'),
         array('id','require','用户编号必填'),
         array('id','/^\d{5}$/','请填写正确的编号',0,'regex'),
@@ -32,7 +34,7 @@ class UserModel extends Model{
         if(!$bool)
         {
             return "系统繁忙，稍后再试";
-            $this->write_log("登录是时间字段写入失败--提示信息：系统繁忙，稍后再试");
+            write_log("登录是时间字段写入失败--提示信息：系统繁忙，稍后再试");
         }
         else
         {return 1;}

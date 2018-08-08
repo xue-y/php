@@ -8,6 +8,7 @@
 
 namespace Back\Controller;
 use My\MyController;
+use Think\Exception;
 
 class PersonalController extends MyController{  //用户信息
 // 函数名使用 email  字段名/变量名称 使用 mail
@@ -31,7 +32,7 @@ class PersonalController extends MyController{  //用户信息
          {
             $u_info["meg"]=NULL;
          }
-         if(isset($_SESSION[TAST_W]))
+         if(isset($_SESSION[$this->u_id.TAST_W]))
          {
               $p_id_arr=$this->u_task_c();
               $u_info["p_id"]=implode(",",$p_id_arr);
@@ -50,7 +51,7 @@ class PersonalController extends MyController{  //用户信息
     public function email() //邮箱操作
     {
        $this->ver_eid(); //邮箱验证 用户ID 邮箱 是否合法
-       $mail=$this->add_slashes($_POST["mail"]);
+       $mail=add_slashes($_POST["mail"]);
        $user=D("User");
        $af=$user->mail_ver($mail,$this->u_id);
        if(!isset($af) || $af!=1)
@@ -62,16 +63,17 @@ class PersonalController extends MyController{  //用户信息
 
     public function emailSend() //验证邮箱---发送邮件
     {
+       try{
         set_time_limit(0);
         $this->ver_eid();
         $user=D("User");
-        $post=$this->add_slashes($_POST);
+        $post=add_slashes($_POST);
         $t=$user->mail_ver2($post);
 
         if($post["state"]==0  &&  ($t==0 || $t==1)) //------------通过 state 参数判断用户是绑定还是解除绑定
         {
             echo "mail_error";exit;
-        }//加入绑定
+        }//绑定后验证邮箱
 
         if($post["state"]==1 && ($t!=1))
         {
@@ -132,7 +134,7 @@ class PersonalController extends MyController{  //用户信息
         //************************ 配置信息 ****************************
         $smtp = new \Think\Smtp($smtpserver,$smtpserverport,true,$smtpuser,$smtppass);
         //这里面的一个true是表示使用身份验证,否则不使用身份验证.
-        $smtp->debug = FALSE;//是否显示发送的调试信息
+        $smtp->debug = false;//是否显示发送的调试信息
         $state = $smtp->sendmail($smtpemailto, $smtpusermail, $mailtitle, $mailcontent, $mailtype);
         if($state=="")
         {
@@ -143,6 +145,10 @@ class PersonalController extends MyController{  //用户信息
             exit();
         }
         echo "mail_send_ok";
+
+       }catch (\Exception $e){
+            var_dump($e->getMessage());
+       }
     }
 
     public function emailVer() //验证邮箱---进入验证码
@@ -151,7 +157,7 @@ class PersonalController extends MyController{  //用户信息
        {
           $this->error("页面错误");
        }
-       $get=$this->add_slashes($_GET);
+       $get=add_slashes($_GET);
        if($get["id"]!=$this->u_id)
        {
            $n=$_SESSION[$this->s_pix.'n'];
@@ -162,7 +168,7 @@ class PersonalController extends MyController{  //用户信息
        $mail_ver=S($this->u_id."mail_ver");
        if(!isset($mail_ver) || empty($mail_ver))
        {
-           $this->error("验证码已过期请重新验证");
+        //   $this->error("验证码已过期请重新验证","index");
        }
 
        $user=D("User");
@@ -171,7 +177,7 @@ class PersonalController extends MyController{  //用户信息
        $mail=$user->mail_state($u_arr);
        if(!isset($mail) || empty($mail))
        {
-           $this->error("用户邮箱错误");
+      //     $this->error("用户邮箱错误");
        }
        $this->assign(array("pos"=>"验证邮箱","mail"=>$mail,"id"=>$this->u_id,"state"=>$get["state"]));
        $this->display();
@@ -190,7 +196,7 @@ class PersonalController extends MyController{  //用户信息
 			$this->error("验证码已过期请重新验证",__MODULE__."/Main/index#Personal");
         }
 
-        $post=$this->add_slashes($_POST);
+        $post=add_slashes($_POST);
         if($post["mail_ver"]!=$mail_ver)
         {
             $this->error("邮箱验证码错误");
@@ -251,7 +257,7 @@ class PersonalController extends MyController{  //用户信息
             where p.u_id=$this->u_id and t.state='0' and p.isdel=0";
 
       $list=$d->query($sql);
-      $list=$this->str_slashes($list);
+      $list=str_slashes($list);
       $count=count($list);
       $this->assign(array("pos"=>$pos,"list"=>$list,"count"=>$count));
       $this->display();
@@ -264,7 +270,7 @@ class PersonalController extends MyController{  //用户信息
             $this->error("反馈信息错误");
         }
         $task=D("Task");
-        $task_is=$task->task_is($this->add_slashes($_GET["id"]));
+        $task_is=$task->task_is(add_slashes($_GET["id"]));
         if($task_is<1)
         {
             $this->error("反馈信息不存在或用户已经验证过了");
@@ -278,7 +284,7 @@ class PersonalController extends MyController{  //用户信息
         $show=$d->query($sql);
         $pos["c"]="个人信息";
         $pos["a"]="任务反馈-详情";
-        $show=$this->str_slashes($show[0]);
+        $show=str_slashes($show[0]);
 
         $this->assign(array("pos"=>$pos,"show"=>$show));
         $this->display();

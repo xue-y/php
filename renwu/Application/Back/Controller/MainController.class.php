@@ -8,10 +8,11 @@
 
 namespace Back\Controller;
 use My\MyController;
+
 class MainController extends MyController{  //后台主页面
     public function index()
     {
-        $n=$_SESSION[$this->s_pix.'n'];
+        $n=cookie("n");
         $this->user_limit(L_MENU); //判断用户身份读取相应权限左边菜单
         $ico=$this->arr_data("ico");
         $this->assign(

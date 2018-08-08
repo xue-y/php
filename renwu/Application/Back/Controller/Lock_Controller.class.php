@@ -1,7 +1,10 @@
 <?php
 namespace Back\Controller;
 use My\MyController;
-class InstallController extends MyController{ //安装类文件
+use Think\Controller;
+
+class InstallController extends Controller{ //安装类文件
+
     function  __construct()
     {
         parent:: __construct();
@@ -16,7 +19,6 @@ class InstallController extends MyController{ //安装类文件
             exit;
         }
     }
-
 
     // 验证安装信息
     public function index(){
@@ -61,7 +63,8 @@ class InstallController extends MyController{ //安装类文件
         {
             echo "缓存文件不可写或缓存文件不存在";exit;
         }
-        file_put_contents(LOG_F,''); //创建日志文件
+        @file_put_contents(LOG_F,''); //创建日志文件
+
 
         //------------------------------------删除系统运行目录缓存开始
         $r_dir_arr=array();
@@ -91,7 +94,7 @@ class InstallController extends MyController{ //安装类文件
             file_put_contents(LOG_F,$log_f);
             foreach($r_dir_arr as $v)
             {
-                $this->unlink_f($run_n,$v);
+               unlink_f($run_n,$v);
             }
         } //------------------------------------删除系统运行目录缓存结束
 
@@ -134,6 +137,7 @@ class InstallController extends MyController{ //安装类文件
             'DEFAULT_TIMEZONE'=>'PRC', //设置时区时间
             'SESSION_AUTO_START' => TRUE, //开启session缓存
             'URL_CASE_INSENSITIVE' =>FALSE,  //url 区分大小写
+            'LOG_LEVEL' =>'EMERG,ALERT,CRIT,ERR', // 只记录EMERG ALERT CRIT ERR 错误
            /* 'DB_FIELDS_CACHE'=>TRUE,  //启用字段缓存 默认false 关闭缓存
             'SHOW_ERROR_MSG'=> FALSE, //  关闭显示错误信息 默认true 开启
             */
@@ -142,7 +146,7 @@ class InstallController extends MyController{ //安装类文件
       // $field_num=file_put_contents($filename, $content,FILE_APPEND);
         if($field_num!=strlen($content))
         {
-            echo 'conf_error';  // 连接数据库或用户名密码错误
+            echo 'conf_error';  // 创建文件失败
             exit;
         }
         $conn=@mysql_connect($arr['DB_HOST'].':'.$arr['DB_PORT'],$arr['DB_USER'],$arr['DB_PWD']);
@@ -153,6 +157,8 @@ class InstallController extends MyController{ //安装类文件
             echo "database_error";  // 数据库不存在
             exit;
         }
+
+     try{
         if($arr["table_data"]==1) // 如果数据库有表删除掉
         {
             $sql="SHOW TABLES from `{$arr['DB_NAME']}`";
@@ -214,10 +220,15 @@ class InstallController extends MyController{ //安装类文件
          $this->mysql_query($sql_insert,"limit_error2");//2级权限
 
       //------------------------------------------------------------------------------------------------------插入权限数据结束
-        $u_name=$this->add_slashes($_POST['u_name']);
-        $u_pass=md5($this->add_slashes($_POST['u_pass']).C(PWD_PREFIX));
+        $u_name=add_slashes($_POST['u_name']);
+        $u_pass=md5(add_slashes($_POST['u_pass']).C(PWD_PREFIX));
         $sql_insert="";
-        $bu_men=$this->arr_data("bu_men");
+
+         $My=new MyController();
+         $bu_men=$My->arr_data("bu_men");
+
+        $My=null;
+        unset($My);
         $bu_men=$bu_men[0];
         $sql_insert="INSERT INTO `{$arr['DB_PREFIX']}role`( `n`, `descr`, `limit_id`) VALUES ('超级管理员','拥有所有权限','-1');";
         $this->mysql_query($sql_insert,"role_error");//添加角色
@@ -227,6 +238,11 @@ class InstallController extends MyController{ //安装类文件
         $this->mysql_query($sql_insert,"user_error"); //添加--超级管理员
       //-----------------------------------------------------------------------------------------------基本数据库完成;
          echo "ok";
+
+        }catch (\Exception $e){
+            var_dump($e->getLine()."|".$e->getFile()."|".$e->getMessage());
+        }
+
     }
     /*
      * 创建数据表结构
@@ -252,7 +268,7 @@ class InstallController extends MyController{ //安装类文件
               `u_id` smallint(5) unsigned zerofill NOT NULL COMMENT '提问题人员ID',
               `state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '问题是否解决,0未解决,1解决',
               `isdel` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '问题是否删除,0未删除,1删除',
-              `times` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '时间',
+              `times` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '添加问题时间',
                PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='问题表' AUTO_INCREMENT=1 ;
         ";//表的结构 `my_problem`
@@ -272,7 +288,7 @@ class InstallController extends MyController{ //安装类文件
               `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '任务表ID',
               `p_id` int(11) unsigned NOT NULL COMMENT '问题ID',
               `u_id` smallint(5) unsigned zerofill NOT NULL COMMENT '执行任务人员编号',
-              `times` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '时间',
+              `times` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '执行任务时间',
               `state` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0' COMMENT '是否验证,0未验证,1通过验证,2未通过',
               `plan` text COLLATE utf8_unicode_ci NOT NULL COMMENT '解决方法',
               PRIMARY KEY (`id`)
@@ -332,6 +348,71 @@ class InstallController extends MyController{ //安装类文件
             "limit_two"=>$limit_two,
         );
         return $limit[$key];
+    }
+
+    /**
+     * 执行mysql_query 语句
+     * @param $sql sql语句
+     * @param $erro 错误信息
+     * @return empty
+     */
+    private function mysql_query($sql,$error)
+    {
+        $re=mysql_query($sql); //添加--数据
+        if(!$re)
+        {
+            echo $error;  // 添加数据失败
+            exit;
+        }
+        mysql_free_result($re);
+    }
+
+    /*
+     验证服务器数据库信息,返回数据库状态
+     error_reporting(0);
+     ini_set('display_errors',0);
+    */
+    private function is_mysql($arr)
+    {
+        $conn=@mysql_connect($arr['DB_HOST'].':'.$arr['DB_PORT'],$arr['DB_USER'],$arr['DB_PWD']);
+        if(!isset($conn) || empty($conn))
+        {
+            /* $info=array(
+                 "code"=>"server_error",
+                 "info"=>"连接服务器失败"
+             );*/
+            $info="server_error";
+            return $info;
+        }
+        else
+        {
+            $link=@mysql_select_db($arr['DB_NAME'],$conn);
+            if(!isset($link) || empty($link))
+            {
+                /* $info=array(
+                     "code"=>"db_ok",
+                     "info"=>"信息正确，创建新的数据库"
+                 );*/
+                $info="db_ok";
+                return $info;
+            }
+            else
+            {
+                $sql="SHOW TABLES from {$arr['DB_NAME']}";
+                $re=mysql_query($sql);
+                $table_n=mysql_num_rows($re);
+                if($table_n>=1)
+                {
+                    echo "table_data";exit; // 数据库中有数据
+                }
+                /* $info=array(
+                     "code"=>"db_exis",
+                     "info"=>"信息正确，已存在此数据库，直接使用---连接成功"
+                 );*/
+                $info="db_exis";
+                return $info;
+            }
+        }
     }
 
 

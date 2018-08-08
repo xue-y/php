@@ -17,7 +17,9 @@
        .form-x .form-group .label{width:15%;}
        .input{width:85%;}
        .load{width:500px; height:500px; position: absolute; background-color: rgba(0,0,0,0.5);left:50%;top:50%;margin-left:-250px;margin-top:-250px; display: none;font-size:30px; line-height: 500px; text-align: center;color:#fff;}
-       .load img{display: block;width:100%;animation:mymove 1s linear infinite;
+       .load img{display: block;    width: 60%;
+           margin-top: 20%;
+           margin-left: 20%;animation:mymove 1s linear infinite;
            -webkit-animation:mymove 1s linear infinite;}
        @keyframes mymove{
            from {transform:rotate(0deg);}
@@ -38,7 +40,7 @@
           <label>主机名称：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="host" value=""  data-validate="required:请输入主机名称,host:请输入正确的主机名称"/>
+          <input type="text" class="input" name="host" value="localhost"  data-validate="required:请输入主机名称,host:请输入正确的主机名称"/>
           <div class="tips"></div>
         </div>
       </div>
@@ -55,7 +57,7 @@
           <label>数据库用户：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="root" value=""  data-validate="required:请输入数据库用户名,db:用户名英文开头长度2--10个字符" />
+          <input type="text" class="input" name="root" value="root"  data-validate="required:请输入数据库用户名,db:用户名英文开头长度2--10个字符" />
         </div>
       </div>
       <div class="form-group">
@@ -63,7 +65,7 @@
           <label>数据库密码：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="pass" value=""  data-validate="required:请输入数据库用户名,wordpass:密码长度5--20个字符" />
+          <input type="text" class="input" name="pass" value="admin"  data-validate="required:请输入数据库用户名,wordpass:密码长度5--20个字符" />
           <div class="tips"></div>
         </div>
       </div>
@@ -72,7 +74,7 @@
           <label>数据库名称：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="dbname" value="" id="db"  data-validate="required:请输入数据库用户名,db:数据库名称英文开头长度2--10字符"/>
+          <input type="text" class="input" name="dbname" value="test" id="db"  data-validate="required:请输入数据库用户名,db:数据库名称英文开头长度2--10字符"/>
           <div class="tips"></div>
         </div>
       </div>

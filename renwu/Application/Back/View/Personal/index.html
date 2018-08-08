@@ -115,7 +115,7 @@
 				}
 				// 发送邮件 id 用户ID email 用户邮箱 state 绑定1、解除0
 				$.post("__CONTROLLER__/emailSend",{'id':id,'mail':mail,'state':state},function(data){
-				  //  console.log(data)  // 取得发送邮件后是否成功
+				    console.log(data)  // 取得发送邮件后是否成功
 					ver_eid(data); //验证 用户ID 邮箱返回信息
 					if($(".no-skin").is(":hidden")) // 邮箱绑定时
 					{
@@ -148,7 +148,9 @@
 						$('.no-skin').find("p").html(mail_url);
 					}
 
-				});//发送邮件
+				}).error(function(xhr){
+                    console.log(xhr);
+                });//发送邮件
 				$('.email_ver_info').css("visibility","visible");
 				$('.email_ver_info').find("span")
 				var s=$(".mail_deny_t").text();

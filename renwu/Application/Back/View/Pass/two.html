@@ -16,7 +16,7 @@
             <div class="field">
                 <input type="text" class="input"  size="50" value="{$mail}"  name="mail"  />
                 &nbsp;
-                <a class="button bg-main"  href="javascript:;" onclick="email_send('{$id}','{$mail}')">发送验证</a>
+                <a class="button bg-main " style="margin-top: 15px;" href="javascript:;" onclick="email_send('{$id}','{$mail}')">发送验证</a>
             </div>
         </div>
         <div class="form-group">
@@ -24,8 +24,7 @@
                 <label >邮箱验证码：</label>
             </div>
             <div class="field">
-                <input type="text" class="input" name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" /> &nbsp;
-
+                <input type="text" class="input" name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" />
             </div>
         </div>
      <div class="form-group">
@@ -55,7 +54,7 @@
 
 <style>
     .no-skin{display: none;}
-    .close{ position: absolute;color:#fff;width:28px; height:28px;top:8px;right:10px;}
+    .close{ position: absolute;color:#fff;width:28px; height:28px;top:8px;right:10px; cursor: pointer;}
     .error-container{ position:fixed;bottom: 40%;left:50%;margin-left:-220px; background:#fff; border:1px solid #0ae;  text-align:center; width:450px;  font-family:Microsoft Yahei; padding-bottom:30px; border-top-left-radius:5px; border-top-right-radius:5px;  }
     .error-container h1{ font-size:16px; padding:12px 0; background:#0ae; color:#fff;}
     .errorcon{ padding:35px 0; text-align:center; font-size:16px;width: 90%; margin: 0 auto;}
@@ -67,6 +66,9 @@
     .input a,a.input{color:#0F85D4;}
 </style>
         <script>
+           /* $(".close").click(function(){
+                $('.no-skin').fadeOut();
+            });*/
             function email_send(id,mail)
             {
                 $.post("__CONTROLLER__/emailSend",{'id':id,'mail':mail},function(data){
@@ -84,6 +86,9 @@
                         case "mail_state_no":
                             $('.no-skin').find("h1").html("返回第一步");
                             $('.no-skin').find("p").html("<a href='__CONTROLLER__/index'>由于您长时间未操作<br/>请点击返回第一步</a>")
+                        case "timeout":
+                            $('.no-skin').find("h1").html("返回第一步");
+                            $('.no-skin').find("p").html("<a href='__CONTROLLER__/index'>2由于您长时间未操作<br/>请点击返回第一步</a>")
                         break;
                         case "user_is_no":
                             $('.no-skin').find("h1").html("用户信息错误");
@@ -111,8 +116,11 @@
                             $('.no-skin').find("p").html("发送邮件间隔时间 "+s+"秒");
                         break;
                     }
-					 $('.no-skin').delay(2000).fadeOut();
-
+                    // 点击关闭按钮失效
+                    $(".close").click(function(){
+                        $('.no-skin').stop(true,true).delay(0).fadeOut();
+                    });
+                    $('.no-skin').delay(4000).fadeOut();
                 });//发送邮件
 				
 				  //功能：根据用户输入的Email跳转到相应的电子邮箱首页--- 只在当前页面起作用，放入引用js 中不起作用

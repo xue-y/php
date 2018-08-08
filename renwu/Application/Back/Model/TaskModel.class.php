@@ -8,6 +8,9 @@
 namespace Back\Model;
 use Think\Model;
 class TaskModel extends Model{
+
+    protected $updateFields =array("state");
+
     public  $_validate=array(
         array('plan','require','解决方案必填'),
       //  array('plan',' /^[\s\S]{5,300}$/i','字符长度5--100个',0,'regex'),

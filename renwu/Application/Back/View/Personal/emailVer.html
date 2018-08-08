@@ -1,5 +1,5 @@
 <include file="Public:pass_h" /><!--执行邮箱验证页面-->
-<div class="panel  admin-panel">
+<div class="margin-big-left">
   <div class="body-content">
     <form method="post" class="form-x" action="__CONTROLLER__/execeEailVer">
         <div class="form-group">
@@ -7,7 +7,7 @@
                 <label>邮箱：</label>
             </div>
             <div class="field">
-                <input type="text" class="input w50"  size="50" value="{$mail}" readonly    />
+                <input type="text" class="input"  size="50" value="{$mail}" readonly    />
 
             </div>
         </div>
@@ -19,11 +19,12 @@
                 <label >邮箱验证码：</label>
             </div>
             <div class="field">
-                <input type="text" class="input w50" name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" /> &nbsp;
-                <button class="button bg-main" type="submit">验证邮箱</button>
+                <input type="text" class="input " name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" />
+            </div>
+            <div class="field margin-large-top">
+                <button class="button bg-main " type="submit">验证邮箱</button>
             </div>
         </div>
-
     </form>
   </div>
 </div>

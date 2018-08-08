@@ -18,7 +18,7 @@ class LimitController extends MyController{  //用户
         $is_admin=$this->is_admin($user);
         if(isset($_GET["id"]) && !empty($_GET["id"]))
         {
-            $get_id=$this->add_slashes($_GET["id"]);
+            $get_id=add_slashes($_GET["id"]);
             $r_c_id=implode(",",P_R_ID_C);
             if($get_id!=$r_id && (P_R_ID==$r_id && in_array($get_id,$r_c_id)))// 普通管理员--查看其它用户
             {

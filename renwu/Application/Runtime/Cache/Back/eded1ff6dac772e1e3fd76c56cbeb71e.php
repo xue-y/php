@@ -12,11 +12,11 @@
     <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
     <script type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 </head>
-<body>
-<h3 style="margin:30px 0px 0px 40px"><?php echo ($pos); ?></h3>
+<body class="text-center" style="max-width:500px;width:100%;margin:0 auto">
+<h3 style="margin:50px auto 0px"><?php echo ($pos); ?></h3>
 
 <!--执行邮箱验证页面-->
-<div class="panel  admin-panel">
+<div class="margin-big-left">
   <div class="body-content">
     <form method="post" class="form-x" action="/Back/Personal/execeEailVer">
         <div class="form-group">
@@ -24,7 +24,7 @@
                 <label>邮箱：</label>
             </div>
             <div class="field">
-                <input type="text" class="input w50"  size="50" value="<?php echo ($mail); ?>" readonly    />
+                <input type="text" class="input"  size="50" value="<?php echo ($mail); ?>" readonly    />
 
             </div>
         </div>
@@ -36,11 +36,12 @@
                 <label >邮箱验证码：</label>
             </div>
             <div class="field">
-                <input type="text" class="input w50" name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" /> &nbsp;
-                <button class="button bg-main" type="submit">验证邮箱</button>
+                <input type="text" class="input " name="mail_ver" size="50"  data-validate="required:请输入验证码,code:请填写正确的验证码" />
+            </div>
+            <div class="field margin-large-top">
+                <button class="button bg-main " type="submit">验证邮箱</button>
             </div>
         </div>
-
     </form>
   </div>
 </div>

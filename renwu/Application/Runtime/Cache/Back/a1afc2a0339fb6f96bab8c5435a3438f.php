@@ -35,7 +35,7 @@
 
           <div class="right">
               <li>状态
-                  <select name="rw_state" class="input"  style="width:120px; line-height:17px; display:inline-block" class="state">
+                  <select name="rw_state" class="input state"  style="width:120px; line-height:17px; display:inline-block">
                       <option value="-1">任务状态</option>
                       <?php if(is_array($rw_state)): foreach($rw_state as $k=>$v): ?><option value="<?php echo ($v); ?>">&nbsp;├ &nbsp;<?php echo ($k); ?></option><?php endforeach; endif; ?>
                   </select>
@@ -45,7 +45,7 @@
               </li>
               <li><input class="datainp input" id="inpend" type="text" placeholder="结束日期" readonly=""></li>
               <li>部门
-                  <select name="bumen" class="input"  style="width:120px; line-height:17px; display:inline-block"  class="bm">
+                  <select name="bumen" class="input bm"  style="width:120px; line-height:17px; display:inline-block" >
                       <option value="-1">选择部门</option>
                       <?php if(is_array($bu_men)): foreach($bu_men as $k=>$v): ?><option value="<?php echo ($v); ?>">&nbsp;├ &nbsp;<?php echo ($v); ?></option><?php endforeach; endif; ?>
                   </select>
@@ -62,7 +62,7 @@
   <table class="table table-hover text-center">
     <tr>
       <th  width="8%" style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall"/>全选</th> 
-      <th width="5%">问题ID</th>
+
       <th>问题标题</th>
       <th>所在部门</th>
       <th>提交任务人员</th>
@@ -76,7 +76,7 @@
        <td>
            <input type="checkbox" name="id[]" value="<?php echo ($v["id"]); ?>" />
        </td>
-       <td><?php echo ($v["id"]); ?></td>
+
        <td><?php echo (mb_substr($v["tit"],0,10,'utf-8')); ?></td>
         <?php if(is_array($u_info)): foreach($u_info as $key=>$uv): if(($uv["id"]) == $v["u_id"]): ?><td><a href="/Back/Task/index?bumen=<?php echo ($uv["bumen"]); ?>"><?php echo ($uv["bumen"]); ?></a></td>
                 <td><a href="/Back/Task/index?u_id=<?php echo ($uv["id"]); ?>"><?php echo ($uv["u_name"]); ?></a></td><?php endif; endforeach; endif; ?>
@@ -204,7 +204,43 @@
       }
        s=s.substring(0,s.length-1);
      $(this).attr("href",s);
-   })
+   });
+   // 取得url 参数-- 必须当前页面调用否则无效
+   function GetRequest() {
+       var url = location.search; //获取url中"?"符后的字串
+       var theRequest = new Object();
+       if (url.indexOf("?") != -1) {
+           var str = url.substr(1);
+           strs = str.split("&");
+           for(var i = 0; i < strs.length; i ++) {
+             //   theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+               theRequest[strs[i].split("=")[0]]=strs[i].split("=")[1];
+           }
+       }
+       return theRequest;
+   }
+
+   var Request = new Object();
+   Request = GetRequest();
+   // 选中搜索条件
+   var state_id=Request["state"];
+   var state_list=$(".state option");
+
+   state_list.each(function(i,ele){
+       if(state_list.eq(i).val()==state_id)
+       {
+           state_list.eq(i).attr("selected",true);
+       }
+   });
+   var bm_id=Request["bumen"];
+   var bm_list=$(".bm option");
+        bm_id=decodeURI(bm_id);
+        bm_list.each(function(i,ele){
+       if(bm_list.eq(i).val()==bm_id)
+       {
+           bm_list.eq(i).attr("selected",true);
+       }
+   });
 
 </script>
 

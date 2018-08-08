@@ -7,7 +7,10 @@
  */
 namespace Back\Model;
 use Think\Model;
+
 class LimitModel extends Model{
+
+    protected $updateFields = array('');// 不需要更改 权限表
     /* *
     *读取用户的权限 根据角色id 写入权限文件
      * @parem $limit_id  string type
@@ -53,8 +56,9 @@ class LimitModel extends Model{
         file_put_contents($file_name,$con);
         if(!file_exists($file_name))
         {
-            return "系统繁忙2，请稍后再试";
-            $this->write_log("登录时写入权限文件失败---提示信息：系统繁忙，请稍后再试");
+            write_log("登录时写入权限文件失败");
+            exit("登录时写入权限文件失败");
+
         }
         else
         { return $file_name;}

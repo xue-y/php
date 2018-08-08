@@ -12,7 +12,6 @@
 /**
  * Think 系统函数库
  */
-
 /**
  * 获取和设置配置参数 支持批量定义
  * @param string|array $name 配置变量
@@ -99,7 +98,7 @@ if (!function_exists('yaml_parse_file')) {
  * @return void
  */
 function E($msg, $code=0) {
-    throw new Think\Exception($msg, $code);
+    throw new \Think\Exception($msg, $code);
 }
 
 /**
@@ -318,8 +317,8 @@ function I($name,$default='',$filter=null,$datas=null) {
         case 'request' :   
         	$input =& $_REQUEST;   
         	break;
-        case 'session' :   
-        	$input =& $_SESSION;   
+        case 'session' :
+        	$input =& $_SESSION;
         	break;
         case 'cookie'  :   
         	$input =& $_COOKIE;    
@@ -1294,14 +1293,14 @@ function session($name='',$value='') {
         }elseif($prefix){ // 获取session
             if(strpos($name,'.')){
                 list($name1,$name2) =   explode('.',$name);
-                return isset($_SESSION[$prefix][$name1][$name2])?$_SESSION[$prefix][$name1][$name2]:null;  
+                return isset($_SESSION[$prefix][$name1][$name2])?$_SESSION[$prefix][$name1][$name2]:null;
             }else{
-                return isset($_SESSION[$prefix][$name])?$_SESSION[$prefix][$name]:null;                
+                return isset($_SESSION[$prefix][$name])?$_SESSION[$prefix][$name]:null;
             }            
         }else{
             if(strpos($name,'.')){
                 list($name1,$name2) =   explode('.',$name);
-                return isset($_SESSION[$name1][$name2])?$_SESSION[$name1][$name2]:null;  
+                return isset($_SESSION[$name1][$name2])?$_SESSION[$name1][$name2]:null;
             }else{
                 return isset($_SESSION[$name])?$_SESSION[$name]:null;
             }            

@@ -6,7 +6,7 @@ class SyssetController extends MyController { // 系统设置
         $config=file_get_contents(APP_PATH.'Back/Conf/define.php');
         if(isset($_POST) && !empty($_POST))
         {
-            $post=$this->add_slashes($_POST);
+            $post=add_slashes($_POST);
 
             if(isset($post['quick']) && !empty($post['quick']))
             {
@@ -223,15 +223,14 @@ class SyssetController extends MyController { // 系统设置
                 {
                    $b_f=unlink(OLD_PIC.$v.'/'.$f);
                     if(!isset($b_f))
-                        $this->write_log("清理图片- OLD_PIC.$v.'/'.$f 失败");
+                        write_log("清理图片- OLD_PIC.$v.'/'.$f 失败");
                 }
             }
             closedir($f_v);
             $b_d=rmdir(OLD_PIC.$v);
             if(!isset($b_d))
-                $this->write_log("清理图片文件夹- OLD_PIC.$v 失败");
+                write_log("清理图片文件夹- OLD_PIC.$v 失败");
         }
         echo "ok";
-
     }
 }

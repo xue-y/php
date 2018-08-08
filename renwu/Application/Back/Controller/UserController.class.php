@@ -23,7 +23,7 @@ class UserController extends MyController{  //用户
         // && ($a_id==$this->u_id || $u_role_id==P_R_ID)----------加上这个超级管理员与普通管理员可以搜索
         if(isset($_GET))
         {
-            $get=$this->add_slashes($_GET);                                     //普通管理员可以看--但是限制了是否可以其他部门成员
+            $get=add_slashes($_GET);                                     //普通管理员可以看--但是限制了是否可以其他部门成员
             if(isset($get["bumen"]) && in_array($get["bumen"],$bu_men))
             {
                   $w["bumen"]=$get["bumen"];
@@ -82,7 +82,7 @@ class UserController extends MyController{  //用户
             $list = $user->where($w)->field("id,u_name,bumen,role_id,found")->limit($Page->firstRow.','.$Page->listRows)->select();
         }
 
-        $list=$this->str_slashes($list);
+        $list=str_slashes($list);
         $this->assign('list',$list);// 赋值数据集$this->assign('page',$show);// 赋值分页输出
 
         $role=D('Role');
@@ -134,9 +134,10 @@ class UserController extends MyController{  //用户
     // 执行添加
     public function execAdd()
     {
-        if($_POST['role_id']=="-1")
+        $post=add_slashes($_POST);
+        if($post['role_id']=="-1")
             $this->error("请选择一个角色");
-        if($_POST['bumen']=="-1")
+        if($post['bumen']=="-1")
             $this->error("请选择用户所在部门");
 
         $user=D('User');
@@ -146,7 +147,7 @@ class UserController extends MyController{  //用户
         if(isset($is_amdin) ||  A_S_C==TRUE)//---------------------超级管理员
         {
             $bumen=$this->arr_data('bu_men');
-            if(!in_array($this->add_slashes($_POST['bumen']),$bumen))
+            if(!in_array(add_slashes($_POST['bumen']),$bumen))
                 $this->error("部门选择错误");
         }
         else if($u_role_id==P_R_ID)  //----------------------普通管理员
@@ -157,7 +158,7 @@ class UserController extends MyController{  //用户
                 $this->error("您只能添加自己部门的人员");
             }
             $child_user=explode(',',P_R_ID_C);
-            if(!in_array($_POST['role_id'],$child_user))
+            if(!in_array($post['role_id'],$child_user))
             {
                 $this->error("您选择的角色不存在");
             }
@@ -168,14 +169,21 @@ class UserController extends MyController{  //用户
         }//验证字段
 
         $role=D('Role');
-        $role_id=$role->is_role_id($_POST['role_id']);
+        $role_id=$role->is_role_id($post['role_id']);
         if($role_id<1)
             $this->error("选择的角色角色不存在");
 
-        $data['u_name']=$this->add_slashes($_POST['u_name']);
-        $data['u_pass']=md5($this->add_slashes($_POST['u_pass']).C(PWD_PREFIX));
-        $data['bumen']=$this->add_slashes($_POST['bumen']);
-        $data['role_id']=intval($_POST['role_id']);
+        if(empty($post['u_pass']))
+        {
+           $data['u_pass']=md5(USER_PASS.C(PWD_PREFIX));
+        }else
+        {
+            $data['u_pass']=md5(add_slashes($post['u_pass']).C(PWD_PREFIX));
+        }
+        $data['u_name']=add_slashes($post['u_name']);
+
+        $data['bumen']=add_slashes($post['bumen']);
+        $data['role_id']=intval($post['role_id']);
         $data['found']=$this->u_id;
 
         $bool=$user->add($data);
@@ -192,10 +200,10 @@ class UserController extends MyController{  //用户
        if(isset($_GET['id']))
         {
             $user=D('User');
-            $get_id=$this->add_slashes($_GET['id']);
+            $get_id=add_slashes($_GET['id']);
 
             $u_info=$user->u_id_is($get_id);
-            $u_info=$this->str_slashes($u_info);
+            $u_info=str_slashes($u_info);
             if(!isset($u_info) || empty($u_info))
             {
                 $this->error('不存在此用户');exit;
@@ -270,7 +278,7 @@ class UserController extends MyController{  //用户
     {
         if(isset($_POST['id']))
         {
-            $post=$this->add_slashes($_POST);
+            $post=add_slashes($_POST);
             $user=D('User');
             $u_info=$user->u_id_is($post['id']);
             if(!isset($u_info) || empty($u_info))
@@ -328,19 +336,19 @@ class UserController extends MyController{  //用户
 
            if(!empty($post['old_pass']) && !empty($post["u_pass"]) && !empty($post["u_pass2"]))
           {// 修改密码
-              $old_pass=md5($this->add_slashes($post['old_pass']).C(PWD_PREFIX));
+              $old_pass=md5(add_slashes($post['old_pass']).C(PWD_PREFIX));
               $data_pass=$user->getFieldById($post['id'],"u_pass");
               if($old_pass!==$data_pass)
               {
                   $this->error('原密码错误');exit;
               }
-              $new_pass=md5($this->add_slashes($post['u_pass']).C(PWD_PREFIX));
+              $new_pass=md5(add_slashes($post['u_pass']).C(PWD_PREFIX));
               if($old_pass!==$new_pass)
               {
                   $data["u_pass"]=$new_pass;
               }
           }
-           $new_name=$this->add_slashes($post["u_name"]);
+           $new_name=add_slashes($post["u_name"]);
            if($new_name!=$u_info["u_name"])
           {
               $data["u_name"]=$new_name;
@@ -348,7 +356,7 @@ class UserController extends MyController{  //用户
 
            if($u_info["bumen"]!=$post["bumen"])
            {
-              $data["bumen"]=$this->add_slashes($_POST["bumen"]);
+              $data["bumen"]=add_slashes($_POST["bumen"]);
            }
            $found=$user->getFieldById($post['id'],"found"); //---------验证权限 不是修改自己的角色 角色做过更改
            if(($found!=$post['id']) && ($post['id']!=$this->u_id) && ($post["role_id"]!=$u_info["role_id"])) //不可修改自己的角色
@@ -369,7 +377,7 @@ class UserController extends MyController{  //用户
               {
                   if(($this->u_id==$post['id']) && ($new_name!=$u_info["u_name"])) //如果修改自己的用户名
                   {
-                      $_SESSION[C('SESSION_PREFIX').'n']=$new_name;
+                      $_COOKIE[C('COOKIE_PREFIX').'n']=$new_name;
                   }
                   $this->success("修改用户成功","index");
               }
@@ -392,13 +400,13 @@ class UserController extends MyController{  //用户
 
          if(isset($_POST["id"]))
          {
-            $p_id=$this->add_slashes($_POST["id"]);
+            $p_id=add_slashes($_POST["id"]);
          }
           $a_id=$user->selec_admin(); //  取得超级管理员的id
           $u_bumen=$user->u_bumen($this->u_id); // 当前用户自己的部门
           if(isset($_GET["id"]))
           {
-              $g_id=$this->add_slashes($_GET["id"]);
+              $g_id=add_slashes($_GET["id"]);
               $this->del_one($user,$g_id,$a_id,$u_bumen);
           }
         $p_id_len=count($p_id);
@@ -414,7 +422,7 @@ class UserController extends MyController{  //用户
             }
             if(in_array($a_id,$p_id))
             {
-                $this->write_log("$this->u_id: 试图删除超级管理员",1);
+                write_log("$this->u_id: 试图删除超级管理员",1);
                 $this->error("其中某个用户不存在,不可删除");die;
             }
 
@@ -491,7 +499,7 @@ class UserController extends MyController{  //用户
     {
         if($del_id==$a_id)
         {
-            $this->write_log("$this->u_id: 试图删除超级管理员",1);
+            write_log("$this->u_id: 试图删除超级管理员",1);
             $this->error("此用户不存在,不可删除");exit;
         }//----------------------------------------------防止意外删除超级管理员
 
@@ -554,13 +562,13 @@ class UserController extends MyController{  //用户
             $tid_d=$task->u_t_del($p_id);// 删除用户任务表
             if(isset($tid_d))
             {
-                $this->write_log("$this->u_id 用户删除 $del_id 用户时任务表失败sql: $tid_d");
+                write_log("$this->u_id 用户删除 $del_id 用户时任务表失败sql: $tid_d");
                 $this->error("删除用户任务信息失败");
             }
             $pid_d=$problem->u_p_del($p_id); // 删除用户问题表
             if(isset($pid_d))
             {
-                $this->write_log("$this->u_id 用户删除 $del_id 用户时问题表失败sql: $pid_d");
+                write_log("$this->u_id 用户删除 $del_id 用户时问题表失败sql: $pid_d");
                 $this->error("删除用户任务信息失败2");
             }
         }
@@ -573,7 +581,7 @@ class UserController extends MyController{  //用户
             $u_group=$problem->u_id_group($task_p_id);
             if(!isset($u_group) || empty($u_group))
             {
-                $this->write_log("$this->u_id: 删除用户时用户执行过的任务呢提交者缺少");
+                write_log("$this->u_id: 删除用户时用户执行过的任务呢提交者缺少");
                 $this->error("任务表信息错误");
             }
             foreach($u_group as $k=>$v)
@@ -591,7 +599,7 @@ class UserController extends MyController{  //用户
         $tid_d2=$task->u_task_del($del_id);// --------------删除用户执行任务
         if(isset($tid_d2))
         {
-            $this->write_log("$this->u_id 用户删除 $del_id 用户时任务表失败2sql: $tid_d2");
+            write_log("$this->u_id 用户删除 $del_id 用户时任务表失败2sql: $tid_d2");
             $this->error("删除用户任务信息失败3");
         }
     }

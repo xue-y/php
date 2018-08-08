@@ -1,4 +1,5 @@
-<?php  $limit_all=array (
+<?php header('Content-type: text/html; charset=utf-8'); 
+ $limit_all=array (
   'menu' => 
   array (
     0 => 

@@ -20,7 +20,7 @@ class RecoveryController extends MyController { // 回收站
         {
             if(isset($_GET) && !empty($_GET))
             {
-                $get=$this->add_slashes($_GET);
+                $get=add_slashes($_GET);
                 $w=$this->time_search($get,$bu_men,$rw_state); // 时间 部门 用户id 状态 搜索
 
                 if(isset($get["key"]) && !empty($get["key"]))
@@ -41,7 +41,7 @@ class RecoveryController extends MyController { // 回收站
         $Page = new \Think\Page($count,P_O_C);// 实例化分页类 传入总记录数和每页显示的记录数(10)
         $show = $Page->show();// 分页显示输出// 进行分页数据查询 注意limit方法的参数要使用Page类的属性
         $list = $problem->where($w)->order('times desc')->limit($Page->firstRow.','.$Page->listRows)->select();
-        $list=$this->str_slashes($list);
+        $list=str_slashes($list);
         $this->assign('list',$list);// 赋值数据集$this->assign('page',$show);// 赋值分页输出
 
         if($count>=1)  // -----------------------如果有数据
@@ -98,13 +98,13 @@ class RecoveryController extends MyController { // 回收站
       }
       if(isset($_GET["id"]))
       {
-          $pro_id=$this->add_slashes($_GET["id"]);
+          $pro_id=add_slashes($_GET["id"]);
           $pro_id_arr[]=$pro_id;
           $pro_old_c=1;
       }
       if(isset($_POST["id"]))
       {
-          $pro_id=$this->add_slashes($_POST["id"]);
+          $pro_id=add_slashes($_POST["id"]);
           $pro_old_c=count($pro_id);
           if(is_array($pro_id))
           {
@@ -161,7 +161,7 @@ class RecoveryController extends MyController { // 回收站
         {
             $this->error("您没有选择任务");
         }
-        $pro_id=$this->add_slashes($pid);
+        $pro_id=add_slashes($pid);
         $pro_id_c=count($pro_id);
         if(is_array($pro_id))  // git post 获取的所有问题ID
         {

@@ -11,7 +11,7 @@ class TaskController extends MyController { // 任务控制器
         $user=D("user");
         if(isset($_GET) && !empty($_GET))
         {
-            $get=$this->add_slashes($_GET);
+            $get=add_slashes($_GET);
             $w=$this->time_search($get,$bu_men,$rw_state); // 时间 部门 用户id 状态 搜索
 
             if(isset($get["p_id"]) && !empty($get["p_id"]))
@@ -79,7 +79,7 @@ class TaskController extends MyController { // 任务控制器
 
         if($problem->create())
         {
-            $post=$this->add_slashes($_POST);
+            $post=add_slashes($_POST);
 
             if(preg_match('/^[\s\S]{5,1000}$/i',$post["descr"],$con) && !empty($con))
             {
@@ -113,7 +113,7 @@ class TaskController extends MyController { // 任务控制器
         $problem=D("Problem");
         $rw_state=$this->arr_data("rw_state");
         $pro=$this->update_vei($_GET["id"],$problem);
-        $pro=$this->str_slashes($pro);
+        $pro=str_slashes($pro);
         $this->pos_tag();  //当前位置标签
         $this->assign(array("pro"=>$pro,"state"=>$rw_state));
         $this->display();
@@ -126,7 +126,7 @@ class TaskController extends MyController { // 任务控制器
         {
             $this->error("修改任务信息错误");
         }
-        $post=$this->add_slashes($_POST);
+        $post=add_slashes($_POST);
 
         $problem=D("Problem");
 
@@ -165,7 +165,7 @@ class TaskController extends MyController { // 任务控制器
            {
                $this->error($problem->getError());
            }
-           $post=$this->add_slashes($_POST);
+           $post=add_slashes($_POST);
             if(!empty($post["tit"]) && $post["tit"]!=$pro["tit"])
             {
                 $data["tit"]=$post["tit"];
@@ -224,9 +224,9 @@ class TaskController extends MyController { // 任务控制器
       }
       //判断任务是否存在
        if(isset($_GET["id"]))
-           $pro_id=$this->add_slashes($_GET["id"]);
+           $pro_id=add_slashes($_GET["id"]);
         else
-            $pro_id=$this->add_slashes($_POST["id"]);
+            $pro_id=add_slashes($_POST["id"]);
 
         $problem=D("Problem");
         $pro=$problem->is_task($pro_id);
@@ -235,7 +235,7 @@ class TaskController extends MyController { // 任务控制器
         {
             $this->error("不存在此任务");
         }
-        $pro=$this->str_slashes($pro[0]);//二维数组转一维
+        $pro=str_slashes($pro[0]);//二维数组转一维
 
         $this_u=0;
         if($pro["u_id"]==$this->u_id)  // 如果是自己提交的任务只可查看，不可执行--可修改
@@ -251,13 +251,13 @@ class TaskController extends MyController { // 任务控制器
         if(isset($_POST["see"]) && $_POST["see"]=="task")
         {
             $d=D();
-            $p_id=$this->add_slashes($_POST["id"]);
+            $p_id=add_slashes($_POST["id"]);
             $sql="select u.u_name,u.bumen,t.times,t.state,t.plan from __USER__ as u,__TASK__ as t where t.p_id=$p_id and t.u_id=u.id";
             $task_info=$d->query($sql);
             $c=count($task_info);
             if($c>0)
             {
-               $task_info=$this->str_slashes($task_info);
+               $task_info=str_slashes($task_info);
                 $sum=array();
                 foreach($task_info as $v)
                 {
@@ -292,7 +292,7 @@ class TaskController extends MyController { // 任务控制器
     //执行任务
     public function execUte()
     {
-        $post=$this->add_slashes($_POST);
+        $post=add_slashes($_POST);
         if(!isset($post["state"]))
         {
             $this->error("请勾选执行任务");exit;
@@ -329,7 +329,7 @@ class TaskController extends MyController { // 任务控制器
         //用户表更新信息字段
         $user=D("User");
         $user_meg=$user->user_meg($pro["u_id"]);
-        $user_meg==1?$this->success("执行任务成功,请等待提交任务人员回馈","index"):$this->error("执行任务失败");
+        $user_meg==1?$this->success("执行任务成功,请等待提交任务人员回馈","index",10):$this->error("执行任务失败");
     }
 
     //任务统计
@@ -343,7 +343,7 @@ class TaskController extends MyController { // 任务控制器
         $task_index=array_keys($task_state);
         if(isset($_GET) && !empty($_GET))
         {
-            $get=$this->add_slashes($_GET);
+            $get=add_slashes($_GET);
             $w=$this->time_search($get,$bu_men,$task_index);
         }
 
@@ -358,7 +358,7 @@ class TaskController extends MyController { // 任务控制器
            $Page=new \Think\Page($count,P_O_C);// 实例化分页类 传入总记录数和每页显示的记录数(25)
            $list = $task->where($w)->order('times desc')->field("p_id,u_id,times,state")->limit($Page->firstRow.','.$Page->listRows)->select();
        }
-        $list=$this->str_slashes($list);
+        $list=str_slashes($list);
         if($count>=1)
         {
             foreach($list as $k=>$v)

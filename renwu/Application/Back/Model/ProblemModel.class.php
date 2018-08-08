@@ -8,7 +8,12 @@
 
 namespace Back\Model;
 use Think\Model;
+
 class ProblemModel extends Model{
+
+    protected $readonlyField = array('id','u_id');
+    // protected $updateFields = array('tit','descr','state','isdel','times');
+
     public $_validate=array(
         array('tit','require','标题必填',0,'',1),
         array('tit','/^[\s\S]{2,60}$/i','标题长度2--20位',2,'regex',3),
@@ -19,7 +24,6 @@ class ProblemModel extends Model{
         array('descr','',2,'ignore'),
         array('tit','',2,'ignore'),
     );
-
 
     /** 根据问题ID 判断是否存在此任务
      * @parem $pro_id 问题ID

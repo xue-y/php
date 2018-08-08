@@ -1,6 +1,8 @@
 <?php
 namespace Back\Controller;
 use My\MyController;
+use Think\Crypt\Driver\Think;
+
 class LoginController extends MyController{  //登录
 
     /*
@@ -9,23 +11,8 @@ class LoginController extends MyController{  //登录
     public  function sign()
     {
        // 判断用户上次是否记住用户名和编号
-       $id="";$n="";
-       if(isset($_SESSION[$this->s_pix.'id']))
-           $id=$_SESSION[$this->s_pix.'id'];
-       else
-       {
-           if(isset($_COOKIE[$this->s_pix.'id']))
-               $id=$_COOKIE[$this->s_pix.'id'];
-       }
-        if(isset($_SESSION[$this->s_pix.'n']))
-            $n=$_SESSION[$this->s_pix.'n'];
-        else
-        {
-            if(isset($_COOKIE[$this->s_pix.'n']))
-            $n=$_COOKIE[$this->s_pix.'n'];
-        }
         $this->assign(
-            array('id'=>$id,'n'=>$n)
+            array('id'=>$this->u_id,)
         );
 
         $this->display('Public/login');
@@ -56,13 +43,13 @@ class LoginController extends MyController{  //登录
             {
                 echo "不存在此用户";exit;
             }
-            $u_name=$this->add_slashes($_POST['u_name']);
-            if($u_info['u_name']!=$u_name)
+           $u_name=$u_info['u_name'];
+           /* if($u_info['u_name']!=$u_name)
             {
                 echo "用户名错误";exit;
-            }
+            }*/
 
-            $pass=md5($this->add_slashes($_POST['u_pass']).C(PWD_PREFIX));
+            $pass=md5(add_slashes($_POST['u_pass']).C(PWD_PREFIX));
 
             if($u_info['u_pass']!=$pass)
             {
@@ -70,12 +57,26 @@ class LoginController extends MyController{  //登录
             }
             else
             {
-                unset($_SESSION[$this->s_pix]);
+                $xtea=new Think();
+                $xtea_id_key=$xtea->encrypt($this->s_pix,"id");
+                $xtea_id_val=$xtea->encrypt($id,$this->s_pix);
 
+                // 判断是否保存了编号，如果保存了清除 id ,n long-term,否则删除原 cookie 前缀的cookie
+                // 用户存储 cookie 时间设置 常量
+               $long_term=cookie("Long-term");
+               if($long_term==true)
+               {
+                   cookie('token',null);
+                   cookie('n',null);
+                   cookie($xtea_id_key,null);// 清除原 cookie
+               }else
+               {
+                   cookie(null,$this->s_pix);
+               }
                 $time=time();
                 $bool=$user->login_time($id,$time);
                 if($bool!=1)
-                {echo $bool;exit;} // 写入cookie  的token
+                {echo $bool;exit;}
 
                 $role=D('Role');
                 $limit_id=$role->limit_id($u_info["role_id"]);
@@ -84,19 +85,22 @@ class LoginController extends MyController{  //登录
                 $bool=$limit->limit_all($limit_id,$u_info["role_id"]); //创建权限文件
 
                 if(!isset($bool))
-                {echo $bool;exit;} //
+                {echo $bool;exit;}
 
                 if(isset($_POST['Long-term']) && ($_POST['Long-term']==1))
                 {
-                    cookie($this->s_pix.'n',$u_name,3600*24*30,'/');
-                    cookie($this->s_pix.'id',$id,3600*24*30,'/');
-                }// 用户信息保存一个月
+                    cookie($xtea_id_key,$xtea_id_val,USER_LOGIN_TS,"/");// 用户信息保存一个月
+                    cookie("Long-term",true,USER_LOGIN_TS,'/');
+                }else
+                {
+                    cookie($xtea_id_key,$xtea_id_val,USER_LOGIN_T,"/");
+                }
+                cookie("n",$u_name,USER_LOGIN_T,"/");
 
-                $_SESSION[$this->s_pix.'id']=$id;
-                $_SESSION[$this->s_pix.'n']=$u_name;
                 //时时登录用户
                 $token=sha1($time.$id);
-                cookie($this->s_pix.'token',$token,36000,'/');
+                cookie('token',$token,USER_LOGIN_T,'/');
+
                 echo "okok";
             }
 
@@ -134,17 +138,23 @@ class LoginController extends MyController{  //登录
 
     public  function  login_out() //-----------------------退出登录
    {
-       unset($_SESSION[$this->s_pix.'id']);
-       unset($_SESSION[$this->s_pix.'n']);
-       setcookie($this->s_pix.'token',"", -1,"/");
-       S("tast_w_n",NULL);
-       S("pro_w_n",NULL);
-       unset($_SESSION[TAST_W]);
-       unset($_SESSION[PRO_W]);
-       /*unset($_SESSION[$this->s_pix.'token']);
-       $_COOKIE[$this->s_pix.'token']=NULL;
-       unset($_COOKIE[$this->s_pix.'token']);*/
-       echo "<script>window.location.href='/__CONTROLLER__/sign'</script>";
+       $long_term=cookie("Long-term");
+       $xtea=new Think();  // 加密
+       $xtea_id_key=$xtea->encrypt($this->s_pix,"id");
+       if($long_term==true)
+       {
+           cookie('token',null);
+           cookie('n',null);
+           cookie($xtea_id_key,null);// 清除原 cookie
+       }else
+       {
+           cookie(null,$this->s_pix);
+       }
+       S($this->u_id."tast_w_n",NULL);
+       S($this->u_id."pro_w_n",NULL);
+       $xtea=null;
+       echo "<script>window.location.href='".__CONTROLLER__."/sign'</script>";
+       exit;
    }
 
 

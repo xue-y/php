@@ -66,7 +66,7 @@ class RoleController extends MyController{  //角色
        $r_id=$user->role_id($this->u_id); // 当前用户角色ID
        $this->limit_deny($r_id);
 
-       $post=$this->add_slashes($_POST);
+       $post=add_slashes($_POST);
        $data["n"]=$post['n'];
        $data['descr']=$post['descr'];
 
@@ -89,7 +89,7 @@ class RoleController extends MyController{  //角色
         {
             $this->error("请选择修改的角色");
         }
-        $g_id=$this->add_slashes($_GET["id"]);
+        $g_id=add_slashes($_GET["id"]);
         $this->limit_deny($g_id);
         $this->pos_tag();  //当前位置标签
 
@@ -129,7 +129,7 @@ class RoleController extends MyController{  //角色
         }else{
             $this->error("您没有权限修改此角色");
         }
-        $r_info=$this->str_slashes($r_info);
+        $r_info=str_slashes($r_info);
         $this->assign(array(
             "r_info"=>$r_info,"s_l_a"=>$s_l_a,"my_l"=>$my_l2
         ));
@@ -144,7 +144,7 @@ class RoleController extends MyController{  //角色
             $this->error("请选择修改的角色");
         }
          $this->limit_deny($_POST["id"]);  // -----------------超级管理员 管理员 可以修改角色
-         $post=$this->add_slashes($_POST);
+         $post=add_slashes($_POST);
  //       var_dump($post);
          $role=D("Role");
          $is_role_id=$role->is_role_id($post["id"]);
@@ -208,10 +208,10 @@ class RoleController extends MyController{  //角色
         $this->limit_deny($u_r_id); //-------------判断当前用户身份
         if(isset($_GET["id"]))
         {
-            $r_id=$this->add_slashes($_GET["id"]);
+            $r_id=add_slashes($_GET["id"]);
         }
         if(isset($_POST["id"]))
-            $r_id=$this->add_slashes($_POST["id"]);
+            $r_id=add_slashes($_POST["id"]);
 
         $this->role_del($user,$r_id,$u_r_id);
     }
@@ -224,8 +224,8 @@ class RoleController extends MyController{  //角色
         $is_admin=$this->is_admin($user);
         if(!isset($is_admin) && ($r_id!=P_R_ID))
         {
-            $n=$_SESSION[$this->s_pix."n"];
-            $this->write_log("$this->u_id | 用户名：$n |试图操作角色",1);
+            $n=cookie("n");
+            write_log("$this->u_id | 用户名：$n |试图操作角色",1);
             $this->error("抱歉您没有权限");
         }
     }

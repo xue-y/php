@@ -43,10 +43,16 @@
             <div class="panel loginbox">
                 <div class="text-center margin-big padding-big-top"><h1>后台管理中心</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <div class="field field-icon-right">
                             <input type="text" class="input-big" name="u_name" placeholder="登录账号" data-validate="required:请填写账号,title:请输入用户名"  value="<present name="n">{$n}</present>" />
                             <span class="icon icon-user margin-small"></span>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input-big" name="id" placeholder="登录编号" data-validate="required:请填写编号,num:请填写正确的编号"   value="<present name="id">{$id}</present>"/>
+                            <span class="icon  icon-laptop margin-small"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -55,12 +61,7 @@
                             <span class="icon icon-key margin-small"></span>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="field field-icon-right">
-                            <input type="text" class="input-big" name="id" placeholder="登录编号" data-validate="required:请填写编号,num:请填写正确的编号"   value="<present name="id">{$id}</present>"/>
-                            <span class="icon  icon-laptop margin-small"></span>
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <div class="field code">
                             <input type="text" class="input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码,code:请填写正确的5位 验证码"/>

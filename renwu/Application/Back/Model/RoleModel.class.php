@@ -10,6 +10,8 @@ namespace Back\Model;
 use Think\Model;
 class RoleModel extends Model{
 
+    protected $readonlyField = array('id');
+
     public  $_validate=array(
         array('n','require','角色名必填',0,'',1),
         array('n',' /^[\s\S]{2,15}$/i','名称2--5位',0,'regex'),
@@ -20,6 +22,7 @@ class RoleModel extends Model{
         array('n','',2,'ignore'),
         array('descr','',2,'ignore')
     );
+
     //根据角色ID查询权限ID
     public  function limit_id($r_id)
     {

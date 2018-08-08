@@ -55,6 +55,7 @@ $(document).ready(function(e) {
         }
     });
 
+    $('#db').focus();
     $('#tijiao').click(function(){
         if(sta==="db_exis")
         {
