@@ -76,7 +76,6 @@ function quxuan(change_info,len,status)
 }//全选
 function child(change_info,len,start)
 {
-
     var j=null;
     len=len-1;
     for(var i=1;i<=len;i++)
@@ -171,12 +170,7 @@ function tab(an,con)
                 removeClass(an[now],"active");
                 addClass(con[now],"hidden");
                 removeClass(con[this.index],"hidden");
-               /* an[now].removeClass('active');
-                an[this.index].addClass('active');
-                con[now].removeClass("hidden");
-                con[this.index].addClass("layout");*/
             }
-
             now=this.index;
         };
     }
@@ -214,8 +208,50 @@ function sorts(){
 		return false;
 	}
 };
+// 判断浏览器内核
+function isBrowser() {
+    var userAgent = navigator.userAgent;
+    //微信内置浏览器
+    if(userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+        return "wx";
+    }
+    //QQ内置浏览器
+    else if(userAgent.match(/QQ/i) == 'QQ') {
+        return "qq";
+    }
+    //Chrome
+    else if(userAgent.match(/Chrome/i) == 'Chrome') {
+        return "Chrome";
+    }
+    //Opera
+    else if(userAgent.match(/Opera/i) == 'Opera') {
+        return "Opera";
+    }
+    //Firefox
+    else if(userAgent.match(/Firefox/i) == 'Firefox') {
+        return "Firefox";
+    }
+    //Safari
+    else if(userAgent.match(/Safari/i) == 'Safari') {
+        return "Safari";
+    }
+    //IE
+    else if(!!window.ActiveXObject || "ActiveXObject" in window) {
+        return "IE";
+    }
+    else {
+        return "未定义:"+userAgent;
+    }
+}
 
-//跳转到指定的邮箱登录页面
-/*var mail_url = gotoEmail("1922527784@qq.com");
- mail_url='<a href="http://'+mail_url+'">去我的邮箱</a>';
- $("body").append(mail_url);*/
+// 判断 pc端还是 移动端
+function isMobile()
+{
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+       return true; // mobile
+    }else{
+     return false; //pc
+    }
+}
+
+

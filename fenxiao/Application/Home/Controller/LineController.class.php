@@ -7,10 +7,10 @@
  */
 
 namespace Home\Controller;
-use My\WxController;
+use My\HwxController;
 use Think\Controller;
 
-class LineController extends  WxController{
+class LineController extends  HwxController{
 
     private $uid_id_phone;//客户修改自己提交下线 修改手机号--sessiong 名称标识
 

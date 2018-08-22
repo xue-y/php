@@ -6,8 +6,8 @@ class IndexController extends MyController { // 后台首页
 
 		$pos["c"]="后台首页";
 		$pos["a"]='';
-	
-        $n=$_SESSION[$this->s_pix.'n'];
+
+        $n=cookie('n');
         $this->assign(array(
             "n"=>$n,
             "u_id"=>$this->u_id

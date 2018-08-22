@@ -6,19 +6,20 @@
  * Time: 下午2:38
  */
 
-    /** 删除session 销毁登录的session
-     * @parem $s_pix session 前缀
+    /** 删除cookie 销毁登录的cookie
+     * @parem $s_pix cookie 前缀
      */
     function de_session($s_pix)
     {
-        unset($_SESSION[$s_pix.'login_status']);
-        unset($_SESSION[$s_pix.'id']);
-        unset($_SESSION[$s_pix.'phone']);
-        unset($_SESSION[$s_pix.'token']);
-        /*session($s_pix.'login_status',null);
-        session($s_pix.'id',null);
-        session($s_pix.'phone',null);
-        session($s_pix.'token',null); */// 清空session
+        $long_term=cookie('Long-term');
+        if(isset($long_term)  &&  ($long_term==1))
+        {
+            cookie('id',null);
+            cookie('token',null);
+        }else
+        {
+            cookie(null,$s_pix);
+        }
     }
 
     /**限制用户频繁访问刷新页面
@@ -63,5 +64,21 @@
                 $temp=ceil($update_time/60);
             }
             exit("您刷新的太频繁请 $temp 分钟后再刷新");
+        }
+    }
+
+    /** 登录页面判断是否已经登录
+     * */
+    function sign_is_login()
+    {
+        $s_pix=C('COOKIE_PREFIX');
+        if(isset($_COOKIE[$s_pix.'id'])  &&  (pass_md5(sha1($_COOKIE[$s_pix.'id']).$_COOKIE[$s_pix.'phone'])==$_COOKIE[$s_pix.'token']))
+        {
+            $uid=$_COOKIE[$s_pix.'id'];
+            if(isset($_SESSION[$s_pix.'login_status'.$uid])  &&  $_SESSION[$s_pix.'login_status'.$uid]==1)
+            {
+                echo "<script>window.location.href='".__MODULE__."/Index/index'</script>";
+                exit;
+            }
         }
     }

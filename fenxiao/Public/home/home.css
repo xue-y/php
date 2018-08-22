@@ -55,7 +55,7 @@ sup{top: -0.5em;left: 2px;color:red;}
 h3{background: #0ae;color:#fff;font-size: 16px;}
 h3 a{color:#fff; cursor:pointer;}
 h3 a:hover{color:#d1edf8;}
-.line-add h3,.cusBase h3,.login h3,.info-index h3,.set-index h3,.line-index  h3,.zx h3{ padding: 10px; border-bottom:1px solid #d5d5d5;}
+.line-add h3,.cusBase h3,.login h3,.info-index h3,.set-index h3,.line-index  h3,.zx h3,.pay h3{ padding: 10px; border-bottom:1px solid #d5d5d5;}
 .info-index li,.set-index li{border-bottom: 1px solid #efe7e7;margin-bottom: 10px;}
 
 /*index-index 页面*/
@@ -115,3 +115,7 @@ h3 a:hover{color:#d1edf8;}
 .zx li{ clear: both; overflow: hidden;border-bottom: 1px solid #efe7e7;margin-bottom: 20px;}
 .zx li span:nth-of-type(1){display: block;width:15%;min-width:100px;}
 .zx li span:nth-of-type(2){display: block;max-width:85%;width:auto;margin-left: 15%;}
+
+/*pay*/
+.pay h3{margin-bottom: 40px;}
+.pay form{margin: 0px 5px;}

@@ -1,0 +1,7 @@
+[2018-07-31 18:06:41] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: s_pix D:\phpStudy\WWW\fenxiao\Application\Home\Controller\LoginController.class.php 第 17 行.
+NOTIC: [8] Undefined variable: id D:\phpStudy\WWW\fenxiao\Application\Home\Controller\LoginController.class.php 第 29 行.
+

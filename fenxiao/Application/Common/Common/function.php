@@ -7,16 +7,16 @@
  */
  function is_login($s_pix)        //验证是否登录
  {
-
-     if(isset($_SESSION[$s_pix.'id']) && isset($_SESSION[$s_pix.'n']) && isset($_COOKIE[$s_pix.'token']))
+       //此函数里面取不到 cookie 配置文件中的前缀
+     if(isset($_COOKIE[$s_pix.'id']) && isset($_COOKIE[$s_pix.'n']) && isset($_COOKIE[$s_pix.'token']))
      {
          $user=D('User');
-         $info=$user->login_select($_SESSION[$s_pix.'id']);
+         $info=$user->login_select($_COOKIE[$s_pix.'id']);
 
-         $token=sha1($info['times'].$_SESSION[$s_pix.'id']);
-         if(($info['u_name']==$_SESSION[$s_pix.'n']) && ($_COOKIE[$s_pix.'token']==$token))
+         $token=sha1($info['times'].$_COOKIE[$s_pix.'id']);
+
+         if(($info['u_name']==$_COOKIE[$s_pix.'n']) && ($_COOKIE[$s_pix.'token']==$token))
          {
-           //  http://".$_SERVER["HTTP_HOST"]."
             echo "<script>window.location.href='".__ROOT__."/Back/Main/index'</script>";
          }
      }

@@ -9,14 +9,17 @@
 
 namespace Home\Controller;
 use Think\Controller;
+use Think\Crypt\Driver\Des;
 
 class LoginController extends Controller{
     // 进入登录
     public function sign()
     {
-		$id=null;
+        sign_is_login(); // 如果已经登录直接跳转个人主页
+
+        $id=null;
         $s_pix=C('SESSION_PREFIX');
-		
+
         if(isset($_COOKIE[$s_pix.'phone']))
             $id=$_COOKIE[$s_pix.'phone'];
 
@@ -28,9 +31,8 @@ class LoginController extends Controller{
         {
             $old_url="";
         }
-
         $this->assign(array("id"=>$id,"history"=>$old_url));  // 用户带上 history
-        $this->sign_is_login(); // 如果已经登录直接跳转个人主页
+
         $this->display("/login");
     }
 
@@ -54,15 +56,25 @@ class LoginController extends Controller{
 
            de_session($s_pix); //销毁登录的session
 
-           $_SESSION[$s_pix.'login_status']=1; // 登录状态
-           $_SESSION[$s_pix.'id']=$is_user["id"];
-           $_SESSION[$s_pix.'phone']=$post["phone"];
-           $_SESSION[$s_pix.'token']=pass_md5(sha1($is_user["id"]).$post["phone"]);
+           //$des=new Des();
+           /*$des_login_status=$des->encrypt($is_user["id"],"1",3600);
+           echo $des_login_status;exit;*/
 
-           if(isset($post['Long-term']) && ($post['Long-term']==1))
+           $_SESSION[$s_pix.'login_status'.$is_user["id"]]=1; // 登录状态
+
+           if(isset($post['Long-term']) && ($post['Long-term']==1))// 用户信息保存一个月
            {
-               cookie($s_pix.'phone',$post["phone"],3600*24*30,'/');
-           }// 用户信息保存一个月
+               cookie('phone',$post["phone"],3600*24*30,'/');
+               cookie('Long-term',true,3600*24*30,'/');
+           }else
+           {
+               cookie('phone',$post["phone"],USER_LOGIN_T,'/');
+           }
+
+           cookie('id',$is_user["id"],USER_LOGIN_T,'/');
+           $token=pass_md5(sha1($is_user["id"]).$post["phone"]);
+           cookie('token',$token,USER_LOGIN_T,'/');
+
 
            if(isset($post["history"]) && !empty($post["history"]))
            {
@@ -71,11 +83,11 @@ class LoginController extends Controller{
            {
                $old_url="/Index/index";
            }
+
            header("Location:http://".$_SERVER['SERVER_NAME'].__MODULE__.$old_url);
            exit;
            // $this->redirect('Home/Info/index','',0); nginx 不支持
            //登录成功跳转到信息个人主页
-
        }else
        {
            $this->error("用户名或密码错误");
@@ -89,19 +101,6 @@ class LoginController extends Controller{
         echo "<script>window.location.href='".__CONTROLLER__."/sign'</script>";
         exit;
     }
-
-    /** 登录页面是否已经登录
-     * */
-    private function sign_is_login()
-    {
-        $s_pix=C('SESSION_PREFIX');
-        if(isset($_SESSION[$s_pix.'login_status'])  &&  $_SESSION[$s_pix.'login_status']==1 && isset($_SESSION[$s_pix.'phone']) && isset($_SESSION[$s_pix.'token']) &&  (pass_md5(sha1($_SESSION[$s_pix.'id']).$_SESSION[$s_pix.'phone'])==$_SESSION[$s_pix.'token']))
-        {
-            echo "<script>window.location.href='".__MODULE__."/Index/index'</script>";
-            exit;
-        }
-    }
-
 
 
 }

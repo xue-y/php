@@ -8,10 +8,10 @@
  */
 
 namespace Home\Controller;
-use My\WxController;
+use My\HwxController;
 use Think\Log;
 
-class InfoController extends WxController{
+class InfoController extends HwxController{
 
     // 消息列表页
     public function index()

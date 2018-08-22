@@ -93,9 +93,10 @@ class CustomerModel extends Model {
     /** 判断客户是否存在---并且判断当前管理是否有权删除--单个用户
      * @parem $id 当前客户的id
      * @parem $uid 当前操作管理员id
+     * @parem $is_del 是否删除的值 0 或者 1
      * @return type int 失败0成功1
      * */
-    public function del_cus_one($id,$uid)
+    public function del_cus_one($id,$uid,$is_del)
     {
         if(intval($id)<1)
         {
@@ -103,7 +104,7 @@ class CustomerModel extends Model {
         }
         $w["a.cid"]=array("eq",$uid);
         $w["a.id"]=array("eq",$id);
-        $w["b.is_del"]=array('eq',0);
+        $w["b.is_del"]=array('eq',$is_del);
         return  $this->alias("a")->where($w)->join("__CUS_BASE__ as b ON b.id=a.id")->count();
     }
 

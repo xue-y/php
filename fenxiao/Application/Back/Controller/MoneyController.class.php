@@ -81,7 +81,7 @@ class MoneyController extends MyController {
 		 }
 		 		
         $this->temp_session('money');
-        $_SESSION[$this->s_pix.'money']=$money; // 客户原有的总金额
+        $_COOKIE[$this->s_pix.'money']=$money; // 客户原有的总金额
 		
 		 $info["money"]=$money;
 		 $info["cid"]=$this->u_id;
@@ -95,7 +95,7 @@ class MoneyController extends MyController {
 	 {
 		$post=add_slashes($_POST);
 		 
-        if($post["cid"]!=$_SESSION[$this->s_pix.'id'])
+        if($post["cid"]!=$this->u_id)
         {
             $this->error("此客户不是您的下线您没有修改权限");
         }
@@ -123,19 +123,19 @@ class MoneyController extends MyController {
 		{
 			$this->error("修改佣金 必须填写 佣金操作说明");
 		}
-		if(isset($_SESSION[$this->s_pix.'money']))
+		if(isset($_COOKIE[$this->s_pix.'money']))
 		{
-			$data_detailed["money"]=$data_money["jine"]=intval($post["money"])+intval($_SESSION[$this->s_pix.'money']);
-			$this->temp_session('money');
+			$data_detailed["money"]=$data_money["jine"]=intval($post["money"])+intval($_COOKIE[$this->s_pix.'money']);
+		    $this->temp_session('money');
 		}else
 		{
 			$data_detailed["money"]=$data_money["jine"]=intval($post["money"])+$cus_base->cus_money($id);
 		}
-		$this->temp_session('money');
+		//$this->temp_session('money');
 		
 		// 佣金表增加一条数据
 		$data_money["id"]=$post["id"];
-		$data_money["cid"]=$_SESSION[$this->s_pix.'id'];
+		$data_money["cid"]=$this->u_id;
 		$data_money["num"]=intval($post["money"]);
 		$data_money["info"]=$post["money_info"];
 		$data_money["t"]=date("Y-m-d H:i:s",time());
@@ -159,7 +159,7 @@ class MoneyController extends MyController {
 	  	// 客户消息通知表 cus_info---- 通知客户
 		$n=$cus_base->cus_is_zx($post["id"],$post["cid"],"n");
 		
-        $info="<b>[ ".$n." ]</b> 用户，由管理员 <b>".$_SESSION[$this->s_pix."n"]."</b> 在 <b>".$data_money["t"]."</b> 时间更新佣金 <b>".$data_money["num"]."</b>
+        $info="<b>[ ".$n." ]</b> 用户，由管理员 <b>".$_COOKIE[$this->s_pix."n"]."</b> 在 <b>".$data_money["t"]."</b> 时间更新佣金 <b>".$data_money["num"]."</b>
 		<br/>佣金操作说明: ".$post["money_info"];
 		 
 

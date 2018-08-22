@@ -10,7 +10,7 @@
 //http://域名/Public/wx_token.php
 
 //定义TOKEN密钥
-define("TOKEN","loginzf");
+define("TOKEN","");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 

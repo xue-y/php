@@ -114,7 +114,8 @@ class RoleController extends MyController{  //角色
 
                 $my_l2=array();
 
-                $my_l=$this->rid_lid($g_id,$r_info["limit_id"]);// 用当前拥有的权限
+                $my_l=$this->rid_lid($g_id,$r_info["limit_id"]);// 用户当前拥有的权限
+
                 $my_l=array_merge($my_l[L_MENU],$my_l[L_ACTION]);
 
                   foreach($my_l as $v)
@@ -226,7 +227,7 @@ class RoleController extends MyController{  //角色
         $is_admin=$this->is_admin($user);
         if(!isset($is_admin) && ($r_id!=P_R_ID))
         {
-            $n=$_SESSION[$this->s_pix."n"];
+            $n=cookie('n');
             $this->write_log("$this->u_id | 用户名：$n |试图操作角色",1);
             $this->error("抱歉您没有权限");
         }

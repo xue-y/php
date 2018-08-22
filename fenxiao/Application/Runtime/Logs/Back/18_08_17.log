@@ -1,0 +1,232 @@
+[2018-08-17 10:02:36] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-17 10:02:36] 127.0.0.1 /Back/Login/sign
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: code D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\d969c12762d65e2769541579706f2981.php 第 68 行.
+
+[2018-08-17 10:02:36] 127.0.0.1 /Back/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-08-17 10:02:52] 127.0.0.1 /Back/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+
+[2018-08-17 10:02:52] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:02:53] 127.0.0.1 /Back/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:02:58] 127.0.0.1 /Back/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:02:59] 127.0.0.1 /Back/Personal/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Undefined index: a D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\a880c1a463036abd938bd3d21ca38740.php 第 19 行.
+
+[2018-08-17 10:03:12] 127.0.0.1 /Back/Personal/email
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:03:14] 127.0.0.1 /Back/Personal/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Undefined index: a D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\a880c1a463036abd938bd3d21ca38740.php 第 19 行.
+
+[2018-08-17 10:03:16] 127.0.0.1 /Back/Personal/emailSend
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:03:46] 127.0.0.1 /Back/Personal/emailVer?jihuo=1534471392&id=00001&state=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:03:48] 127.0.0.1 /Back/Personal/execeEailVer
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:03:50] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:03:50] 127.0.0.1 /Back/Personal/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Undefined index: a D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\a880c1a463036abd938bd3d21ca38740.php 第 19 行.
+
+[2018-08-17 10:03:58] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:03:58] 127.0.0.1 /Back/Personal/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Undefined index: a D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\a880c1a463036abd938bd3d21ca38740.php 第 19 行.
+
+[2018-08-17 10:04:02] 127.0.0.1 /Back/Personal/emailSend
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:20:29] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:20:29] 127.0.0.1 /Back/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:20:31] 127.0.0.1 /Back/Login/login_out
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: token D:\phpStudy\WWW\fenxiao\Application\Back\Controller\LoginController.class.php 第 148 行.
+
+[2018-08-17 10:20:31] 127.0.0.1 /Back/Login/sign
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: code D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\d969c12762d65e2769541579706f2981.php 第 68 行.
+
+[2018-08-17 10:20:31] 127.0.0.1 /Back/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-17 10:29:01] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-17 10:29:01] 127.0.0.1 /Back/Login/sign
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: code D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\d969c12762d65e2769541579706f2981.php 第 68 行.
+
+[2018-08-17 10:29:01] 127.0.0.1 /Back/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-17 10:29:10] 127.0.0.1 /Back/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+
+[2018-08-17 10:29:10] 127.0.0.1 /Back/Main/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:29:10] 127.0.0.1 /Back/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:29:13] 127.0.0.1 /Back/Customer/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:29:15] 127.0.0.1 /Back/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:29:18] 127.0.0.1 /Back/User/update?id=00002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:32:36] 127.0.0.1 /Back/User/execUate
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+
+[2018-08-17 10:32:37] 127.0.0.1 /Back/User/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:32:40] 127.0.0.1 /Back/User/update?id=00002
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant md5 - assumed 'md5' D:\phpStudy\WWW\fenxiao\ThinkPHP\Common\functions.php 第 588 行.
+
+[2018-08-17 10:43:57] 127.0.0.1 /Back/Login/login_out
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: token D:\phpStudy\WWW\fenxiao\Application\Back\Controller\LoginController.class.php 第 148 行.
+
+[2018-08-17 10:43:57] 127.0.0.1 /Back/Login/sign
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: code D:\phpStudy\WWW\fenxiao\Application\Runtime\Cache\Back\d969c12762d65e2769541579706f2981.php 第 68 行.
+
+[2018-08-17 10:43:57] 127.0.0.1 /Back/Login/verify
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+

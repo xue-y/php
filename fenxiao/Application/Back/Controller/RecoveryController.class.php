@@ -63,7 +63,7 @@ class RecoveryController extends MyController{
             ->join(' __CUS_DETAILED__ as a ON a.id =b.id')->where($w)->select();
 
         $show = $Page->show();//  分页显示输出
-        $this->assign(array('page'=>$show,'list'=>$list,'count'=>$count,"uid"=>$_SESSION[$this->s_pix.'id'],'all_zx'=>$all_zx));//  赋值分页输出
+        $this->assign(array('page'=>$show,'list'=>$list,'count'=>$count,"uid"=>$this->u_id,'all_zx'=>$all_zx));//  赋值分页输出
 
         $this->display();
     }
@@ -76,7 +76,7 @@ class RecoveryController extends MyController{
         if(isset($_GET["id"])) // 一个客户
         {
             //判断客户是否存在---并且判断当前管理是否有权删除
-            $is_del=$cus->del_cus_one($_GET["id"],$_SESSION[$this->s_pix.'id']);
+            $is_del=$cus->del_cus_one($_GET["id"],$this->u_id,1);
             if($is_del!=1)
             {
                 $this->error("您操作的客户不存在或没有权限");
@@ -128,7 +128,8 @@ class RecoveryController extends MyController{
     public function del()
     {
         // 判断id 是否合法
-        if(isset($_GET["id"]) &&  intval($_GET["id"])>=1)
+        $id=I('get.id',0,'intval');
+        if(isset($id) &&  $id>=1)
         {
             $id=intval($_GET["id"]);
             $this->del_one($id);   // 删除单个用户
@@ -168,9 +169,9 @@ class RecoveryController extends MyController{
                     if(!isset($af))
                     {
                         //   $this->error("删除失败");
-                        $info=$_SESSION[$this->s_pix."n"]."管理员 删除客户 ".$ids." 时| cus_downline tid推荐人字段置为0 失败";
+                        $info=$_COOKIE[$this->s_pix."n"]."管理员 删除客户 ".$ids." 时| cus_downline tid推荐人字段置为0 失败";
                         $this->write_log($info);
-                        //   $shiwu->rollback();s
+                        //   $shiwu->rollback();
                     }
 
                     //cus_detailed  客户资料表 推荐人是当前用户的 推荐人字段置为null
@@ -181,7 +182,7 @@ class RecoveryController extends MyController{
                         if(!isset($af))
                         {
                             //  $this->error("删除失败");
-                            $info=$_SESSION[$this->s_pix."n"]."管理员 删除客户".$ids." 时| cus_detailed tid推荐人字段置为0 失败";
+                            $info=$_COOKIE[$this->s_pix."n"]."管理员 删除客户".$ids." 时| cus_detailed tid推荐人字段置为0 失败";
                             $this->write_log($info);
                             //   $shiwu->rollback();
                         }
@@ -262,9 +263,9 @@ class RecoveryController extends MyController{
             if(!isset($af))
             {
                 //   $this->error("删除失败");
-                $info=$_SESSION[$this->s_pix."n"]."管理员 删除客户".$id." 时| cus_downline tid推荐人字段置为0 失败";
+                $info=$_COOKIE[$this->s_pix."n"]."管理员 删除客户".$id." 时| cus_downline tid推荐人字段置为0 失败";
                 $this->write_log($info);
-                //   $shiwu->rollback();
+                //  $shiwu->rollback();
             }
 
             //cus_detailed  客户资料表 推荐人是当前用户的 推荐人字段置为null
@@ -275,9 +276,9 @@ class RecoveryController extends MyController{
                 if(!isset($af))
                 {
                     //  $this->error("删除失败");
-                    $info=$_SESSION[$this->s_pix."n"]."管理员 删除客户".$id." 时| cus_detailed tid推荐人字段置为0 失败";
+                    $info=$_COOKIE[$this->s_pix."n"]."管理员 删除客户".$id." 时| cus_detailed tid推荐人字段置为0 失败";
                     $this->write_log($info);
-                    //   $shiwu->rollback();
+                    //$shiwu->rollback();
                 }
             }
         }

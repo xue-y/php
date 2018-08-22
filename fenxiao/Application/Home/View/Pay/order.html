@@ -1,0 +1,41 @@
+<layout name="layout" />
+<title>确认订单</title>
+</head>
+<body class="pay">
+<h3>
+    <a  onclick="javascript :history.back(-1)" >←</a> | 确认订单   <a href="__CONTROLLER__/index" class="float-right">主页</a>
+</h3>
+
+<ul>
+    <li>商品编号：{$shop.product_id}</li>
+    <li>商品名称：{$shop.product_name}</li>
+    <li>商品描述：{$shop.body}</li>
+    <li>商品价格：{$shop.total_fee}</li>
+</ul>
+
+    <form action="__CONTROLLER__/Pay"   method="post">
+        <input  type="hidden" value="" name="agent" id="agent">
+        <input  type="hidden"  name="shop_info" value="{$shop_info}" >
+        <div class="form-group">
+            <div class="field" style="text-align: center">
+                <button class="button bg-main" type="submit">确认付款</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        $(function(){
+            var isB= isBrowser(); // 判断浏览器
+            var agent="pc";
+            if(isMobile()==true && isB=="wx") // 如果用户使用 微信客户端打开的
+            {
+                agent="wx";
+            }else if(isMobile()==true)  // 如果是移动端打开的
+            {
+                agent="mob";
+            }
+            console.log(agent);
+            $("#agent").val(agent);
+        })
+
+    </script>

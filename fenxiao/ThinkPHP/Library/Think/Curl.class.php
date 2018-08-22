@@ -100,7 +100,7 @@ class Curl {
      * @parem $timeout 请求超时限制
      * @return array
      * */
-    public function get_img($url,$filename=null,$save_dir=null,$timeout=2)
+    public function get_img($url,$filename=null,$save_dir=null,$timeout=60)
     {
         $error=array(); //微信不支持 $error=[] 这种方式定义数组
         if(empty($url))
@@ -127,7 +127,7 @@ class Curl {
         $ch=curl_init();
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1); //1 为不输出在页面上
-        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,60);
+        curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,10);
         curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
         $img_resource=curl_exec($ch);
         curl_close($ch);

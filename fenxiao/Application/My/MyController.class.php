@@ -19,13 +19,16 @@ class MyController extends Controller {
 		{
 			$this->is_install(); // 验证是否安装过系统
 		}
-
         if(!isset($_SESSION))
         {session_start();}
-        $this->s_pix=C('SESSION_PREFIX');
+        $this->s_pix=C('COOKIE_PREFIX');
 
-        $this->u_id=isset($_SESSION[$this->s_pix.'id'])?$_SESSION[$this->s_pix.'id']:'';
+        $this->u_id=cookie('id');
 
+        if(!isset($this->u_id) || empty($this->u_id))
+        {
+            $this->u_id='';
+        }
         $this->is_sgin();//--------------验证用户是否登录【需要登录页面】
 
         $class_refuse=$this->arr_data("class_refuse");
@@ -107,28 +110,27 @@ class MyController extends Controller {
      * */
     protected function is_sgin()
     {
+        //此函数里面取不到 cookie 配置文件中的前缀
          $class_allow=$this->arr_data("class_allow"); //允许任何人可访问的类
          if(!in_array(CONTROLLER_NAME,$class_allow))
          {
-             if(!isset($_SESSION[$this->s_pix.'id']) || !isset($_SESSION[$this->s_pix.'n']) || !isset($_COOKIE[$this->s_pix.'token']))
+             if(empty($this->u_id) || !isset($_COOKIE[$this->s_pix.'n']) || !isset($_COOKIE[$this->s_pix.'token']))
              {
               //   $this->error('请先登录','/Back/Login/sign',3);
-              echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";exit;
+               echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";exit;
              }
              $user=D('User');
-             $info=$user->login_select($_SESSION[$this->s_pix.'id']);
-             $token=sha1($info['times'].$_SESSION[$this->s_pix.'id']);
-             if(($info['u_name']!=$_SESSION[$this->s_pix.'n']) || ($_COOKIE[$this->s_pix.'token']!=$token))
+             $info=$user->login_select($this->u_id);
+             $token=sha1($info['times'].$this->u_id);
+             if(($info['u_name']!=$_COOKIE[$this->s_pix.'n']) || ($_COOKIE[$this->s_pix.'token']!=$token))
              {
-
                //  $this->error('请先登录','/Back/Login/sign',3);
-                echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";exit;
+             echo "<script>window.location.href='".__ROOT__."/Back/Login/sign'</script>";exit;
              }
          }
         if(CONTROLLER_NAME=="Login" && ACTION_NAME!="login_out")
         {
-            is_login($this->s_pix);//验证是否登录
-          
+             is_login($this->s_pix);//验证是否登录
         }//------------------验证登录页面是否已经登录了
     }
 
@@ -202,7 +204,7 @@ class MyController extends Controller {
         $limit=D('Limit');
         $f=$limit->limit_all($limit_id,$r_id);
         $limit_all=array();
-        require $f;
+        require $f;  // 载入文件
         return $limit_all;
     }
 
@@ -375,10 +377,10 @@ class MyController extends Controller {
     //咨询修改客户信息是存储的临时session ---- 删除
     protected function temp_session($field)
     {
-        if(isset($_SESSION[$this->s_pix.$field]))
+        if(isset($_COOKIE[$this->s_pix.$field]))
         {
-            $_SESSION[$this->s_pix.$field]=null;
-            unset($_SESSION[$this->s_pix.$field]);
+            $_COOKIE[$this->s_pix.$field]=null;
+            unset($_COOKIE[$this->s_pix.$field]);
         }
     }
 	

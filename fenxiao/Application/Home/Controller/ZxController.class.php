@@ -8,9 +8,9 @@
  */
 
 namespace Home\Controller;
-use My\WxController;
+use My\HwxController;
 
-class ZxController extends WxController {
+class ZxController extends HwxController {
 
     public function index()
     {

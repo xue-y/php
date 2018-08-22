@@ -4,9 +4,9 @@
   * */
 
 namespace Home\Controller;
-use My\WxController;
+use My\HwxController;
 
-class IndexController extends WxController {
+class IndexController extends HwxController {
 
     public function index()//个人主页
     {

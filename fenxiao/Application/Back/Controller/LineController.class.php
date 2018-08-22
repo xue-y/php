@@ -126,7 +126,7 @@ class LineController  extends MyController{
 		
 		$detailed["descr"]=$downline["descr"]=$post["descr"];
 		// 更新下线表
-		$downline["s_t"]=date("Y-m-d H:i:s",time());
+        $downline["s_t"]=date("Y-m-d H:i:s",time());
 		$downline["state"]=$post["state"];
 		$w["id"]=array("eq",$post['id']);
 		$line_af=$line->lock(true)->where($w)->save($downline); // 锁表操作，没有测试
@@ -170,7 +170,7 @@ class LineController  extends MyController{
             $state="未通过";
         }
 		// 客户消息通知表 self_cus_info
-        $info="<b>您推荐的[ ".$post["n"]." ]</b> 用户，由管理员 <b>".$_SESSION[$this->s_pix."n"]."</b> 在 <b>".$downline["s_t"]."</b> 时间 <b>".$state."</b> 审核
+        $info="<b>您推荐的[ ".$post["n"]." ]</b> 用户，由管理员 <b>".$_COOKIE[$this->s_pix."n"]."</b> 在 <b>".$downline["s_t"]."</b> 时间 <b>".$state."</b> 审核
 		<br/> 审核说明: ".$downline["descr"];
 
         $cusinfo["cid"]=$post["tid"];

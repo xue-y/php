@@ -92,7 +92,7 @@
 	  `descr` varchar(250) COLLATE utf8_unicode_ci NOT NULL COMMENT '审核说明',
 	  PRIMARY KEY (`id`)
 	) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='推荐下线表' AUTO_INCREMENT=1 ;
-	"; //------------------------- 客户推荐下线表 审核状态 默认1 为审核 2 通过审核 3 未通过审核
+	"; //------------------------- 客户推荐下线表 审核状态 默认1 未审核 ,2 通过审核, 3 未通过审核
 	
 	$create_table[]="CREATE TABLE IF NOT EXISTS `{$prefix}cus_info` (
 	  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '消息通知id',

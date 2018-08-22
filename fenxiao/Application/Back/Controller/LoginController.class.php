@@ -10,6 +10,7 @@ class LoginController extends MyController{  //登录
      * */
     public  function sign()
     {
+      //  cookie(null,"my_");
 		// 第一次安装完成后跳转页面
 		if(isset($_GET["state"]) &&  $_GET["state"]=="Lock")
 		{
@@ -27,26 +28,10 @@ class LoginController extends MyController{  //登录
 			}
 		}
 		
-       // 判断用户上次是否记住用户名和编号
-       $id="";$n="";
-       if(isset($_SESSION[$this->s_pix.'id']))
-           $id=$_SESSION[$this->s_pix.'id'];
-       else
-       {
-           if(isset($_COOKIE[$this->s_pix.'id']))
-               $id=$_COOKIE[$this->s_pix.'id'];
-       }
-        if(isset($_SESSION[$this->s_pix.'n']))
-            $n=$_SESSION[$this->s_pix.'n'];
-        else
-        {
-            if(isset($_COOKIE[$this->s_pix.'n']))
-            $n=$_COOKIE[$this->s_pix.'n'];
-        }
+       // 用户上次是否记住用户名和编号
         $this->assign(
-            array('id'=>$id,'n'=>$n)
+            array('id'=>$this->u_id)
         );
-
         $this->display('Public/login');
     }
     /*
@@ -54,6 +39,7 @@ class LoginController extends MyController{  //登录
      * */
     public function  login()
     {
+
         $code=trim($_POST['code']);
         $bool=$this->check_verify($code);
 
@@ -106,17 +92,19 @@ class LoginController extends MyController{  //登录
                 if(!isset($bool))
                 {echo $bool;exit;} //
                 $u_name=$u_info["u_name"];
-                if(isset($_POST['Long-term']) && ($_POST['Long-term']==1))
+                if(isset($_POST['Long-term']) && ($_POST['Long-term']==1))// 用户信息保存一个月
                 {
-                    cookie($this->s_pix.'n',$u_name,3600*24*30,'/');
-                    cookie($this->s_pix.'id',$id,3600*24*30,'/');
-                }// 用户信息保存一个月
-
-                $_SESSION[$this->s_pix.'id']=$id;
-                $_SESSION[$this->s_pix.'n']=$u_name;
+                    cookie('Long-term',true,3600*24*30,'/');
+                 //  cookie('n',$u_name,3600*24*30,'/');
+                    cookie('id',$id,3600*24*30,'/');
+                }else
+                {
+                    cookie('id',$id,36000,"/");
+                }
+                cookie('n',$u_name,36000,"/");
                 //时时登录用户
                 $token=sha1($time.$id);
-                cookie($this->s_pix.'token',$token,36000,'/'); // 当前用户保存10个小时
+                cookie('token',$token,USER_LOGIN_T,'/'); // 当前用户保存10个小时
 
                 echo "okok";
             }
@@ -154,10 +142,15 @@ class LoginController extends MyController{  //登录
 
     public  function  login_out() //-----------------------退出登录
    {
-       unset($_SESSION[$this->s_pix.'id']);
-       unset($_SESSION[$this->s_pix.'n']);
-       setcookie($this->s_pix.'token',"", -1,"/");
-      //echo "<script>window.location.href='/Back/Login/sign'</script>";
+       $long_term=cookie($this->s_pix.'Long-term');
+       if(!isset($long_term) || $long_term!=true)
+       {
+           cookie('token',$token,time()-1,'/');
+       }else
+       {
+           cookie(null,$this->s_pix,time()-1,'/');
+       }
+        // 清空指定前缀的所有cookie值
        echo "<script>window.location.href='".__CONTROLLER__."/sign'</script>";
        // echo "<script>window.location.href='/__CONTROLLER__/sign'</script>"; 跳转失败解析不了变量
    }

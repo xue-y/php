@@ -5,61 +5,68 @@
   array (
     0 => 
     array (
+      'id' => '2',
+      'n' => '管理员管理',
+      'execs' => '',
+      'pid' => '2',
+    ),
+    1 => 
+    array (
       'id' => '7',
       'n' => '用户管理',
       'execs' => 'User',
       'pid' => '2',
     ),
-    1 => 
+    2 => 
     array (
       'id' => '21',
       'n' => '权限管理',
       'execs' => 'Limit',
       'pid' => '2',
     ),
-    2 => 
+    3 => 
     array (
       'id' => '23',
       'n' => '用户信息',
       'execs' => 'Personal',
       'pid' => '2',
     ),
-    3 => 
+    4 => 
     array (
       'id' => '3',
       'n' => '客户管理',
       'execs' => '',
       'pid' => '3',
     ),
-    4 => 
+    5 => 
     array (
       'id' => '25',
       'n' => '客户管理',
       'execs' => 'Customer',
       'pid' => '3',
     ),
-    5 => 
+    6 => 
     array (
       'id' => '32',
       'n' => '客户回收站',
       'execs' => 'Recovery',
       'pid' => '3',
     ),
-    6 => 
+    7 => 
     array (
       'id' => '36',
       'n' => '客户下线',
       'execs' => 'Line',
       'pid' => '3',
     ),
-    7 => 
+    8 => 
     array (
       'id' => '38',
       'n' => '客服消息',
       'execs' => 'Info',
       'pid' => '3',
     ),
-    8 => 
+    9 => 
     array (
       'id' => '42',
       'n' => '客户佣金',

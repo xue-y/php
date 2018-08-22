@@ -8,9 +8,9 @@
  */
 
 namespace Home\Controller;
-use My\WxController;
+use My\HwxController;
 
-class SetController extends WxController{
+class SetController extends HwxController{
 
     // 设置页面
     public function index()

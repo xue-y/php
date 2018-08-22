@@ -8,9 +8,9 @@
  */
 
 namespace Home\Controller;
-use My\WxController;
+use My\HwxController;
 
-class MoneyController extends WxController {
+class MoneyController extends HwxController {
 
     // 佣金列表
     public function index()

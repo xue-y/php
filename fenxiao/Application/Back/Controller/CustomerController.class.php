@@ -64,7 +64,7 @@ class CustomerController extends MyController {  // 客户管理
             ->join(' __CUS_DETAILED__ as a ON a.id =b.id')->where($w)->select();
 
         $show = $Page->show();//  分页显示输出
-        $this->assign(array('page'=>$show,'list'=>$list,'count'=>$count,"uid"=>$_SESSION[$this->s_pix.'id'],'all_zx'=>$all_zx));//  赋值分页输出
+        $this->assign(array('page'=>$show,'list'=>$list,'count'=>$count,"uid"=>$this->u_id,'all_zx'=>$all_zx));//  赋值分页输出
 
         $this->display();
     }
@@ -121,7 +121,7 @@ class CustomerController extends MyController {  // 客户管理
         // 详细资料表
         $cus_detailed=M("Cus_detailed"); // 表名
         $detailed["wx"]=$post["wx"];
-        $detailed["cid"]=$_SESSION[$this->s_pix.'id'];
+        $detailed["cid"]=$this->u_id;
         $detailed["n"]=$post["n"];
         $detailed["t"]=date("Y-m-d H:i:s",time());
         $detailed["age"]=$post["age"];
@@ -161,9 +161,9 @@ class CustomerController extends MyController {  // 客户管理
 		$cus_id_info["sub_num"]=$cus->info_c($id);
 
         $cus_id_info["id"]=$id;
-        // 删除临时session
+        // 删除临时 值
         $this->temp_session('phone');
-		$_SESSION[$this->s_pix.'phone']=$cus_id_info["phone"];
+		$_COOKIE[$this->s_pix.'phone']=$cus_id_info["phone"];
 
         $this->assign("info",$cus_id_info);
         $this->display();
@@ -173,7 +173,7 @@ class CustomerController extends MyController {  // 客户管理
     public function execUate()
     {
         // 判断用户是否存
-        if($this->post_id("cid")!=$_SESSION[$this->s_pix.'id'])
+        if($this->post_id("cid")!=$this->u_id)
         {
             $this->error("此客户不是您的下线您没有修改权限");
         }
@@ -197,7 +197,7 @@ class CustomerController extends MyController {  // 客户管理
         if(!empty($post["phone"])) //如果手机号不为空
         {
 
-            if(!isset($_SESSION[$this->s_pix.'phone']) || $post["phone"]!=$_SESSION[$this->s_pix.'phone'])
+            if(!isset($_COOKIE[$this->s_pix.'phone']) || $post["phone"]!=$_COOKIE[$this->s_pix.'phone'])
             {
                 // 修改后的手机号是否与数据库中其他用户的手机号是否重复
                 $is_unique=$cus_base->unique_phone($id,$post["phone"]);
@@ -257,8 +257,8 @@ class CustomerController extends MyController {  // 客户管理
 
         if(isset($_GET["id"])) // 删除一个客户
         {
-            //判断客户是否存在---并且判断当前管理是否有权删除
-            $is_del=$cus->del_cus_one($_GET["id"],$_SESSION[$this->s_pix.'id']);
+            //判断客户是否存在---并且判断当前管理是否有权删除  查询未删除的用户
+            $is_del=$cus->del_cus_one($_GET["id"],$_COOKIE[$this->s_pix.'id'],0);
             if($is_del!=1)
             {
                 $this->error("您删除的客户不存在或没有权限");

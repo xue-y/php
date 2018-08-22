@@ -403,11 +403,11 @@ class UserController extends MyController{  //用户
               {
                   if(($this->u_id==$post['id']) && ($new_name!=$u_info["u_name"])) //如果修改自己的用户名
                   {
-                      $_SESSION[C('SESSION_PREFIX').'n']=$new_name;
+                      cookie('n',$new_name,36000,"/");
                   }
 				  if(!isset($af) || intval($af)<1)
 				  {
-					   $this->success("您没有修改附加信息或附加信息修改失败","index",10);
+					   $this->success("其他信息修改成功附加信息没有修改","index",10);
 				  };
                   $this->success("修改用户成功","index");
               }

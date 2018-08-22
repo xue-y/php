@@ -145,7 +145,7 @@ class PersonalController extends MyController{  //用户信息
        $get=$this->add_slashes($_GET);
        if($get["id"]!=$this->u_id)
        {
-           $n=$_SESSION[$this->s_pix.'n'];
+           $n=cookie('n');
            $this->write_log("篡改其他用户邮箱： ID: $this->u_id | name: $n 修改邮箱用户 {$get['id']}");
            $this->error("个人信息错误");// 用户id出错
        }
