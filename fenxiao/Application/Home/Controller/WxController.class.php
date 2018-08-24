@@ -5,9 +5,9 @@
  * Date: 18-7-20
  * Time: 下午1:33
  * 微信登录
- * 网页授权域名 不带http 协议
-   域名/Application
- * https://mp.weixin.qq.com/cgi-bin/settingpage?t=setting/function&action=function&lang=zh_CN
+ * 网页授权域名
+    wx.caoboshimeirong.cn/Application
+ * https://mp.weixin.qq.com/cgi-bin/settingpage?t=setting/function&action=function&token=782251143&lang=zh_CN&token=782251143&lang=zh_CN
  */
 
 namespace Home\Controller;
@@ -33,17 +33,17 @@ class WxController extends Controller {
         visit_num();// 限制用户频繁刷新页面
 
         // 开发者ID(AppID)
-        $this->appid="";
+        $this->appid="wx28bd0603f781347d";
         //开发者密码(AppSecret)
-        $this->appsecret="";
-		
+        $this->appsecret="2a6f3e821cf38dad6825b4c4252ee57f";
         // 回调地址 wx 端登录
+
         $this->re_url=urlencode("http://".$_SERVER['SERVER_NAME']."/Home/Wx/User");
 
         $this->scope="snsapi_userinfo"; //应用授权作用域
         //$scope="snsapi_base"; // 不弹出授权页面，直接跳转，只能获取用户openid
 
-        $this->fengefu=FEN_FU;  // 定义分割符常量
+        $this->fengefu=FEN_FU;
 
        $this->s_pix=C('COOKIE_PREFIX'); // cookie 前缀
     }
@@ -60,15 +60,16 @@ class WxController extends Controller {
              $this->state=WX_LOGIN;
          }
 
-         if($this->state==WX_PASS)
+
+         if($this->state[0]==WX_PASS)
          {
              $title="找回密码";
-         }else if($this->state==WX_VALIWX)
+         }else if($this->state[0]==WX_VALIWX)
          {
              $title="验证微信";
          }else
          {
-             sign_is_login(); // 如果是登录 判断是否已经登录
+           //  sign_is_login(); // 如果是登录 判断是否已经登录
              $title="登录";
          }
          // 记录用从哪个页面跳转过来的
@@ -92,6 +93,7 @@ class WxController extends Controller {
          {    // 如果用户直接访问的登录页面，使用微信登录 login_随机数
              $this->state.=$this->fengefu.uniqid(); // 加随机数
          }
+
 
          $code_url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=$this->appid&redirect_uri=$this->re_url&response_type=code&scope=$this->scope&state=$this->state#wechat_redirect";
 
@@ -179,7 +181,7 @@ class WxController extends Controller {
          $cus=D("Customer");
 
         // 如果 用户验证微信
-         if($state[0]==WX_VALIWX)  // 验证微信-- 绑定微信
+         if($state[0]==WX_VALIWX)  // 验证微信-- 绑定微信---允许一个微信号绑定多个账号
          {
              $new_user_info["openid"]=$openid;
              $user_info2=$new_user_info["is_wx"]=1;

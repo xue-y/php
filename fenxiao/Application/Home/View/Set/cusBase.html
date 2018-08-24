@@ -53,20 +53,15 @@
 
     <div class="form-group">
         <div class="label">
-            <label class="x0-left">微信号：</label>
+            <label class="x0-left">微信：</label>
         </div>
         <div class="field">
-            <empty name="info.wx">
-                <input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value=""
-                        placeholder="请设置微信号用于微信登录或找回密码"/>
-                <else />
-                <input type="text" class="input  x2-move x10" name="wx" data-validate="key:微信号字符长度3--20个字符" value="{$info.wx}"/>
-
-                <neq name="info.is_wx" value="1">
-                    <a href="__MODULE__/Wx/index?state={$Think.WX_VALIWX}_{$info.id}&history={$info.history}"  class="clear" style="margin-left:10%;padding-top:5px; display: block">
-                        &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 请验证微信用于微信登录或找回密码</a>
-                </neq>
-            </empty>
+            <neq name="info.is_wx" value="1">
+                <a href="__MODULE__/Wx/index?state={$Think.WX_VALIWX}_{$info.id}&history={$info.history}"  class="clear" style="margin-left:10%;padding-top:5px; display: block">
+                    &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 请验证微信用于微信登录或找回密码</a>
+                <else  />
+                <input class="input  x2-move x10" value="已验证微信">
+            </neq>
 
             <div class="tips"></div>
         </div>

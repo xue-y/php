@@ -56,12 +56,15 @@ class SetController extends HwxController{
             }
 
             $w["id"]=array("eq",$this->uid);
-            if(!$cus->where($w)->save())
+
+            $post=add_slashes($_POST);
+
+            if(!$cus->where($w)->save($post))
             {
                 $this->error("您没有修改或修改失败");
             }else
             {
-                $this->success("修改成功",'index');
+                $this->success("修改成功",'cusBase');
             }
         }else
         {

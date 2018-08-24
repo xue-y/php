@@ -15,10 +15,14 @@ class IndexController extends HwxController {
 
         if(!empty($info["headimg"]))
         {
-            $info["headimg"]=U_HEAD_IMG.$info["headimg"].'.jpg';
+            $info["headimg"]=U_HEAD_IMG.$info["headimg"];
         }else
         {
             $info["headimg"]=U_HEAD_DE;
+        }
+        if(empty($info["n"]))
+        {
+            $info["n"]=cookie("phone");
         }
 
         if(!empty($info))
