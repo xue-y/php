@@ -1,41 +1,40 @@
 ﻿## 简介
-    ThinkPHP 轻量级PHP开发框架 <br/>
-    安装目录 Install 以及说明文件<br/>
-    项目名称：二级分销<br/>
-    后台管理员以部门划分，可以不同的人分配不同的权限，可以限制部门主管只可修改自己部门的人员<br/>
-    配置文件 renwu\Application\Back\Conf\define.php   define('A_S_C',FALSE);//为true<br/>
+    ThinkPHP 轻量级PHP开发框架 
+    安装目录 Install 以及说明文件
+    项目名称：二级分销
+    后台管理员以部门划分，可以不同的人分配不同的权限，可以限制部门主管只可修改自己部门的人员
+    配置文件 renwu\Application\Back\Conf\define.php   define('A_S_C',FALSE);//为true
     添加类 方法 MyController.class.php 文件中 function arr_data($key) 函数
-    也可 系统设置中设置 普通管理员添加其他部门人员--》是<br/>
-	客户有后台管理员（销售人员分配）,管理员添加客户之后，客户可以前台登录，可以修改个人信息，推荐人员赚取佣金<br/>
-	佣金可以提现，提现需要联系管理员，不支持线下提现。客户推荐的人员需要管理员审核，审核通过客户推荐的人即是<br/>
+    也可 系统设置中设置 普通管理员添加其他部门人员--》是
+	客户有后台管理员（销售人员分配）,管理员添加客户之后，客户可以前台登录，可以修改个人信息，推荐人员赚取佣金
+	佣金可以提现，提现需要联系管理员，不支持线下提现。客户推荐的人员需要管理员审核，审核通过客户推荐的人即是
 	管理员的客户。一个客户微信号可以绑定多个用户账号（手机号）。
-	后台管理员一个账号同时只允许一个管理员登录<br/>
+	后台管理员一个账号同时只允许一个管理员登录
 
 ### 环境平台
-    环境版本：PHP5.3以上版本（注意：PHP5.3dev版本和PHP6均不支持）<br/>
+    环境版本：PHP5.3以上版本（注意：PHP5.3dev版本和PHP6均不支持）
 
-#### Liunx 平台：<br/>
-    PHP： 5.3.27p1 (cli) (built: Jul 20 2017 12:58:56) <br/>
-    Copyright (c) 1997-2013 The PHP Group<br/>
-    Zend Engine v2.3.0, Copyright (c) 1998-2013 Zend Technologies<br/>
-    nginx version: nginx/1.4.7<br/>
-    系统:CentOS release 6.8 /CentOS release 6.5<br/>
-    Linux version 2.6.32-642.13.1.el6.x86_64 /Linux version 2.6.32-573.22.1.el6.x86_64 <br/>
-    注：其他版本未测试<br/>
+#### Liunx 平台：
+    PHP： 5.3.27p1 (cli) (built: Jul 20 2017 12:58:56) 
+    Copyright (c) 1997-2013 The PHP Group
+    Zend Engine v2.3.0, Copyright (c) 1998-2013 Zend Technologies
+    nginx version: nginx/1.4.7
+    系统:CentOS release 6.8 /CentOS release 6.5
+    Linux version 2.6.32-642.13.1.el6.x86_64 /Linux version 2.6.32-573.22.1.el6.x86_64 
+    注：其他版本未测试
 
-#### window平台：<br/>
-    Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45<br/>
-    PHP版本（php_version）：	5.4.45, 5.5.45-nts不支持隐藏index.php<br/>
+#### window平台：
+    Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45
+    PHP版本（php_version）：	5.4.45, 5.5.45-nts不支持隐藏index.php
     |--  数据库连接使用的是mysql连接,如果修改成pdo 连接修改 Lock_Controller.class.php/InstallController.class.php
     |--  文件中的搜索修改 mysql_query 、 mysql_connect 、mysql_select_db 这个3个函数即可
-    Zend版本	2.4.0<br/>
-    SQLite3　Ver 3.8.10.2<br/>
-    mysql  Ver 14.14 Distrib 5.5.53, for Win32 (AMD64)<br/>
-    注：其他版本未测试<br/>
+    Zend版本	2.4.0
+    SQLite3　Ver 3.8.10.2
+    mysql  Ver 14.14 Distrib 5.5.53, for Win32 (AMD64)
+    注：其他版本未测试
 
 #### 文件说明及注意事项
     #模板字体地址 http://www.bootcss.com/p/font-awesome/
-
     #thinkphp模板中 __MODULE__ 自动转为转小写 部署阶段
     #安装完成之后请将应用文件夹的公共配置文件注释打开
     #安装完成之后请检查运行日志  //错误日志文件
