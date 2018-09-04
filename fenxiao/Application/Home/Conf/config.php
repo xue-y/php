@@ -12,7 +12,7 @@ define("LOG_F",LOG_PATH."error.txt");  //错误日志文件
 define("FEN_FU","_"); // 字段分割符
 // 页面限制用户频繁刷新
 define("REFRESH_C",8); //刷新次数
-define("REFRESH_T",1);// 刷新时间间隔
+define("REFRESH_T",5);// 刷新时间间隔
 define("REFRESH_CT",60); //累计刷新次数 存储时间限制 1 分钟
 define("USER_LOGIN_T",36000);// 用户登录保存时间
 
