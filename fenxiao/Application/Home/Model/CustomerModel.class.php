@@ -127,7 +127,7 @@ class CustomerModel extends Model {
      * */
     public function id_is($id)
     {
-        $w["a.id"]=array("eq",$openid);
+        $w["a.id"]=array("eq",$id);
         $w["b.is_del"]=array("neq",1);
         return $this->alias("a")->where($w)->field("a.n,a.headimg,b.phone")
             ->join("__CUS_BASE__ as b ON a.id=b.id")->find();

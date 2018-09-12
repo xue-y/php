@@ -82,13 +82,12 @@ class WxController extends Controller {
              if(isset($_SESSION[$this->s_pix]["id"]) && !empty($_SESSION[$this->s_pix]["id"]))
              {
                  $id=session("id");
-                 cookie($id."history",$old_url);
+                 $this->state["history"]=$old_url;
              }
              // 如果存在历史记录页面在后面添加上
              // 如果用访问其他的页面 需要支付是判断用户是否登录，如果没有登录 或忘记密码 state=login_Te/index
              // 如果是 忘记原密码或 验证微信 state=valiwx_Set/pass
              $this->state["id"]=$id;
-             $this->state["history"]=$old_url;
          }
          $this->state=json_encode($this->state);
 
@@ -193,6 +192,7 @@ class WxController extends Controller {
              {
                  // 根据用户 id 取得用户相关信息
                  $user_info2=$cus->id_is($this->state["id"]);
+                 $user_info2["id"]=$this->state["id"];
              }
          }else            // 如果用户使用微信登录 或忘记密码 或者忘记原密码
          {
@@ -208,6 +208,14 @@ class WxController extends Controller {
              }
          }
 
+         if(!isset($user_info2) || empty($user_info2))
+         {
+             echo "<p style='text-align: center;margin-top:20px;font-size: 30px;'>
+                 用户不存在或未绑定微信，请联系咨询师或
+                 <a href='/Home/Login/sign'>点击账号密码登录</a>
+                 </p>";
+             exit;
+         }
          if(empty($user_info2["n"]))
          {
              $new_user_info["n"]=$user_info["nickname"];
@@ -256,7 +264,7 @@ class WxController extends Controller {
 
          // 如果用户是从扫码登录进来后，后期验证微信或找回原密码--- 不需要从新获取session
          // 如果用户浏览器登录 图片识别二维码跳转过来的, 忘记原密码  与验证微信 都重新设置了session
-         if(!isset($_SESSION[$this->s_pix]['id']) || empty($_SESSION[$this->s_pix]['id']))
+         if(!isset($_SESSION[$this->s_pix]['id']) || empty($_SESSION[$this->s_pix]['id'])) //$this->state["id"]
          {
              session('login_status'.$user_info2["id"],1); // 登录状态
              session('id',$user_info2["id"],USER_LOGIN_T,'/');
