@@ -1,4 +1,4 @@
 .idea
 .gitignore
-./Application/Runtime/*
-./Public/wximg/*
+/Application/Runtime/*
+/Public/wximg/*
