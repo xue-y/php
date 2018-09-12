@@ -16,9 +16,7 @@ class MoneyController extends MyController {
 	 // 客户佣金列表
 	public function index()
 	{
-		
         $this->pos_tag();  //当前位置标签
-        
 		if(isset($_GET["id"]) && intval($_GET["id"])>=1)
 		{
 			$id=intval($_GET["id"]);
@@ -57,8 +55,7 @@ class MoneyController extends MyController {
 			  $list = $money->where($w)->order('t desc')
             ->limit($Page->firstRow.','.$Page->listRows)->select();
 		}
-      
-		
+
 		$user=D("User");
 	    $all_zx=$user->all_zx();
 
@@ -129,10 +126,9 @@ class MoneyController extends MyController {
 		    $this->temp_session('money');
 		}else
 		{
-			$data_detailed["money"]=$data_money["jine"]=intval($post["money"])+$cus_base->cus_money($id);
+			$data_detailed["money"]=$data_money["jine"]=intval($post["money"])+$cus_base->cus_money($post["id"]);
 		}
-		//$this->temp_session('money');
-		
+
 		// 佣金表增加一条数据
 		$data_money["id"]=$post["id"];
 		$data_money["cid"]=$this->u_id;
@@ -157,8 +153,16 @@ class MoneyController extends MyController {
 		}
 		
 	  	// 客户消息通知表 cus_info---- 通知客户
+
 		$n=$cus_base->cus_is_zx($post["id"],$post["cid"],"n");
-		
+        if(empty($n))
+        {
+            $user=D("cus_base");
+            $n=$user->field("phone")->find($post["id"]);
+            $n=$n["phone"];
+        }
+
+
         $info="<b>[ ".$n." ]</b> 用户，由管理员 <b>".$_COOKIE[$this->s_pix."n"]."</b> 在 <b>".$data_money["t"]."</b> 时间更新佣金 <b>".$data_money["num"]."</b>
 		<br/>佣金操作说明: ".$post["money_info"];
 		 
@@ -175,8 +179,9 @@ class MoneyController extends MyController {
         }
 		
         $shiwu->commit();
-        $shiwu=null;
+        $shiwu=$user=null;
         unset($shiwu);
+        unset($user);
         $this->success("更新客户佣金成功","index");
 	 }
 	

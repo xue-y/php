@@ -23,12 +23,8 @@ class MyController extends Controller {
         {session_start();}
         $this->s_pix=C('COOKIE_PREFIX');
 
-        $this->u_id=cookie('id');
+        $this->u_id=session('id');
 
-        if(!isset($this->u_id) || empty($this->u_id))
-        {
-            $this->u_id='';
-        }
         $this->is_sgin();//--------------验证用户是否登录【需要登录页面】
 
         $class_refuse=$this->arr_data("class_refuse");

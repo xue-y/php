@@ -16,7 +16,7 @@
 <ul class="bread  clearfix">
     <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
     <li><a href="/Back/Customer/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/Back/Customer/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--客户列表页面-->
@@ -54,7 +54,7 @@
     <tr>
 
       <th  width="10%" style="text-align:left; padding-left:20px;"><input type="checkbox" id="checkall"/>全选</th>
-      <th>客户名称名</th>
+      <th>客户名</th>
       <th>手机号</th>
       <th>微信（ 是否验证 ）</th>
       <th>注册时间</th>
@@ -71,9 +71,9 @@
        <td><?php echo ($v["t"]); ?></td>
       <td>
       <div class="button-group">
-        <?php if(($v["money"]) >= "1"): ?><a class="icon-folder-open-alt" href="/Back/Money/index?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["money"]); ?></a><?php endif; ?>
-          &nbsp;
+
        <?php if($v["cid"] == $uid): ?><!-- 只可咨询删除自己的客户-->
+           <a class="icon-folder-open-alt" href="/Back/Money/index?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["money"]); ?></a>
            <a class="icon-edit" href="/Back/Money/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["moneyUate"]); ?></a>
            <a class="icon-edit" href="/Back/Customer/update?id=<?php echo ($v["id"]); ?>"> <?php echo ($action_name["update"]); ?>/ <?php echo ($action_name["show"]); ?></a>
            <a class="icon-trash-o" href="/Back/Customer/del?id=<?php echo ($v["id"]); ?>" onclick="return confirm('您确定要删除吗?')"> <?php echo ($action_name["del"]); ?></a>

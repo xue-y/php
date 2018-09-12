@@ -60,7 +60,7 @@ class LoginController extends Controller{
            /*$des_login_status=$des->encrypt($is_user["id"],"1",3600);
            echo $des_login_status;exit;*/
 
-           $_SESSION[$s_pix.'login_status'.$is_user["id"]]=1; // 登录状态
+           session('login_status'.$user_info2["id"],1); // 登录状态
 
            if(isset($post['Long-term']) && ($post['Long-term']==1))// 用户信息保存一个月
            {
@@ -70,8 +70,7 @@ class LoginController extends Controller{
            {
                cookie('phone',$post["phone"],USER_LOGIN_T,'/');
            }
-
-           cookie('id',$is_user["id"],USER_LOGIN_T,'/');
+           session('id',$is_user["id"]);
            $token=pass_md5(sha1($is_user["id"]).$post["phone"]);
            cookie('token',$token,USER_LOGIN_T,'/');
 

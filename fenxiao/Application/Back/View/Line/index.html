@@ -44,7 +44,7 @@
             </tr>
             <tbody>
             <foreach name="list" item="v" >
-                <tr>
+                <tr <eq name="v.id" value="$Think.get.id"> style='background:#daf5f8'</eq>>
                     <td>
                         <input type="checkbox" name="id[]" value="{$v.id}" />
                     </td>

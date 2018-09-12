@@ -42,7 +42,7 @@ class IndexController extends MyController { // 后台首页
         }
 		
         $this->assign("pos",$pos);
-		 $this->assign("quick",$new);
+		$this->assign("quick",$new);
         $this->display();
     }
 }

@@ -12,7 +12,7 @@ define("LOG_F",LOG_PATH."error.txt");  //错误日志文件
 define("FEN_FU","_"); // 字段分割符
 // 页面限制用户频繁刷新
 define("REFRESH_C",8); //刷新次数
-define("REFRESH_T",5);// 刷新时间间隔
+define("REFRESH_T",10);// 刷新时间间隔
 define("REFRESH_CT",60); //累计刷新次数 存储时间限制 1 分钟
 define("USER_LOGIN_T",36000);// 用户登录保存时间
 
@@ -33,4 +33,8 @@ return array(
     'SHOW_PAGE_TRACE'=>false,  // 跟踪日志
     'LOG_TYPE' => 'File', // 日志记录类型 默认为文件方式
     'LOG_LEVEL'             =>  'EMERG,ALERT,CRIT,ERR,WARN,NOTIC,DEBUG,SQL',  // 允许记录的日志级别
+    'show_error_msg' => false,
+    'app_debug' => false,
+    // 应用Trace
+    'app_trace' => false,
 );

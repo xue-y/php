@@ -61,7 +61,7 @@ class LineController  extends MyController{
             exit;
         }
         $get=add_slashes($_GET);
-        //edit--审核  eye 已经审核过的查看
+        //edit--审核  eye 已经审核过的查看或者
         if(isset($get["type"]) && !empty($get["type"]) && isset($get["id"]) && intval($get["id"])>=1)
         {
             // 验证当前咨询是否有操作客户的权限

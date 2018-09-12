@@ -65,11 +65,11 @@
                             <input type="text" class="input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码,code:请填写正确的5位 验证码"/>
                            <img src="/Back/Login/verify"  width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src='/Back/Login/verify?r='+Math.random()"  title="验证码仅此一次有效，输入错误后请点击刷新">
                         </div>
-                        <i style="font-size:12px;color:#666666">验证码仅此一次有效，输入错误后请点击图片刷新 <?php echo ($code); ?></i>
+                        <i style="font-size:12px;color:#666666">验证码仅此一次有效，输入错误后请点击图片刷新 </i>
                     </div>
                     <div class="form-group" >
                         <div class="field"  class="input-big"  >
-                            <input   type="checkbox"  value="1" name="Long-term"/> 记住编号
+                            <input   type="checkbox"  value="1" name="Long-term"/> 记住编号 (公共电脑登录请勿勾选)
                             <a  class="float-right" href="/Back/Pass/index">忘记密码</a>
                         </div>
                     </div>

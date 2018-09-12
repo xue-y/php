@@ -133,5 +133,16 @@ class CustomerModel extends Model {
             ->join("__CUS_BASE__ as b ON a.id=b.id")->find();
     }
 
+    /** 取消微信绑定
+     * @parem $uid取消微信绑定
+     * */
+    public function quBingwx($uid)
+    {
+        $w["id"]=array("eq",$uid);
+        $data["is_wx"]=0;
+        $data["openid"]=NULL;
+        $bool=$this->where($w)->save($data);
+        return $bool;
+    }
 
 } 

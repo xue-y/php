@@ -16,16 +16,18 @@
 <ul class="bread  clearfix">
     <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
     <li><a href="/Back/Customer/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/Back/Customer/update"><?php echo ($pos["a"]); ?></a></li>
+    <li><a><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--客户信息查看修改页面-->
 <div class="panel  admin-panel">
   <div class="body-content">
     <p class="red">密码不填写默认不修改，手机号或微信号至少必填其中一个,用于客户登录<br/>
-    执行修改只可是自己（咨询）的客户
+    执行修改只可是自己（下线）的客户
     </p>
-    <form method="post" class="form-x" action="/Back/Customer/execUate">
+  <?php if(($info["cid"]) == $_SESSION['my_']['id']): ?><form method="post" class="form-x" action="/Back/Customer/execUate">
+        <?php else: ?>
+    <form  class="form-x" ><?php endif; ?>
 
        <div class="form-group"><!--修改客户基本信息-->
         <div class="label">
@@ -51,11 +53,11 @@
             </div>
             <div class="field">
                 <input type="text" class="input w50" name="wx" value="<?php echo ($info["wx"]); ?>"  data-validate="key:微信号字符长度3--20个字符"  value=""/>  &nbsp;
-                <!--<a style="margin-top: 10px; display: inline-block">
+                <a style="margin-top: 10px; display: inline-block">
                     <?php if(($info["is_wx"]) < "1"): ?>微信未验证
                     <?php else: ?>
                         微信已验证<?php endif; ?>
-                </a>-->
+                </a>
                 <div class="tips"></div>
             </div>
         </div>
@@ -146,7 +148,8 @@
                   <p  class="input w50" readonly >
                       <?php if(($info["sub_num"]) < "1"): ?>无下线
                           <?php else: ?>
-                          <a href="/Back/Line/index?id=<?php echo ($info["sub_num"]); ?>" ><?php echo ($info["sub_num"]); ?> &nbsp; 点击查看下线</a><?php endif; ?>
+                          <?php echo ($info["sub_num"]); ?>
+                         <?php if(($info["cid"]) == $_SESSION['my_']['id']): ?><a href="/Back/Line/index?id=<?php echo ($info["sub_num"]); ?>" > &nbsp; 点击查看下线</a><?php endif; endif; ?>
                   </p>
               </div>
           </div>
@@ -161,7 +164,7 @@
             </div>
         </div>
 
-     <input type="hidden" value="<?php echo ($info["cid"]); ?>" name="cid">
+   <?php if(($info["cid"]) == $_SESSION['my_']['id']): ?><input type="hidden" value="<?php echo ($info["cid"]); ?>" name="cid">
      <input type="hidden" value="<?php echo ($info["id"]); ?>" name="id">
      <div class="form-group">
         <div class="label">
@@ -172,8 +175,8 @@
              &nbsp;  &nbsp;  &nbsp;
          <button class="button bg-main" type="button" onclick="javascript :history.back(-1);">直接返回</button>
         </div>
-     </div>
-    </form>
+     </div><?php endif; ?>
+   </form>
   </div>
 </div>
 

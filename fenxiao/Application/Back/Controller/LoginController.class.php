@@ -27,10 +27,12 @@ class LoginController extends MyController{  //登录
 				}
 			}
 		}
-		
+
        // 用户上次是否记住用户名和编号
+        $id=cookie("id");
+        $id=isset($id)?$id:'';
         $this->assign(
-            array('id'=>$this->u_id)
+            array('id'=>$id)
         );
         $this->display('Public/login');
     }
@@ -46,7 +48,7 @@ class LoginController extends MyController{  //登录
         if($bool!=1)
           {echo '验证码错误';exit;}
 
-        $id=trim($_POST['id']);
+        $id=add_slashes($_POST['id']);
 
         if(empty($id))
         { echo "不存在此用户";exit;}
@@ -57,15 +59,14 @@ class LoginController extends MyController{  //登录
 
        if($user->create())
        {
-
             $u_info=$user->find($id);
 
             if(!isset($u_info) || empty($u_info))
             {
                 echo "不存在此用户";exit;
             }
-            $u_id=add_slashes($_POST['id']);
-            if($u_info['id']!=$u_id)
+
+            if($u_info['id']!=$id)
             {
                 echo "用户编号错误";exit;
             }
@@ -97,15 +98,12 @@ class LoginController extends MyController{  //登录
                     cookie('Long-term',true,3600*24*30,'/');
                  //  cookie('n',$u_name,3600*24*30,'/');
                     cookie('id',$id,3600*24*30,'/');
-                }else
-                {
-                    cookie('id',$id,36000,"/");
                 }
-                cookie('n',$u_name,36000,"/");
+                session("id",$id);
+                cookie('n',$u_name,USER_LOGIN_T,"/");
                 //时时登录用户
                 $token=sha1($time.$id);
                 cookie('token',$token,USER_LOGIN_T,'/'); // 当前用户保存10个小时
-
                 echo "okok";
             }
       }else
@@ -150,6 +148,7 @@ class LoginController extends MyController{  //登录
        {
            cookie(null,$this->s_pix,time()-1,'/');
        }
+       session("id",null);
         // 清空指定前缀的所有cookie值
        echo "<script>window.location.href='".__CONTROLLER__."/sign'</script>";
        // echo "<script>window.location.href='/__CONTROLLER__/sign'</script>"; 跳转失败解析不了变量

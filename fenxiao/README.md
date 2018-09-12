@@ -1,5 +1,5 @@
 ﻿## 简介
-    ThinkPHP 轻量级PHP开发框架 
+    ThinkPHP 轻量级PHP开发框架
     安装目录 Install 以及说明文件
     项目名称：二级分销
     后台管理员以部门划分，可以不同的人分配不同的权限，可以限制部门主管只可修改自己部门的人员
@@ -10,18 +10,18 @@
 	佣金可以提现，提现需要联系管理员，不支持线下提现。客户推荐的人员需要管理员审核，审核通过客户推荐的人即是
 	管理员的客户。一个客户微信号可以绑定多个用户账号（手机号）。
 	后台管理员一个账号同时只允许一个管理员登录
-	前台页面设置页面刷新时间限制，防止用户频繁刷新页面
 
 ### 环境平台
     环境版本：PHP5.3以上版本（注意：PHP5.3dev版本和PHP6均不支持）
 
 #### Liunx 平台：
-    PHP： 5.3.27p1 (cli) (built: Jul 20 2017 12:58:56) 
+    PHP：PHP7 以上版本不支持
+    PHP： 5.3.27p1 (cli) (built: Jul 20 2017 12:58:56)
     Copyright (c) 1997-2013 The PHP Group
     Zend Engine v2.3.0, Copyright (c) 1998-2013 Zend Technologies
     nginx version: nginx/1.4.7
     系统:CentOS release 6.8 /CentOS release 6.5
-    Linux version 2.6.32-642.13.1.el6.x86_64 /Linux version 2.6.32-573.22.1.el6.x86_64 
+    Linux version 2.6.32-642.13.1.el6.x86_64 /Linux version 2.6.32-573.22.1.el6.x86_64
     注：其他版本未测试
 
 #### window平台：
@@ -72,3 +72,4 @@
 	nginx 下/usr/local/nginx/conf/vhost/XXX.conf 文件修改路由 -- 根目录 vhost.conf
 	TP3 中 U()  $this->redirect() 跳转地址默认会添加html nginx 环境需要配置 vhost.conf 文件
     ajax 请求php 数据，服务端如果使用exit("数据")返回;如果数据是数字,前端接收不到,echo(数字)前端可以接收到
+    session 函数是前缀数组形式session[prefix][name]=value，cookie 函数是前缀加连接cookie name 形式cookie[prefix_name]=value

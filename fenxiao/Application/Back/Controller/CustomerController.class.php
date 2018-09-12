@@ -155,15 +155,14 @@ class CustomerController extends MyController {  // 客户管理
 		
         if(empty($cus_id_info))
             $this->error("您查看的客户信息错误或不存在");
-        
-		
+
 		// 取得客户的下线个数
-		$cus_id_info["sub_num"]=$cus->info_c($id);
+		$cus_id_info["sub_num"]=$cus->ke_line_c($id);
 
         $cus_id_info["id"]=$id;
         // 删除临时 值
         $this->temp_session('phone');
-		$_COOKIE[$this->s_pix.'phone']=$cus_id_info["phone"];
+       cookie('phone',$cus_id_info["phone"]);
 
         $this->assign("info",$cus_id_info);
         $this->display();

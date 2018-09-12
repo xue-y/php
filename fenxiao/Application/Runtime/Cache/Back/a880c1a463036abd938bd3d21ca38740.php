@@ -16,7 +16,7 @@
 <ul class="bread  clearfix">
     <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
     <li><a href="/Back/Personal/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/Back/Personal/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--管理员个人信息页面-->
@@ -39,7 +39,7 @@
                     <?php else: ?>
                     <span  class="input w50"><?php echo ($info["mail"]); ?>
 
-                        <?php if(($info["is_jihuo"]) == "1"): ?>已绑定 <a href="javascript:;" onclick="javascript:$('.no-skin').fadeIn();" style="margin-left: 20px">解除绑定</a>
+                        <?php if(($info["is_jihuo"]) == "1"): ?><a href="javascript:;" onclick="javascript:$('.no-skin').fadeIn();" style="margin-left: 20px">解除绑定</a>
                             <?php else: ?>
                             <a href="javascript:;" onclick="javascript:$('.no-skin').fadeIn();"  style="margin-left: 20px">验证邮箱</a><?php endif; ?>
 

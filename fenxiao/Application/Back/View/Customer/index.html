@@ -56,11 +56,9 @@
        <td>{$v.t}</td>
       <td>
       <div class="button-group">
-        <egt name="v.money" value="1">
-          <a class="icon-folder-open-alt" href="__MODULE__/Money/index?id={$v.id}"> {$action_name.money}</a>
-        </egt>
-          &nbsp;
+
        <if condition="$v.cid eq $uid"><!-- 只可咨询删除自己的客户-->
+           <a class="icon-folder-open-alt" href="__MODULE__/Money/index?id={$v.id}"> {$action_name.money}</a>
            <a class="icon-edit" href="__MODULE__/Money/update?id={$v.id}"> {$action_name.moneyUate}</a>
            <a class="icon-edit" href="__CONTROLLER__/update?id={$v.id}"> {$action_name.update}/ {$action_name.show}</a>
            <a class="icon-trash-o" href="__CONTROLLER__/del?id={$v.id}" onclick="return confirm('您确定要删除吗?')"> {$action_name.del}</a>

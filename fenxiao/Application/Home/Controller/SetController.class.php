@@ -120,8 +120,10 @@ class SetController extends HwxController{
             $this->error("您没有修改或修改失败");
         }else
         {
-            $_SESSION[$this->s_pix.'phone']=$phone;
-            $_SESSION[$this->s_pix.'token']=pass_md5(sha1($this->uid).$phone);
+            cookie('phone',$post["phone"],USER_LOGIN_T,'/');
+          //  $_SESSION[$this->s_pix.'phone']=$phone;
+            cookie('token',pass_md5(sha1($this->uid).$phone),USER_LOGIN_T,'/');
+          //  $_SESSION[$this->s_pix.'token']=pass_md5(sha1($this->uid).$phone);
 
             $this->success("修改成功","index");
         }
@@ -174,6 +176,32 @@ class SetController extends HwxController{
         {
             $this->success("修改成功","index");
         }
+    }
+
+    /*取消微信绑定
+     * */
+    public function qxBingwx()
+    {
+        if($this->uid!=intval($_GET["id"]))
+        {
+            $this->error("不存在此用户");
+        };
+
+        $token=pass_md5(sha1($this->uid).cookie("phone"));
+        if($token!==cookie(token))
+        {
+            $this->error("不存在此用户");
+        }
+        $cus=D("Customer");
+
+        $affected=$cus->quBingwx($this->uid);
+        if(!$affected)
+        {
+            $this->error("取消失败");
+        }else
+        {
+            $this->success("取消成功","cusBase");
+        };
     }
 
     /** 根据当前客户id 读取用户其他单个字段信息

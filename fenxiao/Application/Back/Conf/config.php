@@ -17,7 +17,7 @@ return array(
     'LOG_RECORD'            =>  TRUE,  // 进行日志记录
     'LOG_EXCEPTION_RECORD'  =>  TRUE,    // 是否记录异常信息日志
     'LOG_LEVEL'             =>  'EMERG,ALERT,CRIT,ERR,WARN,NOTIC',  // 允许记录的日志级别
-    'SHOW_PAGE_TRACE'=>FALSE,// 开启追踪日志
+    'SHOW_PAGE_TRACE'=>true,// 开启追踪日志
     'SESSION_PREFIX'=>'my_',  // session　前缀
     'COOKIE_PREFIX'=>"my_",  // cookie 前缀
     //默认错误跳转对应的模板文件

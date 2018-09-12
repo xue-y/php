@@ -16,7 +16,7 @@
 <ul class="bread  clearfix">
     <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
     <li><a href="/Back/User/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/Back/User/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--用户列表页面-->

@@ -8,10 +8,10 @@
  function is_login($s_pix)        //验证是否登录
  {
        //此函数里面取不到 cookie 配置文件中的前缀
-     if(isset($_COOKIE[$s_pix.'id']) && isset($_COOKIE[$s_pix.'n']) && isset($_COOKIE[$s_pix.'token']))
+     if(isset($_SESSION[$s_pix]['id']) && isset($_COOKIE[$s_pix.'n']) && isset($_COOKIE[$s_pix.'token']))
      {
          $user=D('User');
-         $info=$user->login_select($_COOKIE[$s_pix.'id']);
+         $info=$user->login_select($_SESSION[$s_pix]['id']);
 
          $token=sha1($info['times'].$_COOKIE[$s_pix.'id']);
 

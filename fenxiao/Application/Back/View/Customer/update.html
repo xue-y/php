@@ -2,9 +2,13 @@
 <div class="panel  admin-panel">
   <div class="body-content">
     <p class="red">密码不填写默认不修改，手机号或微信号至少必填其中一个,用于客户登录<br/>
-    执行修改只可是自己（咨询）的客户
+    执行修改只可是自己（下线）的客户
     </p>
+  <eq name="info.cid" value="$Think.session.id">
     <form method="post" class="form-x" action="__CONTROLLER__/execUate">
+        <else/>
+    <form  class="form-x" >
+  </eq>
 
        <div class="form-group"><!--修改客户基本信息-->
         <div class="label">
@@ -30,13 +34,13 @@
             </div>
             <div class="field">
                 <input type="text" class="input w50" name="wx" value="{$info.wx}"  data-validate="key:微信号字符长度3--20个字符"  value=""/>  &nbsp;
-                <!--<a style="margin-top: 10px; display: inline-block">
+                <a style="margin-top: 10px; display: inline-block">
                     <lt  name="info.is_wx" value="1">
                          微信未验证
                     <else/>
                         微信已验证
                     </lt>
-                </a>-->
+                </a>
                 <div class="tips"></div>
             </div>
         </div>
@@ -132,7 +136,10 @@
                       <lt  name="info.sub_num" value="1">
                           无下线
                           <else/>
-                          <a href="__MODULE__/Line/index?id={$info.sub_num}" >{$info.sub_num} &nbsp; 点击查看下线</a>
+                          {$info.sub_num}
+                         <eq name="info.cid" value="$Think.session.id">
+                             <a href="__MODULE__/Line/index?id={$info.sub_num}" > &nbsp; 点击查看下线</a>
+                         </eq>
                       </lt>
                   </p>
               </div>
@@ -148,6 +155,7 @@
             </div>
         </div>
 
+   <eq name="info.cid" value="$Think.session.id">
      <input type="hidden" value="{$info.cid}" name="cid">
      <input type="hidden" value="{$info.id}" name="id">
      <div class="form-group">
@@ -160,7 +168,8 @@
          <button class="button bg-main" type="button" onclick="javascript :history.back(-1);">直接返回</button>
         </div>
      </div>
-    </form>
+   </eq>
+   </form>
   </div>
 </div>
 

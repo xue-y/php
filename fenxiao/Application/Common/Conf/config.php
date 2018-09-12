@@ -18,6 +18,6 @@
 		//	'URL_404_REDIRECT' =>'http://'.$_SERVER['HTTP_HOST'].__ROOT__.'/404.html', // 404 跳转页面 部署模式
 		//	'ERROR_PAGE' =>'http://'.$_SERVER['HTTP_HOST'].__ROOT__.'/404.html', // 错误定向页面  部署模式
          //   'DB_FIELDS_CACHE'=>TRUE,  //启用字段缓存 默认false 关闭缓存
-       //     'SHOW_ERROR_MSG'=> FALSE, //  关闭显示错误信息 默认true 开启
+           'SHOW_ERROR_MSG'=> FALSE, //  关闭显示错误信息 默认true 开启
 
         );

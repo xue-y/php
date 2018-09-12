@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
 
 
     <title>我的推荐列表</title>
@@ -44,7 +45,6 @@
 
 <link type="text/css" rel="stylesheet" href="/Public/back/css/pintuer.css" >
 <link type="text/css" rel="stylesheet" href="/Public/home/home.css" >
-<script  type="text/javascript" src="/Public/back/js/jquery.js"></script>
 <script  type="text/javascript" src="/Public/back/js/arc_list.js"></script>
 <script type="text/javascript" src="/Public/back/js/pintuer.js"></script>
 </body>

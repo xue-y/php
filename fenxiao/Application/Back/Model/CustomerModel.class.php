@@ -134,6 +134,16 @@ class CustomerModel extends Model {
 	   return $info_c;
     }
 
+    /* 客户推荐的下线个数
+     * @parem $id 客户id
+     * @return 客户推荐的下线个数
+     * */
+    public function ke_line_c($id)
+    {
+        $w["tid"]=array("eq",$id);
+        return $this->table("__CUS_DOWNLINE__")->where($w)->count();
+    }
+
     /** 新增用户时判断手机号是否已经注册
      * */
     public function is_phone($phone)
@@ -258,6 +268,5 @@ class CustomerModel extends Model {
         $w["cid"]=array($type,$id);
        return  $this->table("__CUS_INFO__")->where($w)->count();
     }
-
 
 } 

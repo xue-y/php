@@ -1,0 +1,393 @@
+[2018-08-24 16:06:24] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-08-24 16:06:31] 127.0.0.1 /Home/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `self_cus_base` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`pass` FROM `self_cus_base` WHERE `phone` = '12345678912' AND `is_del` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[2018-08-24 16:06:39] 127.0.0.1 /Home/Login/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_base` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`pass` FROM `self_cus_base` WHERE `phone` = '12345678913' AND `is_del` = 0 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:06:39] 127.0.0.1 /Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `money`,`n`,`headimg` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:06:52] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0170s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:07:58] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-08-24 16:07:59] 127.0.0.1 /Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `money`,`n`,`headimg` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:09:00] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:09:04] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb3',`age`='0',`sex`='男' WHERE `id` = '2' [ RunTime:0.0210s ]
+
+[2018-08-24 16:09:08] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:09:12] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb3',`age`='0',`sex`='男' WHERE `id` = '2' [ RunTime:0.0230s ]
+
+[2018-08-24 16:09:17] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:09:20] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb3',`age`='0',`sex`='男' WHERE `id` = '2' [ RunTime:0.0230s ]
+
+[2018-08-24 16:09:25] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0010s ]
+
+[2018-08-24 16:10:20] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb3',`age`='0',`sex`='男',`wx`='1234' WHERE `id` = '2' [ RunTime:0.0290s ]
+
+[2018-08-24 16:10:25] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb3',`age`='0',`sex`='男' WHERE `id` = '2' [ RunTime:0.0070s ]
+
+[2018-08-24 16:11:24] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:11:27] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb3',`age`='0',`sex`='男' WHERE `id` = '2' [ RunTime:0.0220s ]
+
+[2018-08-24 16:12:11] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:12:14] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb31',`age`='0',`sex`='男',`wx`='1234' WHERE `id` = '2' [ RunTime:0.0240s ]
+
+[2018-08-24 16:12:15] 127.0.0.1 /Home/Set/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:12:17] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:12:21] 127.0.0.1 /Home/Set/execBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined index: validate D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1192 行.
+NOTIC: [8] Undefined index: auto D:\phpStudy\WWW\fenxiao\ThinkPHP\Library\Think\Model.class.php 第 1130 行.
+SQL: UPDATE `self_cus_detailed` SET `n`='bb31',`age`='0',`sex`='男',`wx`='12345' WHERE `id` = '2' [ RunTime:0.0080s ]
+
+[2018-08-24 16:12:22] 127.0.0.1 /Home/Set/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:12:22] 127.0.0.1 /Home/Set/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+
+[2018-08-24 16:12:23] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:12:56] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-08-24 16:12:56] 127.0.0.1 /Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `money`,`n`,`headimg` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:14:44] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:14:44] 127.0.0.1 /Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `money`,`n`,`headimg` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:15:24] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:15:25] 127.0.0.1 /Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `money`,`n`,`headimg` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:15:47] 127.0.0.1 /Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `money`,`n`,`headimg` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:15:48] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:15:49] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-08-24 16:15:49] 127.0.0.1 /Home/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `money`,`n`,`headimg` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+
+[2018-08-24 16:16:31] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0010s ]
+
+[2018-08-24 16:16:32] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:17:19] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:18:03] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:31:30] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:31:33] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:31:40] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[2018-08-24 16:31:43] 127.0.0.1 /Home/Set/cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `self_cus_detailed` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `self_cus_info` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_info` WHERE `cid` = 2 AND `is_read` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `age`,`n`,`sex`,`wx`,`id`,`is_wx` FROM `self_cus_detailed` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `self_cus_downline` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `self_cus_downline` WHERE ( tid=2 ) LIMIT 1   [ RunTime:0.0000s ]
+
+[2018-08-24 16:31:45] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[2018-08-24 16:31:49] 127.0.0.1 /Home/Wx/index?state=valiwx_2&history=Set_cusBase
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+

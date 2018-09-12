@@ -16,7 +16,7 @@
 <ul class="bread  clearfix">
     <li><a href="/Back/Index/index" target="right" class="icon-home"> 首页</a></li>
     <li><a href="/Back/Line/index" id="a_leader_txt"><?php echo ($pos["c"]); ?></a></li>
-    <li><a href="/Back/Line/index"><?php echo ($pos["a"]); ?></a></li>
+    <li><a><?php echo ($pos["a"]); ?></a></li>
 </ul>
 
 <!--客户下线列表页面-->
@@ -30,7 +30,7 @@
             <ul class="search" style="padding-left:10px;">
                 <div class="right">
                     <li>
-                        <select name="rw_state" class="input state"  style="width:150px; line-height:17px; display:inline-block" class="state">
+                        <select name="rw_state" class="input state"  style="width:150px; line-height:17px; display:inline-block" >
                             <option value="-1">审核状态</option>
                             <option value="1">|-- 未审核状态</option>
                             <option value="2">|-- 通过审核</option>
@@ -62,7 +62,7 @@
                 <th>操作</th>
             </tr>
             <tbody>
-            <?php if(is_array($list)): foreach($list as $key=>$v): ?><tr>
+            <?php if(is_array($list)): foreach($list as $key=>$v): ?><tr <?php if(($v["id"]) == $_GET['id']): ?>style='background:#daf5f8'<?php endif; ?>>
                     <td>
                         <input type="checkbox" name="id[]" value="<?php echo ($v["id"]); ?>" />
                     </td>

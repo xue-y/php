@@ -100,12 +100,13 @@ h3 a:hover{color:#d1edf8;}
 
 /*set cusBase*/
 .cusBase form{ margin: 30px 10px 0px 10px;}
-.cusBase .field{overflow: hidden;    margin-top: -30px;}
+.cusBase .field{overflow: hidden;    margin-top: -33px;}
 .cusBase  .fixed-left{ margin-left: 5px; margin-top: 15px;}
 .cusBase  .label{ display: inline-block;}
 .cusBase  .label label {
     font-weight: normal;
 }
+
 /*set index*/
 .set-index ul a{color:#333; display: block;}
 .set-index ul a span{ margin-right: 10px;color:#03b6fd;font-size: 18px;}

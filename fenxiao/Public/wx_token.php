@@ -1,6 +1,6 @@
 <?php
 /**
- * https://mp.weixin.qq.com/advanced/advanced?action=dev&t=advanced/dev&token=1940520602&lang=zh_CN
+ * https://mp.weixin.qq.com/advanced/advanced?action=dev&t=advanced/dev&token=19410520602&lang=zh_CN
  * wechat php test
  *  验证回调地址   token
  *  服务器设置---->服务验证token
@@ -10,7 +10,7 @@
 //http://域名/Public/wx_token.php
 
 //定义TOKEN密钥
-define("TOKEN","");
+define("TOKEN","loginzf");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 

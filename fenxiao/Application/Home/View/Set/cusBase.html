@@ -57,10 +57,11 @@
         </div>
         <div class="field">
             <neq name="info.is_wx" value="1">
-                <a href="__MODULE__/Wx/index?state={$Think.WX_VALIWX}_{$info.id}&history={$info.history}"  class="clear" style="margin-left:10%;padding-top:5px; display: block">
-                    &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 请验证微信用于微信登录或找回密码</a>
+                <a href="__MODULE__/Wx/index?state={$Think.WX_VALIWX}&history={$info.history}"  class="clear" style="margin-left:10%;padding-top:5px; display: block">
+                    &nbsp;  &nbsp; &nbsp; 请验证微信用于微信登录或找回密码</a>
                 <else  />
-                <input class="input  x2-move x10" value="已验证微信">
+                <p class="input  x2-move x10"  readonly><span>已验证微信</span> &nbsp; &nbsp; &nbsp;
+                    <a href="__CONTROLLER__/qxBingwx?id={$info.id}">取消微信绑定</a></p>
             </neq>
 
             <div class="tips"></div>
@@ -74,7 +75,7 @@
         <div class="field">
             <p  class="input  x2-move x10" readonly >
                 <lt  name="info.sub_num" value="1">
-                    暂无下线<a href="__MODULE__/Line/add"> 现在去推荐 </a>
+                    暂无下线 &nbsp; &nbsp; &nbsp;<a href="__MODULE__/Line/add"> 现在去推荐 </a>
                     <else/>
                     <a href="__MODULE__/Line/index">{$info.sub_num} 个</a>
                 </lt>
