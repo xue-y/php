@@ -16,7 +16,7 @@ class ShopController extends Controller{
     {
         header("Content-Type:text/html;charset=utf-8");
         $history=CONTROLLER_NAME.FEN_FU.ACTION_NAME;
-        echo "<a href='/Home/Login/sign?history=".$history."'>shop去登录</a>";
+        echo "<a href='/Home/Login/sign?history=".$history."'>登录后跳转原页面</a>";
     }
 
 } 

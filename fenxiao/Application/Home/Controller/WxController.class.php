@@ -192,7 +192,7 @@ class WxController extends Controller {
              $is_onlyOpenid=$cus->onlyOpenid($openid);
              if($is_onlyOpenid>=1)
              {
-                 $this->error("此微信已经绑定过账号了，请更新微信",'index');
+                 $this->error("此微信已经绑定过账号了，请更换微信",'index');
              }
 
              $new_user_info["openid"]=$openid;
