@@ -60,7 +60,7 @@
                     <if condition="$v.state eq '3'"><td style="color:#ee3333">未通过审核</td></if>
 
                     <td>{$v.t}</td>
-                    <td>
+                    <td><eq name="v.cid" value="$Think.session.id"> <!--限制咨询师只可查看自己的客户-->
                         <div class="button-group">
                             <if condition="$v.state eq '1' AND $v.cid eq $u_id">
                                 <a class="icon-edit" href="__CONTROLLER__/censor?id={$v.id}&type=edit"> 审核</a>
@@ -68,6 +68,7 @@
                                 <a class="icon-eye-open" href="__CONTROLLER__/censor?id={$v.id}&type=eye"> 查看</a>
                             </if>
                         </div>
+                    </eq>
                     </td>
                 </tr>
             </foreach>

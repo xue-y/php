@@ -35,10 +35,10 @@ class LineController  extends MyController{
         }else if($get["cid"]=="all" && empty($w))
         {
             $w=1;
-        }else
+        }/*else
         {
             $w["cid"]=array("eq",$this->u_id);
-        }// 咨询搜索
+        }*/// 咨询搜索
 
         $user=D("User"); // 取得所有的咨询
         $all_zx=$user->all_zx();
@@ -64,7 +64,7 @@ class LineController  extends MyController{
         //edit--审核  eye 已经审核过的查看或者
         if(isset($get["type"]) && !empty($get["type"]) && isset($get["id"]) && intval($get["id"])>=1)
         {
-            // 验证当前咨询是否有操作客户的权限
+            // 验证当前咨询是否有操作客户的权限  限制咨询师只可查看自己的客户
             $cus=D("Line");
             $cus_info=$cus->zx_line($this->u_id,$get["id"]);
             if(empty($cus_info))

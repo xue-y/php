@@ -23,10 +23,14 @@ class LineModel extends Model{
     * */
     public function zx_line($cid,$id)
     {
-        $w["a.id"]=$id;
+        /*$w["a.id"]=$id;
         $w["a.cid"]=$cid;
-       return $this->where($w)->alias("a")->field("b.n as t_n,a.*")
-           ->join("__CUS_DETAILED__ as b ON b.id=a.tid")->find();
+       echo $this->where($w)->alias("a")->field("b.n as t_n,a.*")
+           ->join("__CUS_DETAILED__ as b ON b.id=a.tid")->fetchSql(true)->find();*/
+        $w["id"]=$id;
+        $w["cid"]=$cid;
+        return $this->where($w)->find();
+
     }
 
     /** 判断当前的下线是否已经审核过了
