@@ -6,7 +6,7 @@
  * Time: 下午1:33
  * 微信登录
  * 网页授权域名
-   域名/Application
+ * 域名/Application
  * https://mp.weixin.qq.com/cgi-bin/settingpage?t=setting/function&action=function&token=782251143&lang=zh_CN&token=782251143&lang=zh_CN
  */
 
@@ -57,6 +57,7 @@ class WxController extends Controller {
              $this->state["state"]=add_slashes($_GET["state"]);
          }else
          {
+             sign_is_login(); // 如果是登录 判断是否已经登录
              $this->state["state"]=WX_LOGIN;
          }
 
@@ -68,26 +69,25 @@ class WxController extends Controller {
              $title="验证微信";
          }else
          {
-           //  sign_is_login(); // 如果是登录 判断是否已经登录
              $title="登录";
+         }
+
+         // 如果用户是在微信端 识别二维码时记录session---从电脑端扫码无效
+         if(isset($_SESSION[$this->s_pix]["id"]) && !empty($_SESSION[$this->s_pix]["id"]))
+         {
+             $this->state["id"]=session("id");
          }
          // 记录用从哪个页面跳转过来的
          if(isset($_GET["history"]) && !empty($_GET["history"]))
          {
              // 转换地址 Set_pass 转换为 Set/pass
-             //$old_url=ucfirst($_GET["history"]);
+             $old_url=ucfirst($_GET["history"]);
              $old_url=str_replace($this->fengefu,"/",$_GET["history"]);
 
-             // 如果用户是在微信端 识别二维码时记录session---从电脑端扫码无效
-             if(isset($_SESSION[$this->s_pix]["id"]) && !empty($_SESSION[$this->s_pix]["id"]))
-             {
-                 $id=session("id");
-                 $this->state["history"]=$old_url;
-             }
              // 如果存在历史记录页面在后面添加上
              // 如果用访问其他的页面 需要支付是判断用户是否登录，如果没有登录 或忘记密码 state=login_Te/index
              // 如果是 忘记原密码或 验证微信 state=valiwx_Set/pass
-             $this->state["id"]=$id;
+             cookie("history",$old_url,ORDER_T,'/');
          }
          $this->state=json_encode($this->state);
 
@@ -116,7 +116,6 @@ class WxController extends Controller {
     // 获取用户信息
      public function User()
      {
-
          if(!isset($_GET['code']) || !isset($_GET["state"]))
          {
              exit("wx user login error");
@@ -183,39 +182,38 @@ class WxController extends Controller {
 
          $cus=D("Customer");
         // 如果 用户验证微信
-         if($this->state["state"]==WX_VALIWX)  // 验证微信-- 绑定微信---允许一个微信号绑定多个账号
+         if($this->state["state"]==WX_VALIWX)  // 验证微信-- 绑定微信---一个微信号绑定一个账号
          {
+             if(!isset($this->state["id"]) || empty($this->state["id"]))
+             {
+                 $this->noisUser(); // 不存在此用户
+             }
+             // 验证当前验证微信的用户是否绑定过其他账号
+             $is_onlyOpenid=$cus->onlyOpenid($openid);
+             if($is_onlyOpenid>=1)
+             {
+                 $this->error("此微信已经绑定过账号了，请更新微信",'index');
+             }
+
              $new_user_info["openid"]=$openid;
              $new_user_info["is_wx"]=1;
 
-             if(isset($this->state["id"])  && !empty($this->state["id"]))
+             // 根据用户 id 取得用户相关信息
+             $user_info2=$cus->id_is($this->state["id"]);
+             if(empty($user_info2))
              {
-                 // 根据用户 id 取得用户相关信息
-                 $user_info2=$cus->id_is($this->state["id"]);
-                 $user_info2["id"]=$this->state["id"];
+                 $this->noisUser();// 不存在此用户
              }
+             $user_info2["id"]=$this->state["id"];
          }else            // 如果用户使用微信登录 或忘记密码 或者忘记原密码
          {
              $user_info2=$cus->openid_is($openid);
              if(empty($user_info2))
              {
-                 Log::write($openid,"SELF_ERROR");
-                 echo "<p style='text-align: center;margin-top:20px;font-size: 30px;'>
-                 用户不存在或未绑定微信，请联系咨询师
-                 <a href='/Home/Login/sign'>点击账号密码登录</a>
-                 </p>";
-                 exit;
+                 $this->noisUser();// 不存在此用户
              }
          }
 
-         if(!isset($user_info2) || empty($user_info2))
-         {
-             echo "<p style='text-align: center;margin-top:20px;font-size: 30px;'>
-                 用户不存在或未绑定微信，请联系咨询师或
-                 <a href='/Home/Login/sign'>点击账号密码登录</a>
-                 </p>";
-             exit;
-         }
          if(empty($user_info2["n"]))
          {
              $new_user_info["n"]=$user_info["nickname"];
@@ -240,6 +238,7 @@ class WxController extends Controller {
          {
              if($this->state["state"]==WX_VALIWX) // 验证微信
              {
+                 // 查询数据库中是否存在 现在用户的openid
                  $w["id"]=array("eq",$this->state["id"]); // 取得用户id
                  $is_save=$cus->where($w)->save($new_user_info);
                  if($is_save!=1)
@@ -266,49 +265,56 @@ class WxController extends Controller {
          // 如果用户浏览器登录 图片识别二维码跳转过来的, 忘记原密码  与验证微信 都重新设置了session
          if(!isset($_SESSION[$this->s_pix]['id']) || empty($_SESSION[$this->s_pix]['id'])) //$this->state["id"]
          {
-             session('login_status'.$user_info2["id"],1); // 登录状态
              session('id',$user_info2["id"],USER_LOGIN_T,'/');
          }
-
+         session('login_status'.$user_info2["id"],1); // 登录状态
          $token=pass_md5(sha1($user_info2["id"]).$user_info2["phone"]);
          cookie('token',$token,USER_LOGIN_T,'/');
          cookie('phone',$user_info2["phone"],USER_LOGIN_T,'/');  // 记住手机号仅对下次有效
 
+
          if($this->state["state"]==WX_PASS)  // 忘记原密码 --- 跳转到 重置密码页面
          {
-             //$state[1]   是用户id
+             //存储用户openid
+             session("openid",$openid);
              header("Location:http://".$_SERVER['SERVER_NAME'].__MODULE__."/Wx/pass");
              exit;
          }else if($this->state["state"]==WX_VALIWX)  // 验证微信-- 绑定微信
          {
-            // 取得历史记录页面
-             if(isset($this->state["history"]) && !empty($this->state["history"]))
-             {
-                 $history=$this->state["history"];
-             }else
-             {
-                 $history="/Index/index";
-             }
+             $history=$this->history();
              $this->success("微信验证成功",'../'.$history);
-
          }else
          {
-             $history="/Index/index";
+             $history=$this->history();
              //---------------------- 执行登录
-             header("Location:http://".$_SERVER['SERVER_NAME'].__MODULE__.$history);
+             header("Location:http://".$_SERVER['SERVER_NAME'].__MODULE__."/".$history);
              exit;
          }
      }
 
-    /*微信找回密码*/
+    /*微信找回密码  重置密码*/
     public function pass()
     {
+        // 限制用户必须微信扫码登录
+        $openid=session("openid");
+        if(!isset($openid) || empty($openid))
+        {
+            $this->error("请问扫码验证",'index');
+        }
         $this->display();
     }
 
     //  执行重置密码
     public function execPass()
     {
+        // 限制用户必须微信扫码登录
+        $openid=session("openid");
+        if(!isset($openid) || empty($openid))
+        {
+            $this->error("请问扫码验证",'index');
+        }
+
+        $id=session("id");
         $post=add_slashes($_POST);
         $cus=D("Customer");
         if (!$cus->create()){  // 不是本表字段只能验证，不能收集数据
@@ -320,27 +326,33 @@ class WxController extends Controller {
         {
              $this->error($error);
         }
-
         $pass["pass"]=pass_md5($post["pass"]);
 
-        $cus_user=D("Cus_base");
-        // 先查询是否与数据一致 如果一致提示修改成功，如果不一致写入数据
-        $user_id=cookie("id");
-        // 判断历史记录页面是否存在
-        $history=$this->history($user_id);
+        // 再次判断是否存在此用户
+        $isUser=$cus->isUser($id,$post["n"]);
+        if($isUser!=1)
+        {
+            $this->noisUser();
+        };
 
-        $old_pass=$cus_user->getFieldById($user_id,"pass");
+        $cus_user=D("Cus_base");
+        $old_pass=$cus_base->field("pass")->find($id);
+        $history='/'.MODULE_NAME.'/'.$this->history();
         if($old_pass==$pass["pass"])
         {
-           $this->success("重置密码成功",'../'.$history);
+           session("openid",null);
+           $this->success("重置密码成功",$history);
            exit;
         }
-        $w["id"]=array("eq",$_COOKIE[$this->s_pix.'id']);
+        $w["id"]=$id;
         $is_save=$cus_user->where($w)->save($pass);
 
+        $cus_user=NULL;
+        $cus=NULL;
         if($is_save==1)
         {
-            $this->success("重置密码成功",'../'.$history);
+            session("openid",null);
+            $this->success("重置密码成功",$history);
         }else
         {
             $this->error("重置密码失败");
@@ -348,16 +360,25 @@ class WxController extends Controller {
     }
 
     // 历史记录页面
-    private function history($id)
+    private function history()
     {
-        if(isset($_COOKIE[$this->s_pix.$id."history"]) && !empty($_COOKIE[$this->s_pix.$id."history"]))
-        {
-            $history=$_COOKIE[$this->s_pix.$id."history"];
-        }else
+        $history=cookie("history");
+        if(!isset($history) || empty($history))
         {
             $history="Login/sign";
         }
+        cookie("history",null);
         return $history;
+    }
+
+    // 不存在此用户提醒
+    private function noisUser()
+    {
+        echo "<p style='text-align: center;margin-top:20px;font-size: 30px;'>
+              用户不存在或未绑定微信，请联系咨询师
+              <a href='/Home/Login/sign'>点击账号密码登录</a>
+             </p>";
+        exit;
     }
 
  }

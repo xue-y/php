@@ -26,6 +26,7 @@ class HwxController extends Controller{
         {session_start();}
         $this->s_pix=C('COOKIE_PREFIX');
         $this->uid=session("id");
+
         $this->is_sign(); // 验证是否登录 ----判断验证是否登录失效
 
         $cus=D("Customer");  // 消息个数
@@ -43,13 +44,14 @@ class HwxController extends Controller{
              echo "<script>window.location.href='".__MODULE__."/Login/sign'</script>";
              exit;
           }
-        $uid_status=session('login_status'.$user_info2["id"]);
+        $uid_status=session('login_status'.$this->uid);
         if(!isset($uid_status) || $uid_status!=1)
         {
             // 直接跳转登录页面
             echo "<script>window.location.href='".__MODULE__."/Login/sign'</script>";
             exit;
         }
+        //pass_md5(sha1($is_user["id"]).$post["phone"]);
        if(pass_md5(sha1($this->uid).$_COOKIE[$this->s_pix.'phone'])!=$_COOKIE[$this->s_pix.'token'])
        {
          echo "<script>window.location.href='".__MODULE__."/Login/sign'</script>";

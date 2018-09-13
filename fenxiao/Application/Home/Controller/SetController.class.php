@@ -134,7 +134,7 @@ class SetController extends HwxController{
     public function pass()
     {
        // $this->assign("id",$this->uid);
-        $history=CONTROLLER_NAME.FEN_FU.ACTION_NAME;
+        $history=CONTROLLER_NAME.FEN_FU.'index';
         $this->assign("history",$history);
         $this->display();
     }
@@ -166,7 +166,18 @@ class SetController extends HwxController{
             $this->error($cus->getError());   // 所有的正则验证通过后 返回 false 错误值为 null
         }*/
         // 验证原密码是否正确
+        $cus_base=D("Cus_base");
+        $old_pass=$cus_base->field("pass")->find($this->uid);
+        if(!isset($old_pass) || empty($old_pass))
+        {
+            $this->error("原密码错误");
+        }
+
         $pass["pass"]=pass_md5($post["pass"]);
+        if($old_pass===$old_pass)
+        {
+            $this->success("修改成功","index");
+        }
         $w["id"]=array("eq",$this->uid);
         $af=D("Cus_base")->where($w)->save($pass);
         if(!$af)

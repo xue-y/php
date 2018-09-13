@@ -145,4 +145,26 @@ class CustomerModel extends Model {
         return $bool;
     }
 
+    /** 根据用户名 id 判断是否存在此用户 openid 唯一
+     * @parem $id int 客户id
+     * @parem $n string 客户名称
+     * @return  int 查询到的客户个数
+     * */
+    public function isUser($id,$n)
+    {
+        $w["id"]=array("eq",$id);
+        $w["n"]=array("eq",$n);
+        return $this->where($w)->count();
+    }
+
+    /** 验证用户openid 是否唯一
+     * @parem $openid string 客户openid
+     * @return int 查询客户个数
+     * */
+    public function onlyOpenid($openid)
+    {
+        $w["openid"]=array("eq",$openid);
+        return $this->where($w)->count();
+    }
+
 } 

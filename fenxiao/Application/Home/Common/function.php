@@ -72,11 +72,10 @@
     function sign_is_login()
     {
         $s_pix=C('COOKIE_PREFIX');
-        if(isset($_COOKIE[$s_pix.'id'])  &&  (pass_md5(sha1($_COOKIE[$s_pix.'id']).$_COOKIE[$s_pix.'phone'])==$_COOKIE[$s_pix.'token']))
+        $uid=$_SESSION[$s_pix]['id'];
+        if(isset($_SESSION[$s_pix]['id'])  &&  (pass_md5(sha1($uid).$_COOKIE[$s_pix.'phone'])==$_COOKIE[$s_pix.'token']))
         {
-            $uid=$_COOKIE[$s_pix.'id'];
-
-            if(isset($_SESSION[$s_pix]['login_status'.$uid])  &&  $_SESSION[$s_pix.'login_status'][$uid]==1)
+            if(isset($_SESSION[$s_pix]['login_status'.$uid])  &&  $_SESSION[$s_pix]['login_status'.$uid]==1)
             {
                 echo "<script>window.location.href='".__MODULE__."/Index/index'</script>";
                 exit;

@@ -7,8 +7,15 @@
 </h3>
 <p class="red">其中一个值为空默认不修改</p>
 
-<form action="__CONTROLLER__/execPass" method="post" >
-    <div class="form-group  margin-large-top">
+<form action="__CONTROLLER__/execPass" method="post"  style="height:75%">
+    <div class="form-group  margin-small-top">
+        <div class="field">
+            <input type="text" class="input w100" name="n" data-validate="title:用户名长度2--10个字符"  value="" placeholder="如果原名称为空请使用微信名"/>
+            <div class="tips"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
         <div class="field">
             <input type="password" class="input w100" name="pass" placeholder="新密码"  data-validate="userp:密码6--12位字符英文 数字 .@ ! - _"   value=""/>
             <div class="tips"></div>
@@ -30,4 +37,4 @@
     </div>
 </form>
 
-<include file="Public:foot_nav" />
+<include file="Public:foot" />
