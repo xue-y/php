@@ -162,7 +162,7 @@ class CustomerController extends MyController {  // 客户管理
         $cus_id_info["id"]=$id;
         // 删除临时 值
         $this->temp_session('phone');
-       cookie('phone',$cus_id_info["phone"]);
+        session('phone',$cus_id_info["phone"]);
 
         $this->assign("info",$cus_id_info);
         $this->display();
@@ -196,23 +196,20 @@ class CustomerController extends MyController {  // 客户管理
         if(!empty($post["phone"])) //如果手机号不为空
         {
 
-            if(!isset($_COOKIE[$this->s_pix.'phone']) || $post["phone"]!=$_COOKIE[$this->s_pix.'phone'])
+            if(!isset($_SESSION[$this->s_pix]['phone']) || $post["phone"]!=$_SESSION[$this->s_pix]['phone'])
             {
                 // 修改后的手机号是否与数据库中其他用户的手机号是否重复
                 $is_unique=$cus_base->unique_phone($id,$post["phone"]);
 
                 if($is_unique>=1)
                 {
-                    $this->error("手机已注册请更换,或去回收站还原");
+                    $this->error("手机已注册请更换,或用户进入回收站");
                 }
                 $data_base["phone"]=$post["phone"];
             }
-            else
-            {
-                $data_base["phone"]=$post["phone"];
-            }
+            $this->temp_session('phone');
         }
-        $this->temp_session('phone');
+
         //密码操作
         if(!empty($post["pass"]) && !empty($post["pass2"]))
         {

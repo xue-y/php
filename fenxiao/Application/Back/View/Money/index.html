@@ -1,7 +1,9 @@
 <layout name="layout" /><!--客户佣金详情列表页面-->
  <div class="padding">
       <ul class="search" style="padding-left:10px;">
-
+           <div class="left">
+               <a class="button border-blue" href="__MODULE__/Customer/index">返回客户列表</a>
+           </div>
           <div class="right">
               <li>
                   <select name="zx"  class="input"  style="width:150px; line-height:17px; display:inline-block" >
@@ -32,7 +34,7 @@
     <notempty name="list">
      <foreach name="list" item="v" >
        <tr>
-       <td><a href="__MODULE__/Customer/update?id={$v.id}">{$v.id}</a></td>
+       <td title="查看客户信息"><a href="__MODULE__/Customer/update?id={$v.id}">{$v.id}</a></td>
        <td>
            <foreach name="all_zx" item="zx" >
                <if condition="$v.cid eq $zx.id ">{$zx.u_name}</if>

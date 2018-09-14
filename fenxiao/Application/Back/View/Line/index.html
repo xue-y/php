@@ -7,6 +7,9 @@
     <form method="post" action="__CONTROLLER__/del">
         <div class="padding">
             <ul class="search" style="padding-left:10px;">
+                <div class="left">
+                    <a class="button border-blue" href="__MODULE__/Customer/index">返回客户列表</a>
+                </div>
                 <div class="right">
                     <li>
                         <select name="rw_state" class="input state"  style="width:150px; line-height:17px; display:inline-block" >
@@ -44,7 +47,7 @@
             </tr>
             <tbody>
             <foreach name="list" item="v" >
-                <tr <eq name="v.id" value="$Think.get.id"> style='background:#daf5f8'</eq>>
+                <tr <eq name="v.tid" value="$Think.get.id"> style='background:#daf5f8'</eq>>
                     <td>
                         <input type="checkbox" name="id[]" value="{$v.id}" />
                     </td>

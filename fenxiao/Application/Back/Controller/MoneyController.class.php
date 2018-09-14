@@ -78,8 +78,8 @@ class MoneyController extends MyController {
 		 }
 		 		
         $this->temp_session('money');
-        $_COOKIE[$this->s_pix.'money']=$money; // 客户原有的总金额
-		
+        session("money",$money);// 客户原有的总金额
+
 		 $info["money"]=$money;
 		 $info["cid"]=$this->u_id;
 		 $info["id"]=$id;
@@ -120,9 +120,9 @@ class MoneyController extends MyController {
 		{
 			$this->error("修改佣金 必须填写 佣金操作说明");
 		}
-		if(isset($_COOKIE[$this->s_pix.'money']))
+		if(isset($_SESSION[$this->s_pix]['money']))
 		{
-			$data_detailed["money"]=$data_money["jine"]=intval($post["money"])+intval($_COOKIE[$this->s_pix.'money']);
+			$data_detailed["money"]=$data_money["jine"]=intval($post["money"])+intval($_SESSION[$this->s_pix]['money']);
 		    $this->temp_session('money');
 		}else
 		{

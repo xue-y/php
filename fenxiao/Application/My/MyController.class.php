@@ -373,10 +373,9 @@ class MyController extends Controller {
     //咨询修改客户信息是存储的临时session ---- 删除
     protected function temp_session($field)
     {
-        if(isset($_COOKIE[$this->s_pix.$field]))
+        if(isset($_SESSION[$this->s_pix][$field]))
         {
-            $_COOKIE[$this->s_pix.$field]=null;
-            unset($_COOKIE[$this->s_pix.$field]);
+            session($field,null);
         }
     }
 	
