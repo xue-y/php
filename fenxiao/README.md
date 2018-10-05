@@ -1,6 +1,6 @@
 ﻿## 简介
 ThinkPHP 轻量级PHP开发框架   
-安装目录 Install 以及说明文件  
+安装目录 Install 
 项目名称：二级分销   
 后台管理员以部门划分，可以不同的人分配不同的权限，可以限制部门主管只可修改自己部门的人员  
 配置文件 renwu\Application\Back\Conf\define.php   define('A_S_C',FALSE);//为true  
@@ -28,7 +28,7 @@ Zend Engine v2.3.0, Copyright (c) 1998-2013 Zend Technologies
 nginx version: nginx/1.4.7     
 系统:CentOS release 6.8 /CentOS release 6.5     
 Linux version 2.6.32-642.13.1.el6.x86_64    
-*注：其他版本未测试*   
+**注：**其他版本未测试   
 
 #### window平台：    
 Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45    
@@ -38,7 +38,7 @@ PHP版本（php_version）：	5.4.45, 5.5.45-nts不支持隐藏index.php
 Zend版本	2.4.0   
 SQLite3　Ver 3.8.10.2    
 mysql  Ver 14.14 Distrib 5.5.53, for Win32 (AMD64)    
-*注：其他版本未测试*   
+**注：**其他版本未测试   
 
 #### 文件说明及注意事项      
 [模板字体地址](http://www.bootcss.com/p/font-awesome/)   
@@ -78,4 +78,5 @@ ThinkPhp/ 有读取执行的权限建议 755
 nginx 下/usr/local/nginx/conf/vhost/XXX.conf 文件修改路由 -- 根目录 vhost.conf    
 TP3 中 U()  $this->redirect() 跳转地址默认会添加html nginx 环境需要配置 vhost.conf 文件   
 ajax 请求php 数据，服务端如果使用exit("数据")返回;如果数据是数字,前端接收不到,echo(数字)前端可以接收到     
-session 函数是前缀数组形式session[prefix][name]=value，cookie 函数是前缀加连接cookie name 形式cookie[prefix_name]=value     
+session 函数是前缀数组形式session[prefix][name]=value    
+cookie 函数是前缀加连接cookie name 形式cookie[prefix_name]=value       
