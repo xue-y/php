@@ -28,7 +28,7 @@ Zend Engine v2.3.0, Copyright (c) 1998-2013 Zend Technologies
 nginx version: nginx/1.4.7     
 系统:CentOS release 6.8 /CentOS release 6.5     
 Linux version 2.6.32-642.13.1.el6.x86_64    
-**注：**其他版本未测试   
+**注：**  其他版本未测试   
 
 #### window平台：    
 Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45    
@@ -38,7 +38,7 @@ PHP版本（php_version）：	5.4.45, 5.5.45-nts不支持隐藏index.php
 Zend版本	2.4.0   
 SQLite3　Ver 3.8.10.2    
 mysql  Ver 14.14 Distrib 5.5.53, for Win32 (AMD64)    
-**注：**其他版本未测试   
+**注：**  其他版本未测试   
 
 #### 文件说明及注意事项      
 [模板字体地址](http://www.bootcss.com/p/font-awesome/)   
